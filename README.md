@@ -1,8 +1,8 @@
 # Eugine Kunitsa CV project.
 
-Main stack: NEXT.JS v14 | NEXT-INTL | SCSS
+Main stack: NEXT.JS v14 | NEXT-INTL | REACT-ICONS | SCSS
 
-Additional stack: PRETTIER | ESLINT | STYLELINT | HUSKY
+Code quality tools: PRETTIER | ESLINT | STYLELINT | HUSKY
 
 Node.js version - 20.9.0
 
