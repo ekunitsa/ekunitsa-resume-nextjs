@@ -1,0 +1,12 @@
+/* stylelint-disable property-no-vendor-prefix */
+@import "./abstract/all";
+@import "scss-reset/reset";
+
+html,
+body {
+    overscroll-behavior: none;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}

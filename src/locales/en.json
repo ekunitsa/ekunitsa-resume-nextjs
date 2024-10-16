@@ -1,0 +1,17 @@
+{
+    "MetaDataT": {
+        "title": "Kunitsa Eugine Sergeyevich | Front-end developer | CV",
+        "description": "Front-end developer",
+        "notFoundTitle": "Kunitsa Eugine Sergeyevich | Front-end developer | CV",
+        "notFoundDescription": "Front-end developer"
+    },
+    "LocaleSwitcherT": {
+        "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
+    },
+    "NotFoundPageT": {
+        "notFoundTitle": "Page not found"
+    },
+    "HomePageT": {
+        "welcome": "Welcome"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "MetaDataT": {
+        "title": "Куниця Євгеній Сергійович | Front-end developer | CV",
+        "description": "Front-end developer",
+        "notFoundTitle": "Куниця Євгеній Сергійович | Front-end developer | CV",
+        "notFoundDescription": "Front-end developer"
+    },
+    "LocaleSwitcherT": {
+        "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
+    },
+    "NotFoundPageT": {
+        "notFoundTitle": "Сторінка не знайдена"
+    },
+    "HomePageT": {
+        "welcome": "Привіт"
+    }
+}

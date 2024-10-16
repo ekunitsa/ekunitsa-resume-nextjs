@@ -1,3 +1,106 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+    "root": true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "@next/eslint-plugin-next",
+        "simple-import-sort"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@next/next/recommended",
+        "next",
+        "next/core-web-vitals",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        "@typescript-eslint/no-unused-vars": "warn",
+        "prettier/prettier": ["error", { "singleQuote": true }],
+        "react/display-name": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "@typescript-eslint/no-misused-promises": [
+            2,
+            {
+                "checksVoidReturn": {
+                    "attributes": false
+                }
+            }
+        ],
+        "@typescript-eslint/no-floating-promises": [
+            2,
+            {
+                "ignoreIIFE": true,
+                "ignoreVoid": true
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+            "rules": {
+                "simple-import-sort/imports": [
+                    "error",
+                    {
+                        "groups": [
+                            [
+                                "^react",
+                                "^\\w",
+                                "^@hookform",
+                                "^@radix-ui",
+                                "^@reduxjs"
+                            ],
+                            // npm packages
+                            // Anything that starts with a letter (or digit or underscore), or `@` followed by a letter.
+                            // ['^\\w'],
+                            // Internal packages.
+                            ["^@/store(/.*|$)"],
+                            ["^@/components(/.*|$)"],
+                            ["^@/ui(/.*|$)"],
+                            ["^@/lib(/.*|$)"],
+                            ["^@/pages(/.*|$)"],
+                            ["^@/utils(/.*|$)"],
+                            ["^@/hooks(/.*|$)"],
+                            ["^@/services(/.*|$)"],
+                            ["^@/providers(/.*|$)"],
+                            ["^@/configs(/.*|$)"],
+                            ["^@/types(/.*|$)"],
+                            ["^@/api(/.*|$)"],
+                            // public | types | components | global styles (assets)
+                            ["^/public(/.*|$)"],
+                            ["^@/assets(/.*|$)"],
+                            // Side effect imports.
+                            ["^\\u0000"],
+                            // Parent imports. Put `..` last.
+                            ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+                            // Other relative imports. Put same-folder imports and `.` last.
+                            ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+                            // Style imports.
+                            ["^.+\\.?(scss)$"]
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }
