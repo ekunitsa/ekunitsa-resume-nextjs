@@ -1,0 +1,70 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: $container;
+    padding: $spacer-8 $spacer-4;
+}
+
+.grid {
+    display: grid;
+    gap: $spacer-8;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "ti"
+        "cn"
+        "ex"
+        "sk"
+        "ab"
+        "lg";
+
+    @include media-breakpoint-up(md) {
+        grid-template-columns: 300px 1fr;
+        grid-template-areas:
+            "ph ti"
+            "cn ex"
+            "ab ex"
+            "lg ex"
+            "sk sk";
+    }
+
+    @include media-breakpoint-up(xl) {
+        grid-template-columns: 400px 1fr;
+        gap: $spacer-12;
+    }
+}
+
+.photo {
+    grid-area: ph;
+    display: none;
+
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+}
+
+.topInfo {
+    grid-area: ti;
+    align-self: center;
+}
+
+.contacts {
+    grid-area: cn;
+}
+
+.about {
+    grid-area: ab;
+}
+
+.languages {
+    grid-area: lg;
+}
+
+.experience {
+    grid-area: ex;
+}
+
+.skills {
+    grid-area: sk;
+}

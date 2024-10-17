@@ -11,7 +11,26 @@
     "NotFoundPageT": {
         "notFoundTitle": "Сторінка не знайдена"
     },
-    "HomePageT": {
-        "welcome": "Привіт"
-    }
+    "TopInfoT": {
+        "name": "Куниця Євгеній Сергійович",
+        "position": "Senior Front-End Developer",
+        "years": ">{years}",
+        "inTheProfession": "років в професії",
+        "open": "У пошуку нових кар'єрних можливостей :)"
+    },
+    "TopInfoLinksT": {
+        "codewars": "Codewars",
+        "stackoverflow": "Stackoverflow",
+        "github": "Github",
+        "trailblazer": "Trailblazer"
+    },
+    "PhotoT": {
+        "alt": "Куниця Євгеній Сергійович"
+    },
+    "ContactsT": {},
+    "LanguagesT": {},
+    "ExperienceT": {},
+    "ExperienceItemT": {},
+    "AboutT": {},
+    "SkillsT": {}
 }

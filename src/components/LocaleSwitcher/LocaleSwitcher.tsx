@@ -36,7 +36,7 @@ const LocaleSwitcher = () => {
                     onClick={onSelectChange}
                     value={item}
                     disabled={isPending}
-                    className={classNames({
+                    className={classNames(styles.button, {
                         [styles.active]: item === currentLocale,
                     })}
                 >

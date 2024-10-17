@@ -1,6 +1,6 @@
 # Eugine Kunitsa CV project.
 
-Main stack: NEXT.JS v14 | NEXT-INTL | REACT-ICONS | SCSS
+Main stack: TS | NEXT.JS v14 | NEXT-INTL | SCSS
 
 Code quality tools: PRETTIER | ESLINT | STYLELINT | HUSKY
 

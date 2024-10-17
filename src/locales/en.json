@@ -11,7 +11,26 @@
     "NotFoundPageT": {
         "notFoundTitle": "Page not found"
     },
-    "HomePageT": {
-        "welcome": "Welcome"
-    }
+    "TopInfoT": {
+        "name": "Kunitsa Eugine Sergeyevich",
+        "position": "Senior Front-End Developer",
+        "years": ">{years}",
+        "inTheProfession": "years in the profession",
+        "open": "In search of new career opportunities :)"
+    },
+    "TopInfoLinksT": {
+        "codewars": "Codewars",
+        "stackoverflow": "Stackoverflow (RU)",
+        "github": "Github",
+        "trailblazer": "Trailblazer"
+    },
+    "PhotoT": {
+        "alt": "Kunitsa Eugine Sergeyevich"
+    },
+    "ContactsT": {},
+    "LanguagesT": {},
+    "ExperienceT": {},
+    "ExperienceItemT": {},
+    "AboutT": {},
+    "SkillsT": {}
 }

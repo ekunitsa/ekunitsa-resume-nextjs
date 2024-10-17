@@ -7,6 +7,10 @@ body {
     overscroll-behavior: none;
 }
 
+body {
+    background-color: $color-light-white;
+}
+
 .pointer-events-none {
     pointer-events: none;
 }
