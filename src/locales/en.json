@@ -45,14 +45,14 @@
         "project1name": "Freelance",
         "project1position": "Markup developer",
         "project1dates": "May 2010 - January 2012",
-        "project1term": "(1 year 9 months)",
+        "project1term": "1 year 9 months",
         "project1description": "Development of websites and small orders for one-time clients",
 
         "project2name": "NeoPulse Web Studio",
         "project2position": "Markup developer",
         "project2workTime": "Full-time, remote",
         "project2dates": "January 2012 - November 2014",
-        "project2term": "(2 years 11 months)",
+        "project2term": "2 years 11 months",
         "project2description": "Website support and development",
         "project2technology": "HTML, CSS, jQuery, Opencart, Joomla, Wordpress, Codeigniter, Yii",
 
@@ -60,7 +60,7 @@
         "project3position": "Frontend developer",
         "project3workTime": "Full-time, remote",
         "project3dates": "June 2015 - April 2021",
-        "project3term": "(5 years 11 months)",
+        "project3term": "5 years 11 months",
         "project3description": "Support and development of large websites, portals, interfaces, internal systems",
         "project3technology": "Webpack, Smarty, Twig, Bootstrap, NPM, jQuery, JS, SASS, Symfony + sonata, Wordpress, ECSS, Vue.js, React",
 
@@ -68,7 +68,7 @@
         "project4position": "Frontend developer",
         "project4workTime": "Part-time work (2 to 8 hours a day), remote",
         "project4dates": "July 2019 - February 2022",
-        "project4term": "(2 years 8 months)",
+        "project4term": "2 years 8 months",
         "project4description": "Website development and support.",
         "project4technology": "HTML, jQuery, JS, SASS, Wordpress, Git, ECSS",
 
@@ -76,7 +76,7 @@
         "project5position": "Frontend developer",
         "project5workTime": "Part-time work (up to 4 hours a day), remote",
         "project5dates": "April 2021 - February 2022",
-        "project5term": "(11 months)",
+        "project5term": "11 months",
         "project5description": "Development and support of company websites.",
         "project5technology": "HTML, jQuery, JS, SASS, Wordpress, Opencart",
 
@@ -84,7 +84,7 @@
         "project6position": "SFCC Frontend developer",
         "project6workTime": "Full-time, remote",
         "project6dates": "June 2022 - October 2023",
-        "project6term": "(1 year 5 months)",
+        "project6term": "1 year 5 months",
         "project6description": "Development of online stores at SFCC",
         "project6technology": "ISML, SCSS, BEM, bootstrap, jQuery, lightning, custom editors with react",
 

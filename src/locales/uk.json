@@ -45,14 +45,14 @@
         "project1name": "Фріланс",
         "project1position": "Markup developer",
         "project1dates": "Травень 2010 р. – Січень 2012 р.",
-        "project1term": "(1 рік 9 міс.)",
+        "project1term": "1 рік 9 міс.",
         "project1description": "Розробка веб-сайтів і невеликих проектів",
 
         "project2name": "Веб-студія NeoPulse",
         "project2position": "Markup developer",
         "project2workTime": "Повний робочий день, віддалено",
         "project2dates": "Січень 2012 р. – Листопад 2014 р.",
-        "project2term": "(2 роки 11 міс.)",
+        "project2term": "2 роки 11 міс.",
         "project2description": "Підтримка та розробка веб-сайтів",
         "project2technology": "HTML, CSS, jQuery, Opencart, Joomla, Wordpress, Codeigniter, Yii",
 
@@ -60,7 +60,7 @@
         "project3position": "Frontend developer",
         "project3workTime": "Повний робочий день, віддалено",
         "project3dates": "Червень 2015 р. – Квітень 2021 г.",
-        "project3term": "(5 років 11 міс.)",
+        "project3term": "5 років 11 міс.",
         "project3description": "Підтримка та розробка маштабних сайтів, порталів, інтерфейсів, внутрішних систем",
         "project3technology": "Webpack, Smarty, Twig, Bootstrap, NPM, jQuery, JS, SASS, Symfony + sonata, Wordpress, ECSS, Vue.js, React",
 
@@ -68,7 +68,7 @@
         "project4position": "Frontend developer",
         "project4workTime": "Часткова занятість (від 2 до 8 годин в день), віддалено",
         "project4dates": "Липень 2019 р. - Лютий 2022 р.",
-        "project4term": "(2 роки 8 міс.)",
+        "project4term": "2 роки 8 міс.",
         "project4description": "Розробка та підтримка веб-сайтів",
         "project4technology": "HTML, jQuery, JS, SASS, Wordpress, Git, ECSS",
 
@@ -76,7 +76,7 @@
         "project5position": "Frontend developer",
         "project5workTime": "Часткова занятість (до 4-х годин в день), віддалено",
         "project5dates": "Квітень 2021 р. - Лютий 2022 р.",
-        "project5term": "(11 міс.)",
+        "project5term": "11 міс.",
         "project5description": "Розробка та підтримка веб-сайтів компанії",
         "project5technology": "HTML, jQuery, JS, SASS, Wordpress, Opencart",
 
@@ -84,7 +84,7 @@
         "project6position": "SFCC Frontend developer",
         "project6workTime": "Повний робочий день, віддалено",
         "project6dates": "Червень 2022 р. - Жовтень 2023 р.",
-        "project6term": "(1 рік 5 міс.)",
+        "project6term": "1 рік 5 міс.",
         "project6description": "Розробка веб-магазинів на SFCC",
         "project6technology": "ISML, SCSS, BEM, bootstrap, jQuery, lightning, custom editors с використанням react",
 
