@@ -1,1 +1,7 @@
 @import "@/assets/scss/abstract/_all";
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-5;
+}

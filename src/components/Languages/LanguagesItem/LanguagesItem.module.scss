@@ -1,1 +1,8 @@
 @import "@/assets/scss/abstract/_all";
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed $color-gray;
+    padding-bottom: $spacer-1;
+}

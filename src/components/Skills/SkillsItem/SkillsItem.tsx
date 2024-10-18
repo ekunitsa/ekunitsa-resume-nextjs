@@ -1,7 +1,11 @@
 import styles from './SkillsItem.module.scss';
 
-const SkillsItem = () => {
-    return <>SkillsItem</>;
+interface SkillsItemI {
+    text: string;
+}
+
+const SkillsItem = ({ text }: SkillsItemI) => {
+    return <>{text}</>;
 };
 
 export default SkillsItem;

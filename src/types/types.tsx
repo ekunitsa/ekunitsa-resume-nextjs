@@ -15,3 +15,18 @@ export interface AboutItemI {
     text: string;
     bold?: boolean;
 }
+
+export interface LanguagesItemI {
+    title: string;
+    level: string;
+}
+
+export interface ExperienceItemI {
+    name: string;
+    position: string;
+    workTime?: string;
+    dates?: string;
+    term?: string;
+    description?: string;
+    technology?: string;
+}
