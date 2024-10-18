@@ -16,7 +16,7 @@
         "position": "Senior Front-End Developer",
         "years": ">{years}",
         "inTheProfession": "years in the profession",
-        "open": "In search of new career opportunities :)"
+        "open": "In search of new career opportunities"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
@@ -28,7 +28,8 @@
         "alt": "Kunitsa Eugine Sergeyevich"
     },
     "ContactsT": {
-        "title": "Contacts"
+        "title": "Contacts",
+        "country": "Ukraine"
     },
     "LanguagesT": {
         "title": "Languages"
@@ -38,7 +39,12 @@
     },
     "ExperienceItemT": {},
     "AboutT": {
-        "title": "About me"
+        "title": "About me",
+        "about1": "{years} years old;",
+        "about2": "Since the beginning of my career, I have only worked remotely;",
+        "about3": "Beware of overtime;",
+        "about4": "Gamer;",
+        "about5": "After the events of February 2022 - I do not cooperate with companies that pay taxes to the Russian Federation. Not in any form."
     },
     "SkillsT": {
         "title": "Skills"

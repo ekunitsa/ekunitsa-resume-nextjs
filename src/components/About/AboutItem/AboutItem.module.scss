@@ -1,1 +1,19 @@
 @import "@/assets/scss/abstract/_all";
+
+.item {
+    font-size: $fs-base;
+    padding-left: $spacer-4;
+    position: relative;
+
+    &::before {
+        content: "-";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: $fw-regular;
+    }
+}
+
+.bold {
+    font-weight: $fw-medium;
+}

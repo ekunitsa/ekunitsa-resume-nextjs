@@ -11,7 +11,7 @@ const Skills = () => {
 
     return (
         <Box corners={['topRight', 'bottomLeft']} title={t('title')}>
-            Skills <SkillsItem />
+            <SkillsItem />
         </Box>
     );
 };

@@ -11,24 +11,24 @@ const TopInfoLinks = () => {
 
     const links: TopInfoLinksItemI[] = [
         {
-            title: t('codewars'),
-            link: 'https://www.codewars.com/users/ekunitsa/completed',
             icon: '/static/img/svg/codewars.svg',
+            link: 'https://www.codewars.com/users/ekunitsa/completed',
+            title: t('codewars'),
         },
         {
-            title: t('stackoverflow'),
-            link: 'https://ru.stackoverflow.com/users/25785/crus',
             icon: '/static/img/svg/stackoverflow.svg',
+            link: 'https://ru.stackoverflow.com/users/25785/crus',
+            title: t('stackoverflow'),
         },
         {
-            title: t('github'),
-            link: 'https://github.com/ekunitsa?tab=repositories',
             icon: '/static/img/svg/github.svg',
+            link: 'https://github.com/ekunitsa?tab=repositories',
+            title: t('github'),
         },
         {
-            title: t('trailblazer'),
-            link: 'https://trailblazer.me/id/crus',
             icon: '/static/img/svg/trailblazer.svg',
+            link: 'https://trailblazer.me/id/crus',
+            title: t('trailblazer'),
         },
     ];
 

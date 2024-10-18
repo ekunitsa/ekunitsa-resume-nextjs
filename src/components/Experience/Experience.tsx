@@ -11,7 +11,7 @@ const Experience = () => {
 
     return (
         <Box corners={['topLeft']} height100percent title={t('title')}>
-            Experience <ExperienceItem />
+            <ExperienceItem />
         </Box>
     );
 };

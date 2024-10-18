@@ -1,0 +1,23 @@
+@import "@/assets/scss/abstract/_all";
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacer-2;
+    color: $color-black;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    font-size: $fs-base;
+
+    @include media-hover {
+        color: $color-dark-blue;
+    }
+}
+
+.nolink {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacer-2;
+    color: $color-black;
+    font-size: $fs-base;
+}
