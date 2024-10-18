@@ -1,1 +1,36 @@
 @import "@/assets/scss/abstract/_all";
+
+.item {
+    display: flex;
+    align-items: center;
+
+    @include media-breakpoint-up(lg) {
+        &::after {
+            content: "";
+            display: inline-block;
+            border-right: 1px solid $color-black;
+            height: 24px;
+            margin-left: $spacer-5;
+        }
+
+        &:last-child {
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
+
+.link {
+    display: inline-flex;
+    gap: $spacer-3;
+    color: $color-blue;
+    text-decoration: none;
+    font-weight: $fw-medium;
+    transition: all 0.2s ease-in-out;
+    font-size: $fs-base;
+
+    @include media-hover {
+        color: $color-dark-blue;
+    }
+}

@@ -20,13 +20,13 @@
         "lg";
 
     @include media-breakpoint-up(md) {
-        grid-template-columns: 300px 1fr;
-        grid-template-areas:
-            "ph ti"
-            "cn ex"
-            "ab ex"
-            "lg ex"
-            "sk sk";
+        grid-template:
+            "ph ti" auto
+            "cn ex" auto
+            "ab ex" 1fr
+            "lg ex" auto
+            "sk sk" auto
+            / 300px 1fr;
     }
 
     @include media-breakpoint-up(xl) {

@@ -27,10 +27,20 @@
     "PhotoT": {
         "alt": "Куниця Євгеній Сергійович"
     },
-    "ContactsT": {},
-    "LanguagesT": {},
-    "ExperienceT": {},
+    "ContactsT": {
+        "title": "Контакти"
+    },
+    "LanguagesT": {
+        "title": "Мови"
+    },
+    "ExperienceT": {
+        "title": "Досвід роботи"
+    },
     "ExperienceItemT": {},
-    "AboutT": {},
-    "SkillsT": {}
+    "AboutT": {
+        "title": "Про мене"
+    },
+    "SkillsT": {
+        "title": "Навички"
+    }
 }

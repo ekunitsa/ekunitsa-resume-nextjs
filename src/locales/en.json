@@ -27,10 +27,20 @@
     "PhotoT": {
         "alt": "Kunitsa Eugine Sergeyevich"
     },
-    "ContactsT": {},
-    "LanguagesT": {},
-    "ExperienceT": {},
+    "ContactsT": {
+        "title": "Contacts"
+    },
+    "LanguagesT": {
+        "title": "Languages"
+    },
+    "ExperienceT": {
+        "title": "Work experience"
+    },
     "ExperienceItemT": {},
-    "AboutT": {},
-    "SkillsT": {}
+    "AboutT": {
+        "title": "About me"
+    },
+    "SkillsT": {
+        "title": "Skills"
+    }
 }
