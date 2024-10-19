@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { redirect } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
 import { Locale } from '@/types/types';
@@ -23,9 +23,9 @@ export async function generateMetadata({
 const NotFoundPage = ({ params: { locale } }: NotFoundPageProps) => {
     unstable_setRequestLocale(locale);
 
-    const t = useTranslations('NotFoundPageT');
+    redirect('/');
 
-    return <>{t('notFoundTitle')}</>;
+    return null;
 };
 
 export default NotFoundPage;

@@ -1,1 +1,16 @@
 @import "@/assets/scss/abstract/_all";
+
+.item {
+    padding: $spacer-2 $spacer-3;
+    border: 1px dashed $color-gray;
+
+    &.primary {
+        background-color: $color-blue;
+        color: $color-white;
+    }
+
+    &.secondary {
+        background-color: $color-light-white;
+        color: $color-black;
+    }
+}

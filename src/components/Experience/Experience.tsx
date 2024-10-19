@@ -80,7 +80,20 @@ const Experience = () => {
 
     return (
         <Box corners={['topLeft']} height100percent title={t('title')}>
-            <ExperienceItem />
+            <div className={styles.list}>
+                {data.map((item, index) => (
+                    <ExperienceItem
+                        key={index}
+                        name={item.name}
+                        position={item.position}
+                        workTime={item.workTime}
+                        dates={item.dates}
+                        term={item.term}
+                        description={item.description}
+                        technology={item.technology}
+                    />
+                ))}
+            </div>
         </Box>
     );
 };

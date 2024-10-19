@@ -10,22 +10,22 @@ const Skills = () => {
     const t = useTranslations('SkillsT');
 
     const dataPrimary: string[] = [
+        'React',
+        'Redux',
+        'Next.js',
+        'TypeScript',
+        'JavaScript',
+        'JQuery',
         'HTML',
         'Twig',
         'ISML',
         'CSS',
-        '(SASSSCSS)',
+        'SASS/SCSS',
         'ECSS',
         'BEM',
         'NPM',
-        'JS (ES6+)',
-        'TS',
-        'React',
-        'Redux',
-        'Next.js',
         'REST API',
         'AJAX',
-        'JQuery',
         'GIT',
         'Email markup',
         'Wordpress',
@@ -55,7 +55,29 @@ const Skills = () => {
 
     return (
         <Box corners={['topRight', 'bottomLeft']} title={t('title')}>
-            <SkillsItem text={'Webpack'} />
+            <div className={styles.wrapper}>
+                <div className={styles.section}>
+                    <div className={styles.title}>{t('primary')}</div>
+                    <div className={styles.list}>
+                        {dataPrimary.map((item) => (
+                            <SkillsItem key={item} text={item} type="primary" />
+                        ))}
+                    </div>
+                </div>
+
+                <div className={styles.section}>
+                    <div className={styles.title}>{t('secondary')}</div>
+                    <div className={styles.list}>
+                        {dataSecondary.map((item) => (
+                            <SkillsItem
+                                key={item}
+                                text={item}
+                                type="secondary"
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
         </Box>
     );
 };
