@@ -6,7 +6,7 @@ import TopInfoLinks from './TopInfoLinks/TopInfoLinks';
 import styles from './TopInfo.module.scss';
 
 interface TopInfoProps {
-    open: boolean;
+    open?: boolean;
 }
 
 const TopInfo = ({ open }: TopInfoProps) => {

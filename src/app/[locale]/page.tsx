@@ -48,7 +48,7 @@ const HomePage = ({ params: { locale } }: HomePageProps) => {
                     >
                         <LocaleSwitcher />
                     </NextIntlClientProvider>
-                    <TopInfo open />
+                    <TopInfo />
                 </div>
                 <div className={styles.contacts}>
                     <Contacts />
