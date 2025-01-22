@@ -93,7 +93,7 @@
         "project7workTime": "Повний робочий день, віддалено",
         "project7dates": "Лютий 2024 - зараз",
         "project7description": "Розробка веб-додатків",
-        "project7technology": "React, next.js v14, SCSS, Typescript"
+        "project7technology": "React, Next.js v14, SCSS, Typescript, NX, Storybook"
     },
     "ExperienceItemT": {
         "technology": "Технології:"

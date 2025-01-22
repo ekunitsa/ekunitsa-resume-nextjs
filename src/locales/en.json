@@ -93,7 +93,7 @@
         "project7workTime": "Full-time, remote",
         "project7dates": "February 2024 - now",
         "project7description": "Web application ecosystem development",
-        "project7technology": "React, next.js v14, SCSS, Typescript"
+        "project7technology": "React, Next.js v14, SCSS, Typescript, NX, Storybook"
     },
     "ExperienceItemT": {
         "technology": "Technology:"

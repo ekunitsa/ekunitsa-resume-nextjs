@@ -9,7 +9,7 @@ const Photo = () => {
     return (
         <>
             <Image
-                src="/static/img/eugine.jpg"
+                src="/static/img/eugine.png"
                 width={400}
                 height={538}
                 className={styles.image}
