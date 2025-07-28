@@ -1,11 +1,15 @@
 import type { Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
 
+import AdminBar from '@/components/admin/AdminBar/AdminBar';
+import SessionWrapper from '@/components/SessionWrapper/SessionWrapper';
+
 import { locales } from '@/configs/config';
 
 import { Locale } from '@/types/types';
 
 import '@/assets/scss/common.scss';
+import styles from './layout.module.scss';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -42,7 +46,12 @@ export default function LocaleLayout({
 }: LayoutProps) {
     return (
         <html lang={locale}>
-            <body className={montserrat.className}>{children}</body>
+            <body className={montserrat.className}>
+                <SessionWrapper>
+                    <AdminBar />
+                </SessionWrapper>
+                <div className={styles.wrapper}>{children}</div>
+            </body>
         </html>
     );
 }

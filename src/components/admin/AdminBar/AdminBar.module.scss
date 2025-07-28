@@ -1,0 +1,14 @@
+@import "@/assets/scss/abstract/_all";
+
+// variables
+$mobile-corner-radius: 30px;
+$desktop-corner-radius: 60px;
+
+.wrapper {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $color-light-blue;
+    border-bottom: 1px solid $color-stroke;
+}

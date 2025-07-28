@@ -29,42 +29,42 @@ export async function generateMetadata({ params: { locale } }: HomePageProps) {
     };
 }
 
+export const revalidate = 0;
+
 const HomePage = ({ params: { locale } }: HomePageProps) => {
     unstable_setRequestLocale(locale);
 
     const { LocaleSwitcherT } = useMessages();
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.grid}>
-                <div className={styles.photo}>
-                    <Photo />
-                </div>
-                <div className={styles.topInfo}>
-                    <NextIntlClientProvider
-                        messages={{
-                            LocaleSwitcherT,
-                        }}
-                    >
-                        <LocaleSwitcher />
-                    </NextIntlClientProvider>
-                    <TopInfo />
-                </div>
-                <div className={styles.contacts}>
-                    <Contacts />
-                </div>
-                <div className={styles.about}>
-                    <About />
-                </div>
-                <div className={styles.languages}>
-                    <Languages />
-                </div>
-                <div className={styles.experience}>
-                    <Experience />
-                </div>
-                <div className={styles.skills}>
-                    <Skills />
-                </div>
+        <div className={styles.grid}>
+            <div className={styles.photo}>
+                <Photo />
+            </div>
+            <div className={styles.topInfo}>
+                <NextIntlClientProvider
+                    messages={{
+                        LocaleSwitcherT,
+                    }}
+                >
+                    <LocaleSwitcher />
+                </NextIntlClientProvider>
+                <TopInfo />
+            </div>
+            <div className={styles.contacts}>
+                <Contacts />
+            </div>
+            <div className={styles.about}>
+                <About />
+            </div>
+            <div className={styles.languages}>
+                <Languages />
+            </div>
+            <div className={styles.experience}>
+                <Experience />
+            </div>
+            <div className={styles.skills}>
+                <Skills />
             </div>
         </div>
     );

@@ -29,6 +29,9 @@ const About = () => {
         },
         {
             text: t('about5'),
+        },
+        {
+            text: t('about6'),
             bold: true,
         },
     ];

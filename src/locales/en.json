@@ -104,12 +104,18 @@
         "about2": "Since the beginning of my career, I have only worked remotely;",
         "about3": "Beware of overtime;",
         "about4": "Gamer and geek;",
-        "about5": "After the outbreak of full-scale war in February 2022: I do not cooperate with companies that pay taxes to the russian federation. Not in any form."
+        "about5": "I speak russian. Level of spoken English: don't push the horses;",
+        "about6": "After the outbreak of full-scale war in February 2022: I do not cooperate with companies that pay taxes to the russian federation. Not in any form."
     },
     "SkillsT": {
         "title": "Skills",
         "primary": "Main",
         "secondary": "Secondary",
         "more": "And much more"
+    },
+    "NotFoundT": {
+        "title": "404 | Page not found",
+        "toHome": "Back to CV",
+        "description": "Unfortunately, you have reached this page by some obscure error. Please go to the main page :)"
     }
 }

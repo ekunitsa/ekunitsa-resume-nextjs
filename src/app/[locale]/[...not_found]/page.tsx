@@ -1,7 +1,13 @@
-import { redirect } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
+import Title from '@/components/Title/Title';
+
 import { Locale } from '@/types/types';
+
+import styles from './page.module.scss';
+
+import { Button } from '@mui/material';
 
 interface NotFoundPageProps {
     params: {
@@ -23,9 +29,18 @@ export async function generateMetadata({
 const NotFoundPage = ({ params: { locale } }: NotFoundPageProps) => {
     unstable_setRequestLocale(locale);
 
-    redirect('/');
+    const t = useTranslations('NotFoundT');
 
-    return null;
+    return (
+        <>
+            <Title>{t('title')}</Title>
+            <div className={styles.description}>{t('description')}</div>
+
+            <Button variant="contained" size="large" href="/">
+                {t('toHome')}
+            </Button>
+        </>
+    );
 };
 
 export default NotFoundPage;
