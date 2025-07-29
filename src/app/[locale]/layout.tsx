@@ -1,5 +1,9 @@
+import classNames from 'classnames';
 import type { Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
+import { getServerSession } from 'next-auth';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 import AdminBar from '@/components/admin/AdminBar/AdminBar';
 import SessionWrapper from '@/components/SessionWrapper/SessionWrapper';
@@ -40,17 +44,32 @@ export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
     children,
     params: { locale },
 }: LayoutProps) {
+    const { LocaleSwitcherT } = await getMessages();
+    const session = await getServerSession();
+
     return (
         <html lang={locale}>
             <body className={montserrat.className}>
                 <SessionWrapper>
-                    <AdminBar />
+                    <NextIntlClientProvider
+                        messages={{
+                            LocaleSwitcherT,
+                        }}
+                    >
+                        <AdminBar />
+                    </NextIntlClientProvider>
                 </SessionWrapper>
-                <div className={styles.wrapper}>{children}</div>
+                <div
+                    className={classNames(styles.wrapper, {
+                        [styles.logged]: !!session,
+                    })}
+                >
+                    {children}
+                </div>
             </body>
         </html>
     );

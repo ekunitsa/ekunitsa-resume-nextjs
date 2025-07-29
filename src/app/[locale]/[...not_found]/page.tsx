@@ -1,13 +1,12 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
+import { Button } from '@/components/Button/Button';
 import Title from '@/components/Title/Title';
 
 import { Locale } from '@/types/types';
 
 import styles from './page.module.scss';
-
-import { Button } from '@mui/material';
 
 interface NotFoundPageProps {
     params: {
@@ -36,9 +35,9 @@ const NotFoundPage = ({ params: { locale } }: NotFoundPageProps) => {
             <Title>{t('title')}</Title>
             <div className={styles.description}>{t('description')}</div>
 
-            <Button variant="contained" size="large" href="/">
-                {t('toHome')}
-            </Button>
+            <div className={styles.buttons}>
+                <Button href="/">{t('toHome')}</Button>
+            </div>
         </>
     );
 };

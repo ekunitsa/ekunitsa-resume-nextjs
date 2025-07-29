@@ -24,6 +24,7 @@ const LocaleSwitcher = () => {
         if (value !== currentLocale) {
             startTransition(() => {
                 router.replace(pathname, { locale: value });
+                router.refresh(); // to update in SSR pages, otherwise <Link /> is not working correctly on this version of next-intl
             });
         }
     }

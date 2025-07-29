@@ -1,6 +1,6 @@
 # Eugine Kunitsa CV project
 
-:warning: 28.07.2025: Admin panel in the works (postgresql, prisma, next-auth, MUI) :)
+:warning: 28.07.2025: Admin panel in the works (postgresql, prisma, next-auth) :)
 
 Main stack: TS | NEXT.JS v14 | NEXT-INTL | SCSS
 

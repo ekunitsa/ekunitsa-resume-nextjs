@@ -1,12 +1,13 @@
-'use client';
-
 import { ReactNode } from 'react';
+import { getServerSession } from 'next-auth';
 
-import SessionWrapper from '@/components/SessionWrapper/SessionWrapper';
+import AdminProvider from '@/provider/AdminProvider';
 
 interface AdminLayoutProps {
     children: ReactNode;
 }
-export default function AdminLayout({ children }: AdminLayoutProps) {
-    return <SessionWrapper>{children}</SessionWrapper>;
+export default async function AdminLayout({ children }: AdminLayoutProps) {
+    const session = await getServerSession();
+
+    return <AdminProvider session={session}>{children}</AdminProvider>;
 }

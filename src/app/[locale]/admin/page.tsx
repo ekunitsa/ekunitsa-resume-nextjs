@@ -1,16 +1,16 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import Login from '@/components/admin/Login/Login';
-
 import { Locale } from '@/types/types';
 
-interface LoginPageProps {
+interface DashboardPageProps {
     params: {
         locale: Locale;
     };
 }
 
-export async function generateMetadata({ params: { locale } }: LoginPageProps) {
+export async function generateMetadata({
+    params: { locale },
+}: DashboardPageProps) {
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -19,10 +19,10 @@ export async function generateMetadata({ params: { locale } }: LoginPageProps) {
     };
 }
 
-const LoginPage = ({ params: { locale } }: LoginPageProps) => {
+const DashboardPage = ({ params: { locale } }: DashboardPageProps) => {
     unstable_setRequestLocale(locale);
 
-    return <Login />;
+    return <>Admin DashboardPage</>;
 };
 
-export default LoginPage;
+export default DashboardPage;

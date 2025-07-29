@@ -8,7 +8,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const handler = NextAuth({
+const handlerAuth = NextAuth({
     adapter: PrismaAdapter(prisma),
     providers: [
         CredentialsProvider({
@@ -38,9 +38,9 @@ const handler = NextAuth({
         strategy: 'jwt',
     },
     pages: {
-        signIn: '/admin/login',
+        signIn: '/admin',
     },
     secret: process.env.NEXTAUTH_SECRET,
 }) as NextAuthHandlerParams;
 
-export { handler as GET, handler as POST };
+export { handlerAuth as GET, handlerAuth as POST };
