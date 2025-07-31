@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 
-import { AboutItemI } from '@/types/types';
+import Box from '@/components/common/Box/Box';
 
-import Box from '../Box/Box';
+import { AboutItemI } from '@/types/types';
 
 import AboutItem from './AboutItem/AboutItem';
 

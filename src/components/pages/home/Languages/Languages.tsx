@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 
-import { LanguagesItemI } from '@/types/types';
+import Box from '@/components/common/Box/Box';
 
-import Box from '../Box/Box';
+import { LanguagesItemI } from '@/types/types';
 
 import LanguagesItem from './LanguagesItem/LanguagesItem';
 

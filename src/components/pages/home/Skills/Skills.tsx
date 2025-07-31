@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import Box from '../Box/Box';
+import Box from '@/components/common/Box/Box';
 
 import SkillsItem from './SkillsItem/SkillsItem';
 

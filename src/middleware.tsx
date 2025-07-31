@@ -1,18 +1,41 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
+import { getToken } from 'next-auth/jwt';
+import createIntlMiddleware from 'next-intl/middleware';
 
 import { defaultLocale, localePrefix, locales } from './configs/config';
 
-export default createMiddleware({
+export const middleware = (request: NextRequest) => {
+    return adminAuthMiddleware(request);
+};
+
+const adminAuthMiddleware = async (request: NextRequest) => {
+    const url = request.nextUrl.pathname;
+    const user = await getToken({
+        req: request,
+        secret: process.env.NEXTAUTH_SECRET,
+    });
+
+    if (url.includes('/admin')) {
+        if (user && url.includes('/admin/login')) {
+            return NextResponse.redirect(new URL('/admin', request.nextUrl));
+        }
+
+        if (!user && !url.includes('/admin/login')) {
+            return NextResponse.redirect(
+                new URL('/admin/login', request.nextUrl),
+            );
+        }
+    }
+
+    return intlMiddleware(request);
+};
+
+const intlMiddleware = createIntlMiddleware({
     locales,
     defaultLocale,
     localePrefix,
 });
 
 export const config = {
-    matcher: [
-        // Match all pathnames except for
-        // - … if they start with `/api`, `/_next` or `/_vercel`
-        // - … the ones containing a dot (e.g. `favicon.ico`)
-        '/((?!api|_next|_vercel|.*\\..*).*)',
-    ],
+    matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };

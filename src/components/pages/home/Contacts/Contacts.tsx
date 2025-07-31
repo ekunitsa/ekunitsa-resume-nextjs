@@ -2,9 +2,9 @@ import { CiLinkedin, CiMail, CiMap } from 'react-icons/ci';
 import { PiTelegramLogoThin } from 'react-icons/pi';
 import { useTranslations } from 'next-intl';
 
-import { ContactsItemI } from '@/types/types';
+import Box from '@/components/common/Box/Box';
 
-import Box from '../Box/Box';
+import { ContactsItemI } from '@/types/types';
 
 import ContactsItem from './ContactsItem/ContactsItem';
 

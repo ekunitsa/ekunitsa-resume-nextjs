@@ -117,5 +117,11 @@
         "title": "404 | Page not found",
         "toHome": "Back to CV",
         "description": "Unfortunately, you have reached this page by some obscure error. Please go to the main page :)"
+    },
+    "LoginT": {
+        "title": "Admin Panel",
+        "email": "Email",
+        "password": "Password",
+        "btn": "Sign in"
     }
 }

@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import AdminBar from '@/components/admin/AdminBar/AdminBar';
-import SessionWrapper from '@/components/SessionWrapper/SessionWrapper';
+import SessionWrapper from '@/components/common/SessionWrapper/SessionWrapper';
 
 import { locales } from '@/configs/config';
 

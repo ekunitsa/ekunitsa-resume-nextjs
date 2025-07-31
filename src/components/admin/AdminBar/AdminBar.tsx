@@ -1,10 +1,10 @@
 'use client';
 
-import { AiOutlineEdit, AiOutlineHome, AiOutlineLogout } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 
-import LocaleSwitcher from '@/components/LocaleSwitcher/LocaleSwitcher';
+import LocaleSwitcher from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 
 import styles from './AdminBar.module.scss';
 
@@ -20,7 +20,7 @@ const AdminBar = () => {
                             <AiOutlineHome size={24} />
                         </Link>
                         <Link href="/admin" className={styles.link}>
-                            <AiOutlineEdit size={24} />
+                            <AiOutlineTool size={24} />
                         </Link>
                     </div>
                     <div className={styles.buttons}>

@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import { Button } from '@/components/Button/Button';
-import Title from '@/components/Title/Title';
+import { Button } from '@/components/common/Button/Button';
+import Title from '@/components/common/Title/Title';
 
 import { Locale } from '@/types/types';
 

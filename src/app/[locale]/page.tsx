@@ -1,14 +1,14 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import About from '@/components/About/About';
-import Contacts from '@/components/Contacts/Contacts';
-import Experience from '@/components/Experience/Experience';
-import Languages from '@/components/Languages/Languages';
-import LocaleSwitcher from '@/components/LocaleSwitcher/LocaleSwitcher';
-import Photo from '@/components/Photo/Photo';
-import Skills from '@/components/Skills/Skills';
-import TopInfo from '@/components/TopInfo/TopInfo';
+import LocaleSwitcher from '@/components/common/LocaleSwitcher/LocaleSwitcher';
+import About from '@/components/pages/home/About/About';
+import Contacts from '@/components/pages/home/Contacts/Contacts';
+import Experience from '@/components/pages/home/Experience/Experience';
+import Languages from '@/components/pages/home/Languages/Languages';
+import Photo from '@/components/pages/home/Photo/Photo';
+import Skills from '@/components/pages/home/Skills/Skills';
+import TopInfo from '@/components/pages/home/TopInfo/TopInfo';
 
 import { Locale } from '@/types/types';
 

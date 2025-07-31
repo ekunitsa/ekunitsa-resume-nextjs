@@ -12,8 +12,6 @@ interface ButtonProps {
     className?: string;
     disabled?: boolean;
     href?: string;
-    hrefTarget?: '_self' | '_blank' | '_parent' | '_top';
-    isExternalLink?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -23,22 +21,14 @@ export const Button = ({
     className,
     disabled = false,
     href,
-    hrefTarget,
-    isExternalLink = false,
     onClick,
 }: ButtonProps) => {
-    const CustomLink = isExternalLink ? 'a' : Link;
-
     return (
         <>
             {href ? (
-                <CustomLink
-                    href={href}
-                    className={classNames(styles.btn, className)}
-                    target={hrefTarget}
-                >
+                <Link href={href} className={classNames(styles.btn, className)}>
                     {children}
-                </CustomLink>
+                </Link>
             ) : (
                 <button
                     type={buttonType}
