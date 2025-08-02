@@ -123,5 +123,9 @@
         "email": "Email",
         "password": "Пароль",
         "btn": "Увійти"
+    },
+    "FormT": {
+        "errorRequiredField": "Обов'язкове поле",
+        "errorAuthFailed": "Щось вказано не вірно :("
     }
 }

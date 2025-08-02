@@ -25,13 +25,14 @@ export async function generateMetadata({ params: { locale } }: LoginPageProps) {
 const LoginPage = ({ params: { locale } }: LoginPageProps) => {
     unstable_setRequestLocale(locale);
 
-    const { LoginT } = useMessages();
+    const { LoginT, FormT } = useMessages();
 
     return (
         <div className={styles.wrapper}>
             <NextIntlClientProvider
                 messages={{
                     LoginT,
+                    FormT,
                 }}
             >
                 <Login />

@@ -6,7 +6,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import AdminBar from '@/components/admin/AdminBar/AdminBar';
-import SessionWrapper from '@/components/common/SessionWrapper/SessionWrapper';
 
 import { locales } from '@/configs/config';
 
@@ -54,7 +53,7 @@ export default async function LocaleLayout({
     return (
         <html lang={locale}>
             <body className={montserrat.className}>
-                <SessionWrapper>
+                {session?.user && (
                     <NextIntlClientProvider
                         messages={{
                             LocaleSwitcherT,
@@ -62,7 +61,8 @@ export default async function LocaleLayout({
                     >
                         <AdminBar />
                     </NextIntlClientProvider>
-                </SessionWrapper>
+                )}
+
                 <div
                     className={classNames(styles.wrapper, {
                         [styles.logged]: !!session,

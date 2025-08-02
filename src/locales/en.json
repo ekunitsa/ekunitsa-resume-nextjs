@@ -123,5 +123,9 @@
         "email": "Email",
         "password": "Password",
         "btn": "Sign in"
+    },
+    "FormT": {
+        "errorRequiredField": "Required field",
+        "errorAuthFailed": "Something is not listed correctly :("
     }
 }
