@@ -2,7 +2,7 @@
 
 import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
 import Link from 'next/link';
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 
 import LocaleSwitcher from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 

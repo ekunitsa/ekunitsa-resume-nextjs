@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
@@ -14,6 +15,7 @@ import styles from './Login.module.scss';
 const Login = () => {
     const t = useTranslations('LoginT');
     const formT = useTranslations('FormT');
+    const router = useRouter();
 
     const {
         register,
@@ -43,9 +45,8 @@ const Login = () => {
 
     useEffect(() => {
         if (isSubmitSuccessful) {
-            // Since we are checking whether to display the login form in the server component - we need to refresh the page to display the admin panel after login.
-            // The redirect itself will happen in the middleware, but, we need the server side to know that the user is logged in too
-            window.location.href = '/admin'; // hard redirect to the admin dashboard. It's similar to "redirect: true" in the signIn()
+            router.replace('/admin');
+            router.refresh(); // for update SSR components
         }
     }, [isSubmitSuccessful]);
 
