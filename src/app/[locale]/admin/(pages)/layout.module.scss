@@ -1,0 +1,17 @@
+@import "@/assets/scss/abstract/_all";
+
+.grid {
+    display: grid;
+    gap: $spacer-8;
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    @include media-breakpoint-up(md) {
+        grid-template-columns: 300px 1fr;
+    }
+
+    @include media-breakpoint-up(xl) {
+        grid-template-columns: 400px 1fr;
+        gap: $spacer-12;
+    }
+}

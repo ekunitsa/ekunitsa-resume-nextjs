@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
 import Box from '@/components/common/Box/Box';
@@ -11,12 +9,11 @@ import { Button } from '@/components/common/Button/Button';
 import Title from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
 
-import styles from './Login.module.scss';
+import styles from './SkillsForm.module.scss';
 
-const Login = () => {
-    const t = useTranslations('LoginT');
+const SkillsForm = () => {
+    const t = useTranslations('SkillsFormT');
     const formT = useTranslations('FormT');
-    const router = useRouter();
 
     const {
         register,
@@ -28,26 +25,19 @@ const Login = () => {
         mode: 'onSubmit',
     });
 
-    const onSubmit = async (formData: { email: string; password: string }) => {
-        const { email, password } = formData;
+    // async
+    const onSubmit = (formData: { primary: string; secondary: string }) => {
+        const { primary, secondary } = formData;
 
-        const result = await signIn('credentials', {
-            email: email,
-            password: password,
-            redirect: false,
+        console.log({
+            primary: primary,
+            secondary: secondary,
         });
-
-        if (!result?.ok) {
-            setError('root.serverError', {
-                message: formT('errorAuthFailed'),
-            });
-        }
     };
 
     useEffect(() => {
         if (isSubmitSuccessful) {
-            router.replace('/admin');
-            router.refresh(); // for update SSR components
+            console.log('isSubmitSuccessful');
         }
     }, [isSubmitSuccessful]);
 
@@ -55,38 +45,42 @@ const Login = () => {
         <Box corners={['bottomLeft', 'topRight']} className={styles.wrapper}>
             <Title noMarginBottom>{t('title')}</Title>
 
+            <div>{t('description')}</div>
+
             <form
                 className={styles.form}
                 onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
                 noValidate
             >
                 <Input
-                    label={t('email')}
-                    type="email"
-                    errorMessage={errors?.email?.message as string}
+                    label={t('primary')}
+                    type="text"
+                    errorMessage={errors?.primary?.message as string}
                     setValue={setValue}
-                    {...register('email', {
+                    {...register('primary', {
                         required: formT('errorRequiredField'),
                     })}
                 />
 
                 <Input
-                    label={t('password')}
-                    type="password"
-                    errorMessage={errors?.password?.message as string}
+                    label={t('secondary')}
+                    type="text"
+                    errorMessage={errors?.secondary?.message as string}
                     setValue={setValue}
-                    {...register('password', {
+                    {...register('secondary', {
                         required: formT('errorRequiredField'),
                     })}
                 />
 
-                <Button
-                    buttonType="submit"
-                    className={styles.button}
-                    disabled={isSubmitting}
-                >
-                    {t('btn')}
-                </Button>
+                <div className={styles.buttons}>
+                    <Button
+                        buttonType="submit"
+                        className={styles.button}
+                        disabled={isSubmitting}
+                    >
+                        {formT('saveBtn')}
+                    </Button>
+                </div>
 
                 {errors?.root?.serverError.message && (
                     <p className={styles.errorMessage}>
@@ -98,4 +92,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SkillsForm;

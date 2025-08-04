@@ -1,4 +1,7 @@
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+
+import Dashboard from '@/components/admin/Dashboard/Dashboard';
 
 import { Locale } from '@/types/types';
 
@@ -22,7 +25,17 @@ export async function generateMetadata({
 const DashboardPage = ({ params: { locale } }: DashboardPageProps) => {
     unstable_setRequestLocale(locale);
 
-    return <>Admin DashboardPage</>;
+    const { DashboardT } = useMessages();
+
+    return (
+        <NextIntlClientProvider
+            messages={{
+                DashboardT,
+            }}
+        >
+            <Dashboard />
+        </NextIntlClientProvider>
+    );
 };
 
 export default DashboardPage;

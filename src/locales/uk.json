@@ -126,6 +126,22 @@
     },
     "FormT": {
         "errorRequiredField": "Обов'язкове поле",
-        "errorAuthFailed": "Щось вказано не вірно :("
+        "errorAuthFailed": "Щось вказано не вірно :(",
+        "saveBtn": "Зберегти"
+    },
+    "SkillsFormT": {
+        "title": "Навички",
+        "description": "Кожен тег має бути розділений комою",
+        "primary": "Основні",
+        "secondary": "Додаткові"
+    },
+    "SidebarT": {
+        "title": "Меню",
+        "menuDashboard": "Дашборд",
+        "menuSkills": "Навички"
+    },
+    "DashboardT": {
+        "title": "Дашборд",
+        "description": "Адмін-панель для сайту резюме"
     }
 }

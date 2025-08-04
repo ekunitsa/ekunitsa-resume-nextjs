@@ -1,4 +1,7 @@
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+
+import SkillsForm from '@/components/admin/SkillsForm/SkillsForm';
 
 import { Locale } from '@/types/types';
 
@@ -22,7 +25,18 @@ export async function generateMetadata({
 const SkillsPage = ({ params: { locale } }: SkillsPageProps) => {
     unstable_setRequestLocale(locale);
 
-    return <>Admin SkillsPage</>;
+    const { SkillsFormT, FormT } = useMessages();
+
+    return (
+        <NextIntlClientProvider
+            messages={{
+                SkillsFormT,
+                FormT,
+            }}
+        >
+            <SkillsForm />
+        </NextIntlClientProvider>
+    );
 };
 
 export default SkillsPage;

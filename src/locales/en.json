@@ -126,6 +126,22 @@
     },
     "FormT": {
         "errorRequiredField": "Required field",
-        "errorAuthFailed": "Something is not listed correctly :("
+        "errorAuthFailed": "Something is not listed correctly :(",
+        "saveBtn": "Save"
+    },
+    "SkillsFormT": {
+        "title": "Skills",
+        "description": "Each tag must be separated by a comma",
+        "primary": "Main",
+        "secondary": "Secondary"
+    },
+    "SidebarT": {
+        "title": "Menu",
+        "menuDashboard": "Dashboard",
+        "menuSkills": "Skills"
+    },
+    "DashboardT": {
+        "title": "Dashboard",
+        "description": "Admin panel for resume website"
     }
 }

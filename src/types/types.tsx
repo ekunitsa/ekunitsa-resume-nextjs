@@ -30,3 +30,8 @@ export interface ExperienceItemI {
     description?: string;
     technology?: string;
 }
+
+export interface SidebarItemI {
+    link: string;
+    title: string;
+}
