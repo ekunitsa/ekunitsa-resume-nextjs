@@ -4,11 +4,9 @@ import { useTransition } from 'react';
 import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
 
-import { locales } from '@/configs/config';
+import { routing, usePathname, useRouter } from '@/configs/i18n/routing';
 
 import styles from './LocaleSwitcher.module.scss';
-
-import { usePathname, useRouter } from '@/navigations';
 
 const LocaleSwitcher = () => {
     const t = useTranslations('LocaleSwitcherT');
@@ -24,14 +22,13 @@ const LocaleSwitcher = () => {
         if (value !== currentLocale) {
             startTransition(() => {
                 router.replace(pathname, { locale: value });
-                router.refresh(); // to update in SSR pages, otherwise <Link /> is not working correctly on this version of next-intl
             });
         }
     }
 
     return (
         <div className={styles.wrapper}>
-            {locales.map((item) => (
+            {routing.locales.map((item) => (
                 <button
                     key={item}
                     onClick={onSelectChange}

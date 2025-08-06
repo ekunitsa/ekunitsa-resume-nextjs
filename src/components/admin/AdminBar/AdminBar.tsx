@@ -1,10 +1,11 @@
 'use client';
 
 import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
-import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 
 import LocaleSwitcher from '@/components/common/LocaleSwitcher/LocaleSwitcher';
+
+import { Link } from '@/configs/i18n/routing';
 
 import styles from './AdminBar.module.scss';
 

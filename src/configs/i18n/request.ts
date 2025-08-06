@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 
-import { locales } from './config';
+export default getRequestConfig(async ({ requestLocale }) => {
+    const locale = (await requestLocale) as string;
 
-export default getRequestConfig(async ({ locale }) => {
-    if (!locales.includes(locale)) notFound();
+    if (!locale) notFound();
 
     return {
+        locale,
         /* eslint-disable */
         messages: (await import(`@/locales/${locale}.json`)).default,
         /* eslint-enable */

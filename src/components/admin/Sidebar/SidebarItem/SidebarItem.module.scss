@@ -15,9 +15,5 @@
 }
 
 .active {
-    display: inline-flex;
-    align-items: center;
-    gap: $spacer-2;
-    color: $color-red;
-    font-size: $fs-base;
+    color: $color-dark-blue;
 }

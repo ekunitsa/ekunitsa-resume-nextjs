@@ -7,7 +7,7 @@ import { getMessages } from 'next-intl/server';
 
 import AdminBar from '@/components/admin/AdminBar/AdminBar';
 
-import { locales } from '@/configs/config';
+import { routing } from '@/configs/i18n/routing';
 
 import { Locale } from '@/types/types';
 
@@ -40,7 +40,7 @@ export const metadata = {
 };
 
 export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
+    return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({

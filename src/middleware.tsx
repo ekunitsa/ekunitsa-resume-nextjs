@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import createIntlMiddleware from 'next-intl/middleware';
 
-import { defaultLocale, localePrefix, locales } from './configs/config';
+import { routing } from './configs/i18n/routing';
 
 export const middleware = (request: NextRequest) => {
     return adminAuthMiddleware(request);
@@ -30,11 +30,11 @@ const adminAuthMiddleware = async (request: NextRequest) => {
     return intlMiddleware(request);
 };
 
-const intlMiddleware = createIntlMiddleware({
-    locales,
-    defaultLocale,
-    localePrefix,
-});
+const intlMiddleware = (request: NextRequest) => {
+    const handleI18nRouting = createIntlMiddleware(routing);
+
+    return handleI18nRouting(request);
+};
 
 export const config = {
     matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
