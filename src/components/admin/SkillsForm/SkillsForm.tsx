@@ -1,45 +1,61 @@
 'use client';
 
-import { useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 
 import Box from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
 import Title from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
 
+import { SkillsInputI } from '@/types/types';
+
 import styles from './SkillsForm.module.scss';
 
-const SkillsForm = () => {
+import { skillsPostPatch } from '@/app/api/actions/skills';
+
+interface SkillsFormProps {
+    data: SkillsInputI | null;
+}
+
+const SkillsForm = ({ data }: SkillsFormProps) => {
     const t = useTranslations('SkillsFormT');
     const formT = useTranslations('FormT');
+    const locale = useLocale();
+    const router = useRouter();
 
     const {
         register,
         handleSubmit,
         setError,
         setValue,
-        formState: { errors, isSubmitSuccessful, isSubmitting },
+        formState: { errors, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
     });
 
     // async
-    const onSubmit = (formData: { primary: string; secondary: string }) => {
+    const onSubmit = async (formData: {
+        primary: string;
+        secondary: string;
+    }) => {
         const { primary, secondary } = formData;
 
-        console.log({
-            primary: primary,
-            secondary: secondary,
+        const response = await skillsPostPatch({
+            language: locale,
+            primary: primary.split(','),
+            secondary: secondary.split(','),
         });
-    };
 
-    useEffect(() => {
-        if (isSubmitSuccessful) {
-            console.log('isSubmitSuccessful');
+        if (response.ok) {
+            router.refresh();
+        } else {
+            setError('root.serverError', {
+                message: formT('errorServerActionFailed'),
+            });
         }
-    }, [isSubmitSuccessful]);
+    };
 
     return (
         <Box corners={['bottomLeft', 'topRight']} className={styles.wrapper}>
@@ -55,6 +71,11 @@ const SkillsForm = () => {
                 <Input
                     label={t('primary')}
                     type="text"
+                    defaultValue={
+                        data && data.primary && data.primary.length > 0
+                            ? data.primary.join(',')
+                            : ''
+                    }
                     errorMessage={errors?.primary?.message as string}
                     setValue={setValue}
                     {...register('primary', {
@@ -65,6 +86,11 @@ const SkillsForm = () => {
                 <Input
                     label={t('secondary')}
                     type="text"
+                    defaultValue={
+                        data && data.secondary && data.secondary.length > 0
+                            ? data.secondary.join(',')
+                            : ''
+                    }
                     errorMessage={errors?.secondary?.message as string}
                     setValue={setValue}
                     {...register('secondary', {

@@ -1,5 +1,5 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import LocaleSwitcher from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 import About from '@/components/pages/home/About/About';
@@ -32,7 +32,7 @@ export async function generateMetadata({ params: { locale } }: HomePageProps) {
 export const revalidate = 0;
 
 const HomePage = ({ params: { locale } }: HomePageProps) => {
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const { LocaleSwitcherT } = useMessages();
 

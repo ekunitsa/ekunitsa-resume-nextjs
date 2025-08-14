@@ -127,6 +127,7 @@
     "FormT": {
         "errorRequiredField": "Обов'язкове поле",
         "errorAuthFailed": "Щось вказано не вірно :(",
+        "errorServerActionFailed": "Серверний запит виконався з помилкою",
         "saveBtn": "Зберегти"
     },
     "SkillsFormT": {

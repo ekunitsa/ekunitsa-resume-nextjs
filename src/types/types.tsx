@@ -35,3 +35,9 @@ export interface SidebarItemI {
     link: string;
     title: string;
 }
+
+export interface SkillsInputI {
+    language: string;
+    primary: string[];
+    secondary: string[];
+}

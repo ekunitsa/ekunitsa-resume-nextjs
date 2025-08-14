@@ -127,6 +127,7 @@
     "FormT": {
         "errorRequiredField": "Required field",
         "errorAuthFailed": "Something is not listed correctly :(",
+        "errorServerActionFailed": "The server request failed with an error",
         "saveBtn": "Save"
     },
     "SkillsFormT": {
