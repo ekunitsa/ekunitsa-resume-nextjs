@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
-import Sidebar from '@/components/admin/Sidebar/Sidebar';
+import { Sidebar } from '@/components/admin/Sidebar/Sidebar';
 
 import styles from './layout.module.scss';
 

@@ -7,7 +7,7 @@ interface TitleProps {
     noMarginBottom?: boolean;
 }
 
-const Title = ({ children, noMarginBottom }: TitleProps) => {
+export const Title = ({ children, noMarginBottom }: TitleProps) => {
     return (
         <div
             className={classNames(styles.title, {
@@ -18,5 +18,3 @@ const Title = ({ children, noMarginBottom }: TitleProps) => {
         </div>
     );
 };
-
-export default Title;

@@ -1,14 +1,14 @@
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 import { SidebarItemI } from '@/types/types';
 
-import SidebarItem from './SidebarItem/SidebarItem';
+import { SidebarItem } from './SidebarItem/SidebarItem';
 
 import styles from './Sidebar.module.scss';
 
-const Sidebar = () => {
+export const Sidebar = () => {
     const t = useTranslations('SidebarT');
 
     const data: SidebarItemI[] = [
@@ -36,5 +36,3 @@ const Sidebar = () => {
         </Box>
     );
 };
-
-export default Sidebar;

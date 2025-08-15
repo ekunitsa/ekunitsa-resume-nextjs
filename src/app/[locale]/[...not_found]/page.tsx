@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { Button } from '@/components/common/Button/Button';
-import Title from '@/components/common/Title/Title';
+import { Title } from '@/components/common/Title/Title';
 
 import { Locale } from '@/types/types';
 
@@ -26,7 +26,7 @@ export async function generateMetadata({
 }
 
 const NotFoundPage = ({ params: { locale } }: NotFoundPageProps) => {
-    unstable_setRequestLocale(locale);
+    setRequestLocale(locale);
 
     const t = useTranslations('NotFoundT');
 

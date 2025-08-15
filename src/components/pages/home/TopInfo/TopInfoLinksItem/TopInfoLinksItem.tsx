@@ -4,7 +4,7 @@ import { TopInfoLinksItemI } from '@/types/types';
 
 import styles from './TopInfoLinksItem.module.scss';
 
-const TopInfoLinksItem = ({ title, icon, link }: TopInfoLinksItemI) => {
+export const TopInfoLinksItem = ({ title, icon, link }: TopInfoLinksItemI) => {
     return (
         <div className={styles.item}>
             <a href={link} className={styles.link} target="_blank">
@@ -14,5 +14,3 @@ const TopInfoLinksItem = ({ title, icon, link }: TopInfoLinksItemI) => {
         </div>
     );
 };
-
-export default TopInfoLinksItem;

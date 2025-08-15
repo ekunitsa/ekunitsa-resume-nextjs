@@ -6,14 +6,14 @@ import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
-import Title from '@/components/common/Title/Title';
+import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
 
 import styles from './Login.module.scss';
 
-const Login = () => {
+export const Login = () => {
     const t = useTranslations('LoginT');
     const formT = useTranslations('FormT');
     const router = useRouter();
@@ -97,5 +97,3 @@ const Login = () => {
         </Box>
     );
 };
-
-export default Login;

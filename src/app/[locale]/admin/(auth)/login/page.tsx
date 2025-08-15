@@ -1,7 +1,7 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Login from '@/components/admin/Login/Login';
+import { Login } from '@/components/admin/Login/Login';
 
 import { Locale } from '@/types/types';
 

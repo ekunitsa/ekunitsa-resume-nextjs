@@ -1,7 +1,7 @@
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import Dashboard from '@/components/admin/Dashboard/Dashboard';
+import { Dashboard } from '@/components/admin/Dashboard/Dashboard';
 
 import { Locale } from '@/types/types';
 

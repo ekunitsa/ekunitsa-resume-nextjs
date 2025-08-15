@@ -1,14 +1,14 @@
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 import { LanguagesItemI } from '@/types/types';
 
-import LanguagesItem from './LanguagesItem/LanguagesItem';
+import { LanguagesItem } from './LanguagesItem/LanguagesItem';
 
 import styles from './Languages.module.scss';
 
-const Languages = () => {
+export const Languages = () => {
     const t = useTranslations('LanguagesT');
 
     const data: LanguagesItemI[] = [
@@ -40,5 +40,3 @@ const Languages = () => {
         </Box>
     );
 };
-
-export default Languages;

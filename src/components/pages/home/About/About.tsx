@@ -1,15 +1,15 @@
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 import { AboutItemI } from '@/types/types';
 
-import AboutItem from './AboutItem/AboutItem';
+import { AboutItem } from './AboutItem/AboutItem';
 
 import styles from './About.module.scss';
 
-const About = () => {
+export const About = () => {
     const t = useTranslations('AboutT');
 
     const birthday = dayjs().diff(dayjs('1994-01-29'), 'year');
@@ -52,5 +52,3 @@ const About = () => {
         </Box>
     );
 };
-
-export default About;

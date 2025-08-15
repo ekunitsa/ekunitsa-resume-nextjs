@@ -5,7 +5,7 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 
-import SkillsForm from '@/components/admin/SkillsForm/SkillsForm';
+import { SkillsForm } from '@/components/admin/SkillsForm/SkillsForm';
 
 import { Locale } from '@/types/types';
 

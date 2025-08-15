@@ -5,7 +5,7 @@ import { ExperienceItemI } from '@/types/types';
 
 import styles from './ExperienceItem.module.scss';
 
-const ExperienceItem = ({
+export const ExperienceItem = ({
     name,
     position,
     workTime,
@@ -61,5 +61,3 @@ const ExperienceItem = ({
         </div>
     );
 };
-
-export default ExperienceItem;

@@ -1,14 +1,14 @@
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 import { ExperienceItemI } from '@/types/types';
 
-import ExperienceItem from './ExperienceItem/ExperienceItem';
+import { ExperienceItem } from './ExperienceItem/ExperienceItem';
 
 import styles from './Experience.module.scss';
 
-const Experience = () => {
+export const Experience = () => {
     const t = useTranslations('ExperienceT');
 
     // A big and scary data object
@@ -97,5 +97,3 @@ const Experience = () => {
         </Box>
     );
 };
-
-export default Experience;

@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
-const Dashboard = () => {
+export const Dashboard = () => {
     const t = useTranslations('DashboardT');
 
     return (
@@ -11,5 +11,3 @@ const Dashboard = () => {
         </Box>
     );
 };
-
-export default Dashboard;

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import Title from '../Title/Title';
+import { Title } from '../Title/Title';
 
 import styles from './Box.module.scss';
 
@@ -12,7 +12,7 @@ interface BoxProps {
     children: React.ReactNode;
 }
 
-const Box = ({
+export const Box = ({
     children,
     corners,
     height100percent,
@@ -35,5 +35,3 @@ const Box = ({
         </div>
     );
 };
-
-export default Box;

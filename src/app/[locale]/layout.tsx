@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import AdminBar from '@/components/admin/AdminBar/AdminBar';
+import { AdminBar } from '@/components/admin/AdminBar/AdminBar';
 
 import { routing } from '@/configs/i18n/routing';
 

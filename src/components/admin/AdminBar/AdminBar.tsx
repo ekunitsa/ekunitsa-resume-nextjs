@@ -3,13 +3,13 @@
 import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
 import { signOut } from 'next-auth/react';
 
-import LocaleSwitcher from '@/components/common/LocaleSwitcher/LocaleSwitcher';
+import { LocaleSwitcher } from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 
 import { Link } from '@/configs/i18n/routing';
 
 import styles from './AdminBar.module.scss';
 
-const AdminBar = () => {
+export const AdminBar = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.inner}>
@@ -34,5 +34,3 @@ const AdminBar = () => {
         </div>
     );
 };
-
-export default AdminBar;

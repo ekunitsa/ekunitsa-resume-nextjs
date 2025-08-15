@@ -2,7 +2,7 @@ import { ContactsItemI } from '@/types/types';
 
 import styles from './ContactsItem.module.scss';
 
-const ContactsItem = ({ title, link, icon }: ContactsItemI) => {
+export const ContactsItem = ({ title, link, icon }: ContactsItemI) => {
     return (
         <div className={styles.item}>
             {link ? (
@@ -23,5 +23,3 @@ const ContactsItem = ({ title, link, icon }: ContactsItemI) => {
         </div>
     );
 };
-
-export default ContactsItem;

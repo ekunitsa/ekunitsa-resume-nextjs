@@ -8,7 +8,7 @@ import { routing, usePathname, useRouter } from '@/configs/i18n/routing';
 
 import styles from './LocaleSwitcher.module.scss';
 
-const LocaleSwitcher = () => {
+export const LocaleSwitcher = () => {
     const t = useTranslations('LocaleSwitcherT');
     const currentLocale = useLocale();
     const router = useRouter();
@@ -44,5 +44,3 @@ const LocaleSwitcher = () => {
         </div>
     );
 };
-
-export default LocaleSwitcher;

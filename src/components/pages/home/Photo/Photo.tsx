@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import styles from './Photo.module.scss';
 
-const Photo = () => {
+export const Photo = () => {
     const t = useTranslations('PhotoT');
 
     return (
@@ -19,5 +19,3 @@ const Photo = () => {
         </>
     );
 };
-
-export default Photo;

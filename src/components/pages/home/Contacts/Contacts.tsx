@@ -2,15 +2,15 @@ import { CiLinkedin, CiMail, CiMap } from 'react-icons/ci';
 import { PiTelegramLogoThin } from 'react-icons/pi';
 import { useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 import { ContactsItemI } from '@/types/types';
 
-import ContactsItem from './ContactsItem/ContactsItem';
+import { ContactsItem } from './ContactsItem/ContactsItem';
 
 import styles from './Contacts.module.scss';
 
-const Contacts = () => {
+export const Contacts = () => {
     const t = useTranslations('ContactsT');
 
     const data: ContactsItemI[] = [
@@ -50,5 +50,3 @@ const Contacts = () => {
         </Box>
     );
 };
-
-export default Contacts;

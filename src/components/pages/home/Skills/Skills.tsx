@@ -1,6 +1,6 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 
 import SkillsItem from './SkillsItem/SkillsItem';
 
@@ -8,7 +8,7 @@ import styles from './Skills.module.scss';
 
 import { getSkills } from '@/app/api/actions/skills';
 
-const Skills = async () => {
+export const Skills = async () => {
     const t = await getTranslations('SkillsT');
     const locale = await getLocale();
 
@@ -50,5 +50,3 @@ const Skills = async () => {
         </Box>
     );
 };
-
-export default Skills;

@@ -8,7 +8,7 @@ import { SidebarItemI } from '@/types/types';
 
 import styles from './SidebarItem.module.scss';
 
-const SidebarItem = ({ title, link }: SidebarItemI) => {
+export const SidebarItem = ({ title, link }: SidebarItemI) => {
     const pathname = usePathname();
 
     return (
@@ -24,5 +24,3 @@ const SidebarItem = ({ title, link }: SidebarItemI) => {
         </div>
     );
 };
-
-export default SidebarItem;

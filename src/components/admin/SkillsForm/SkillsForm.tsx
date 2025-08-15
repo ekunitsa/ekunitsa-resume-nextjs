@@ -4,9 +4,9 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
-import Box from '@/components/common/Box/Box';
+import { Box } from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
-import Title from '@/components/common/Title/Title';
+import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
 
 import { SkillsInputI } from '@/types/types';
@@ -19,7 +19,7 @@ interface SkillsFormProps {
     data: SkillsInputI | null;
 }
 
-const SkillsForm = ({ data }: SkillsFormProps) => {
+export const SkillsForm = ({ data }: SkillsFormProps) => {
     const t = useTranslations('SkillsFormT');
     const formT = useTranslations('FormT');
     const locale = useLocale();
@@ -35,7 +35,6 @@ const SkillsForm = ({ data }: SkillsFormProps) => {
         mode: 'onSubmit',
     });
 
-    // async
     const onSubmit = async (formData: {
         primary: string;
         secondary: string;
@@ -117,5 +116,3 @@ const SkillsForm = ({ data }: SkillsFormProps) => {
         </Box>
     );
 };
-
-export default SkillsForm;

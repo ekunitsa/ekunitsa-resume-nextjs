@@ -17,10 +17,17 @@ model User {
 }
 
 model Skills {
+  id        Int      @id @default(autoincrement())
+  language  String   @unique
+  primary   String[]
+  secondary String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GlobalSettings {
   id         Int      @id @default(autoincrement())
-  language   String   @unique
-  primary    String[]
-  secondary  String[]
+  openToWork Boolean  @default(true)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

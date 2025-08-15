@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 
-import TopInfoLinks from './TopInfoLinks/TopInfoLinks';
+import { TopInfoLinks } from './TopInfoLinks/TopInfoLinks';
 
 import styles from './TopInfo.module.scss';
 
@@ -9,7 +9,7 @@ interface TopInfoProps {
     open?: boolean;
 }
 
-const TopInfo = ({ open }: TopInfoProps) => {
+export const TopInfo = ({ open }: TopInfoProps) => {
     const t = useTranslations('TopInfoT');
 
     // I started my career in front-end in May 2010
@@ -32,5 +32,3 @@ const TopInfo = ({ open }: TopInfoProps) => {
         </div>
     );
 };
-
-export default TopInfo;

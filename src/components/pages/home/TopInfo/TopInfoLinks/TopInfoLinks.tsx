@@ -2,11 +2,11 @@ import { useTranslations } from 'next-intl';
 
 import { TopInfoLinksItemI } from '@/types/types';
 
-import TopInfoLinksItem from '../TopInfoLinksItem/TopInfoLinksItem';
+import { TopInfoLinksItem } from '../TopInfoLinksItem/TopInfoLinksItem';
 
 import styles from './TopInfoLinks.module.scss';
 
-const TopInfoLinks = () => {
+export const TopInfoLinks = () => {
     const t = useTranslations('TopInfoLinksT');
 
     const links: TopInfoLinksItemI[] = [
@@ -45,5 +45,3 @@ const TopInfoLinks = () => {
         </div>
     );
 };
-
-export default TopInfoLinks;
