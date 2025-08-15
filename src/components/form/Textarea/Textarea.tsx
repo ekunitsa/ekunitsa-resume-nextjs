@@ -3,48 +3,43 @@
 import {
     ChangeEvent,
     forwardRef,
-    InputHTMLAttributes,
-    Ref,
+    TextareaHTMLAttributes,
     useState,
 } from 'react';
 import { FieldValues, UseFormSetValue } from 'react-hook-form';
 import classNames from 'classnames';
 
-import styles from './Input.module.scss';
+import styles from './Textarea.module.scss';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     defaultValue?: string;
     errorMessage?: string;
     id?: string;
     label: string;
     name: string;
-    type: 'text' | 'password' | 'email' | 'search' | 'number' | 'tel';
     setValue?: UseFormSetValue<FieldValues>;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     (
         {
             name,
-            type,
             label,
-            value = '',
             id = name,
-            autoFocus = false,
             errorMessage = '',
             defaultValue = '',
             setValue,
             onChange,
             ...props
-        }: InputProps,
+        }: TextareaProps,
         ref,
     ) => {
-        const [inputValue, setInputValue] = useState(defaultValue);
+        const [textareaValue, setTextareaValue] = useState(defaultValue);
 
-        const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
             const value = event.currentTarget.value;
 
-            setInputValue(value);
+            setTextareaValue(value);
 
             if (setValue) {
                 setValue(name, value);
@@ -61,16 +56,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     {label}
                 </label>
 
-                <input
+                <textarea
                     {...props}
-                    ref={ref as Ref<HTMLInputElement> | undefined}
+                    ref={ref}
                     id={id}
                     name={name}
-                    value={value || inputValue}
-                    type={type}
-                    autoFocus={autoFocus}
+                    value={textareaValue}
+                    className={styles.textarea}
                     onChange={handleChange}
-                    className={styles.input}
                 />
 
                 {errorMessage && (
