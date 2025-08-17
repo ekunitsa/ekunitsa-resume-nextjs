@@ -13,7 +13,7 @@ import { SkillsInputI } from '@/types/types';
 
 import styles from './SkillsForm.module.scss';
 
-import { skillsPostPatch } from '@/app/api/actions/skills';
+import { postPatchSkills } from '@/app/api/actions/skills';
 
 interface SkillsFormProps {
     data: SkillsInputI | null;
@@ -41,7 +41,7 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
     }) => {
         const { primary, secondary } = formData;
 
-        const response = await skillsPostPatch({
+        const response = await postPatchSkills({
             language: locale,
             primary: primary.split(','),
             secondary: secondary.split(','),

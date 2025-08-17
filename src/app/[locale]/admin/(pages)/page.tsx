@@ -1,9 +1,15 @@
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import {
+    getMessages,
+    getTranslations,
+    setRequestLocale,
+} from 'next-intl/server';
 
 import { Dashboard } from '@/components/admin/Dashboard/Dashboard';
 
 import { Locale } from '@/types/types';
+
+import { getDashboard } from '@/app/api/actions/dashboard';
 
 interface DashboardPageProps {
     params: {
@@ -22,18 +28,21 @@ export async function generateMetadata({
     };
 }
 
-const DashboardPage = ({ params: { locale } }: DashboardPageProps) => {
+const DashboardPage = async ({ params: { locale } }: DashboardPageProps) => {
     setRequestLocale(locale);
 
-    const { DashboardT } = useMessages();
+    const { DashboardT, FormT } = await getMessages();
+
+    const data = await getDashboard();
 
     return (
         <NextIntlClientProvider
             messages={{
                 DashboardT,
+                FormT,
             }}
         >
-            <Dashboard />
+            <Dashboard data={data} />
         </NextIntlClientProvider>
     );
 };

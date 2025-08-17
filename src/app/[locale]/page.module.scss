@@ -6,6 +6,7 @@
     grid-template-columns: 1fr;
     grid-template-areas:
         "ti"
+        "ph"
         "cn"
         "ex"
         "sk"
@@ -30,11 +31,6 @@
 
 .photo {
     grid-area: ph;
-    display: none;
-
-    @include media-breakpoint-up(md) {
-        display: block;
-    }
 }
 
 .topInfo {

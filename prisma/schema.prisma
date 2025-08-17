@@ -27,7 +27,7 @@ model Skills {
 
 model GlobalSettings {
   id         Int      @id @default(autoincrement())
-  openToWork Boolean  @default(true)
+  openToWork Boolean
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

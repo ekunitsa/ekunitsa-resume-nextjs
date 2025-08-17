@@ -32,6 +32,9 @@ export const About = () => {
         },
         {
             text: t('about6'),
+        },
+        {
+            text: t('about7'),
             bold: true,
         },
     ];

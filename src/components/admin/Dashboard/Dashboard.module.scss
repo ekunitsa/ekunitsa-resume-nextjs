@@ -1,0 +1,22 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    display: flex;
+    gap: $spacer-4;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    gap: $spacer-4;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.errorMessage {
+    color: $color-red;
+}

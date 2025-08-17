@@ -1,0 +1,11 @@
+@import "@/assets/scss/abstract/_all";
+
+.description {
+    color: $color-green;
+    font-weight: $fw-medium;
+    font-size: $fs-base;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-large;
+    }
+}

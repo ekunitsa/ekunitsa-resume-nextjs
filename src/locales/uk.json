@@ -1,9 +1,9 @@
 {
     "MetaDataT": {
-        "title": "Куниця Євгеній Сергійович | Front-end developer | CV",
-        "description": "Front-end developer",
-        "notFoundTitle": "Куниця Євгеній Сергійович | Front-end developer | CV",
-        "notFoundDescription": "Front-end developer"
+        "title": "Куниця Євгеній | Front-End Архімаг (Рівень Senior) | CV",
+        "description": "Front-End Архімаг (Рівень Senior)",
+        "notFoundTitle": "Куниця Євгеній | Front-End Архімаг (Рівень Senior) | CV",
+        "notFoundDescription": "Front-End Архімаг (Рівень Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -12,11 +12,10 @@
         "notFoundTitle": "Сторінка не знайдена"
     },
     "TopInfoT": {
-        "name": "Куниця Євгеній Сергійович",
-        "position": "Senior Front-End Developer",
+        "name": "Куниця Євгеній",
+        "position": "Front-End Архімаг (Рівень Senior)",
         "years": ">{years}",
-        "inTheProfession": "років в професії",
-        "open": "У пошуку нових кар'єрних можливостей"
+        "inTheProfession": "років в професії"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
@@ -25,7 +24,7 @@
         "trailblazer": "Trailblazer"
     },
     "PhotoT": {
-        "alt": "Куниця Євгеній Сергійович"
+        "alt": "Куниця Євгеній"
     },
     "ContactsT": {
         "title": "Контакти",
@@ -89,7 +88,7 @@
         "project6technology": "ISML, SCSS, BEM, bootstrap, jQuery, lightning, custom editors с використанням React",
 
         "project7name": "TurboZNO",
-        "project7position": "Frontend developer | FE Team lead",
+        "project7position": "Frontend developer",
         "project7workTime": "Повний робочий день, віддалено",
         "project7dates": "Лютий 2024 - зараз",
         "project7description": "Розробка екосистеми веб-додатків",
@@ -104,8 +103,9 @@
         "about2": "З самого початку кар'єри працював віддалено;",
         "about3": "Остерігаюсь овертаймів;",
         "about4": "Геймер та гік;",
-        "about5": "Розмовляю російською. Рівень розмовної англійської: don't push the horses",
-        "about6": "Після початку повномасштабної війни в лютому 2022 року: я не співпрацюю з компаніями, які платять податки в російську федерацію. Ні при яких умовах."
+        "about5": "Розмовляю російською. Рівень розмовної англійської: don't push the horses;",
+        "about6": "FE Team lead: маю досвід керівництва командами до 5 розробників;",
+        "about7": "Після початку повномасштабної війни в лютому 2022 року: я не співпрацюю з компаніями, які платять податки в російську федерацію. Ні при яких умовах."
     },
     "SkillsT": {
         "title": "Навички",
@@ -143,6 +143,9 @@
     },
     "DashboardT": {
         "title": "Дашборд",
-        "description": "Адмін-панель для сайту резюме"
+        "openToWork": "Відкритий до нових пропозицій"
+    },
+    "TopInfoOpenToWorkT": {
+        "description": "У пошуку нових кар'єрних можливостей :)"
     }
 }

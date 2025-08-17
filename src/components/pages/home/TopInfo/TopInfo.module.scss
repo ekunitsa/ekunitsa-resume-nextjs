@@ -44,16 +44,6 @@
     }
 }
 
-.open {
-    color: $color-green;
-    font-weight: $fw-medium;
-    font-size: $fs-base;
-
-    @include media-breakpoint-up(md) {
-        font-size: $fs-large;
-    }
-}
-
 .inTheProfession {
     font-size: $fs-base;
 

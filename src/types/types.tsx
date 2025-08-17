@@ -41,3 +41,7 @@ export interface SkillsInputI {
     primary: string[];
     secondary: string[];
 }
+
+export interface DashboardI {
+    openToWork: boolean;
+}

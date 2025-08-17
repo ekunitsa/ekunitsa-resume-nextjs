@@ -1,9 +1,9 @@
 {
     "MetaDataT": {
-        "title": "Kunitsa Eugine Sergeyevich | Front-end developer | CV",
-        "description": "Front-end developer",
-        "notFoundTitle": "Kunitsa Eugine Sergeyevich | Front-end developer | CV",
-        "notFoundDescription": "Front-end developer"
+        "title": "Kunitsa Eugine | Front-End Archmage (Level Senior) | CV",
+        "description": "Front-End Archmage (Level Senior)",
+        "notFoundTitle": "Kunitsa Eugine | Front-End Archmage (Level Senior) | CV",
+        "notFoundDescription": "Front-End Archmage (Level Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -12,11 +12,10 @@
         "notFoundTitle": "Page not found"
     },
     "TopInfoT": {
-        "name": "Kunitsa Eugine Sergeyevich",
-        "position": "Senior Front-End Developer",
+        "name": "Kunitsa Eugine",
+        "position": "Front-End Archmage (Level Senior)",
         "years": ">{years}",
-        "inTheProfession": "years in the profession",
-        "open": "In search of new career opportunities"
+        "inTheProfession": "years in the craft"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
@@ -25,7 +24,7 @@
         "trailblazer": "Trailblazer"
     },
     "PhotoT": {
-        "alt": "Kunitsa Eugine Sergeyevich"
+        "alt": "Kunitsa Eugine"
     },
     "ContactsT": {
         "title": "Contacts",
@@ -89,7 +88,7 @@
         "project6technology": "ISML, SCSS, BEM, bootstrap, jQuery, lightning, custom editors with React",
 
         "project7name": "TurboZNO",
-        "project7position": "Frontend developer | FE Team lead",
+        "project7position": "Frontend developer",
         "project7workTime": "Full-time, remote",
         "project7dates": "February 2024 - now",
         "project7description": "Web application ecosystem development",
@@ -105,7 +104,8 @@
         "about3": "Beware of overtime;",
         "about4": "Gamer and geek;",
         "about5": "I speak russian. Level of spoken English: don't push the horses;",
-        "about6": "After the outbreak of full-scale war in February 2022: I do not cooperate with companies that pay taxes to the russian federation. Not in any form."
+        "about6": "FE Team Lead: I have experience managing teams of up to 5 developers;",
+        "about7": "After the outbreak of full-scale war in February 2022: I do not cooperate with companies that pay taxes to the russian federation. Not in any form."
     },
     "SkillsT": {
         "title": "Skills",
@@ -143,6 +143,9 @@
     },
     "DashboardT": {
         "title": "Dashboard",
-        "description": "Admin panel for resume website"
+        "openToWork": "Open to work"
+    },
+    "TopInfoOpenToWorkT": {
+        "description": "In search of new career opportunities :)"
     }
 }

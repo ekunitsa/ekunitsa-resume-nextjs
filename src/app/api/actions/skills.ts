@@ -1,22 +1,18 @@
 'use server';
 
-import { NextResponse } from 'next/server';
-
 import { SkillsInputI } from '@/types/types';
 
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function skillsPostPatch(data: SkillsInputI) {
+export async function postPatchSkills(data: SkillsInputI) {
     try {
         const { language, primary, secondary } = data;
 
         if (!language || !Array.isArray(primary) || !Array.isArray(secondary)) {
-            return NextResponse.json(
-                { error: 'Invalid data object' },
-                { status: 400 },
-            );
+            console.error('postPatchSkills: Invalid data object');
+            return { ok: false };
         }
 
         await prisma.skills.upsert({
