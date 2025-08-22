@@ -27,7 +27,8 @@
     },
     "ContactsT": {
         "title": "Contacts",
-        "country": "Ukraine"
+        "country": "Ukraine",
+        "linkedin": "LinkedIn"
     },
     "LanguagesT": {
         "title": "Languages",
@@ -98,7 +99,7 @@
     },
     "AboutT": {
         "title": "About me",
-        "about1": "{years} years old;",
+        "yearsOld": "{years} years old;",
         "about2": "Since the beginning of my career, I have only worked remotely;",
         "about3": "Beware of overtime;",
         "about4": "Gamer and geek;",
@@ -128,6 +129,8 @@
         "errorAuthFailed": "Something is not listed correctly :(",
         "errorServerActionFailed": "The server request failed with an error",
         "errorDatePattern": "The date is incorrect",
+        "errorEmailPattern": "The email is incorrect",
+        "errorTelegramPattern": "The telegram is incorrect",
         "saveBtn": "Save"
     },
     "SkillsFormT": {
@@ -139,6 +142,7 @@
     "SidebarT": {
         "title": "Menu",
         "menuDashboard": "Dashboard",
+        "menuGlobal": "General information",
         "menuLanguages": "Languages",
         "menuSkills": "Skills"
     },
@@ -148,7 +152,15 @@
         "description": "The information on this page applies to ALL languages.",
         "startWorkDate": "Date of beginning of work (Format: YYYY-MM-DD)",
         "birthdayDate": "Birthday (Format: YYYY-MM-DD)",
-        "showAge": "Display age"
+        "showAge": "Display age",
+        "contacts": "Contacts",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "telegram": "Telegram (Format: https://t.me/nickname)",
+        "links": "Links",
+        "codewars": "Codewars",
+        "stackoverflow": "Stackoverflow",
+        "github": "Github"
     },
     "TopInfoOpenToWorkT": {
         "description": "In search of new career opportunities :)"

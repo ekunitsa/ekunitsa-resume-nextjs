@@ -33,9 +33,13 @@ export const TopInfo = async () => {
 
             {dashboardSettings?.openToWork && <TopInfoOpenToWork />}
 
-            <div className={styles.links}>
-                <TopInfoLinks />
-            </div>
+            {(dashboardSettings?.codewars ||
+                dashboardSettings?.stackoverflow ||
+                dashboardSettings?.github) && (
+                <div className={styles.links}>
+                    <TopInfoLinks />
+                </div>
+            )}
         </div>
     );
 };

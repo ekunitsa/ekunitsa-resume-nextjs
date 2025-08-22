@@ -31,16 +31,6 @@ model Dashboard {
   startWorkDate String?
   birthdayDate  String?
   showAge       Boolean  @default(true)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-}
-
-model MainInformation {
-  id            Int      @id @default(autoincrement())
-  language      String   @unique
-  name          String
-  role          String
-  place         String
   linkedin      String?
   email         String?
   telegram      String?
@@ -49,6 +39,16 @@ model MainInformation {
   github        String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+}
+
+model MainInformation {
+  id        Int      @id @default(autoincrement())
+  language  String   @unique
+  name      String
+  role      String
+  place     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Languages {

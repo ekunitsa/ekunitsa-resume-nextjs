@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { Box } from '@/components/common/Box/Box';
 
@@ -9,15 +9,13 @@ import { AboutItem } from './AboutItem/AboutItem';
 
 import styles from './About.module.scss';
 
-export const About = () => {
-    const t = useTranslations('AboutT');
+import { getDashboard } from '@/app/api/actions/dashboard';
 
-    const birthday = dayjs().diff(dayjs('1994-01-29'), 'year');
+export const About = async () => {
+    const t = await getTranslations('AboutT');
+    const dashboardSettings = await getDashboard();
 
     const data: AboutItemI[] = [
-        {
-            text: t('about1', { years: birthday }),
-        },
         {
             text: t('about2'),
         },
@@ -38,6 +36,17 @@ export const About = () => {
             bold: true,
         },
     ];
+
+    if (dashboardSettings?.birthdayDate && dashboardSettings?.showAge) {
+        data.unshift({
+            text: t('yearsOld', {
+                years: dayjs().diff(
+                    dayjs(dashboardSettings.birthdayDate),
+                    'year',
+                ),
+            }),
+        });
+    }
 
     return (
         <Box corners={['topRight']} height100percent title={t('title')}>

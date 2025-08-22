@@ -1,14 +1,23 @@
 'use server';
 
+import { prisma } from '@/lib/prisma';
+
 import { DashboardI } from '@/types/types';
-
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
 
 export async function postPatchDashboard(data: DashboardI) {
     try {
-        const { openToWork, startWorkDate, birthdayDate, showAge } = data;
+        const {
+            openToWork,
+            startWorkDate,
+            birthdayDate,
+            showAge,
+            linkedin,
+            email,
+            telegram,
+            codewars,
+            stackoverflow,
+            github,
+        } = data;
 
         await prisma.dashboard.upsert({
             where: { id: 1 },
@@ -17,12 +26,24 @@ export async function postPatchDashboard(data: DashboardI) {
                 startWorkDate,
                 birthdayDate,
                 showAge,
+                linkedin,
+                email,
+                telegram,
+                codewars,
+                stackoverflow,
+                github,
             },
             create: {
                 openToWork,
                 startWorkDate,
                 birthdayDate,
                 showAge,
+                linkedin,
+                email,
+                telegram,
+                codewars,
+                stackoverflow,
+                github,
             },
         });
 
@@ -42,6 +63,12 @@ export async function getDashboard() {
             startWorkDate: true,
             birthdayDate: true,
             showAge: true,
+            linkedin: true,
+            email: true,
+            telegram: true,
+            codewars: true,
+            stackoverflow: true,
+            github: true,
         },
     });
 

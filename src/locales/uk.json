@@ -19,7 +19,7 @@
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
-        "stackoverflow": "Stackoverflow",
+        "stackoverflow": "Stackoverflow (RU)",
         "github": "Github"
     },
     "PhotoT": {
@@ -27,7 +27,8 @@
     },
     "ContactsT": {
         "title": "Контакти",
-        "country": "Україна"
+        "country": "Україна",
+        "linkedin": "LinkedIn"
     },
     "LanguagesT": {
         "title": "Мови",
@@ -98,7 +99,7 @@
     },
     "AboutT": {
         "title": "Про мене",
-        "about1": "{years} рік;",
+        "yearsOld": "{years, plural, one {# рік} few {# роки} many {# років} other {# років}}",
         "about2": "З самого початку кар'єри працював віддалено;",
         "about3": "Остерігаюсь овертаймів;",
         "about4": "Геймер та гік;",
@@ -128,6 +129,8 @@
         "errorAuthFailed": "Щось вказано не вірно :(",
         "errorServerActionFailed": "Серверний запит виконався з помилкою",
         "errorDatePattern": "Дата вказана невірно",
+        "errorEmailPattern": "Email вказан невірно",
+        "errorTelegramPattern": "Telegram вказан невірно",
         "saveBtn": "Зберегти"
     },
     "SkillsFormT": {
@@ -139,6 +142,7 @@
     "SidebarT": {
         "title": "Меню",
         "menuDashboard": "Дашборд",
+        "menuGlobal": "Загальна інформація",
         "menuLanguages": "Мови",
         "menuSkills": "Навички"
     },
@@ -148,7 +152,15 @@
         "description": "Інформація на цій сторінці застосовується для ВСІХ мов",
         "startWorkDate": "Дата початку роботи (Формат: YYYY-MM-DD)",
         "birthdayDate": "День народження (Формат: YYYY-MM-DD)",
-        "showAge": "Виводити вік"
+        "showAge": "Виводити вік",
+        "contacts": "Контакти",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "telegram": "Telegram (Формат: https://t.me/nickname)",
+        "links": "Посилання",
+        "codewars": "Codewars",
+        "stackoverflow": "Stackoverflow",
+        "github": "Github"
     },
     "TopInfoOpenToWorkT": {
         "description": "У пошуку нових кар'єрних можливостей :)"

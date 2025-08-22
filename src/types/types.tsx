@@ -47,6 +47,19 @@ export interface DashboardI {
     startWorkDate: string | null;
     birthdayDate: string | null;
     showAge: boolean;
+    linkedin?: string | null;
+    email?: string | null;
+    telegram?: string | null;
+    codewars?: string | null;
+    stackoverflow?: string | null;
+    github?: string | null;
+}
+
+export interface MainInformationI {
+    language: string;
+    name: string;
+    role: string;
+    place: string;
 }
 
 export interface TableHeaderI {

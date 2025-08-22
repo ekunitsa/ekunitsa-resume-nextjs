@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { TopInfoLinksItemI } from '@/types/types';
 
@@ -6,26 +6,37 @@ import { TopInfoLinksItem } from '../TopInfoLinksItem/TopInfoLinksItem';
 
 import styles from './TopInfoLinks.module.scss';
 
-export const TopInfoLinks = () => {
-    const t = useTranslations('TopInfoLinksT');
+import { getDashboard } from '@/app/api/actions/dashboard';
 
-    const links: TopInfoLinksItemI[] = [
-        {
+export const TopInfoLinks = async () => {
+    const t = await getTranslations('TopInfoLinksT');
+    const dashboardSettings = await getDashboard();
+
+    const links: TopInfoLinksItemI[] = [];
+
+    if (dashboardSettings?.codewars) {
+        links.push({
             icon: '/static/img/svg/codewars.svg',
-            link: 'https://www.codewars.com/users/ekunitsa/completed',
+            link: dashboardSettings.codewars,
             title: t('codewars'),
-        },
-        {
+        });
+    }
+
+    if (dashboardSettings?.stackoverflow) {
+        links.push({
             icon: '/static/img/svg/stackoverflow.svg',
-            link: 'https://ru.stackoverflow.com/users/25785/crus',
+            link: dashboardSettings.stackoverflow,
             title: t('stackoverflow'),
-        },
-        {
+        });
+    }
+
+    if (dashboardSettings?.github) {
+        links.push({
             icon: '/static/img/svg/github.svg',
-            link: 'https://github.com/ekunitsa?tab=repositories',
+            link: dashboardSettings.github,
             title: t('github'),
-        },
-    ];
+        });
+    }
 
     return (
         <div className={styles.wrapper}>

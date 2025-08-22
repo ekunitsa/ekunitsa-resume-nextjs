@@ -9,7 +9,7 @@ import { Title } from '@/components/common/Title/Title';
 import { Checkbox } from '@/components/form/Checkbox/Checkbox';
 import { Input } from '@/components/form/Input/Input';
 
-import { datePattern } from '@/utils/patterns';
+import { datePattern, emailPattern, telegramPattern } from '@/utils/patterns';
 
 import { DashboardI } from '@/types/types';
 
@@ -99,6 +99,76 @@ export const Dashboard = ({ data }: DashboardProps) => {
                     label={t('showAge')}
                     defaultChecked={data?.showAge}
                     {...register('showAge')}
+                />
+
+                <Title noMarginBottom>{t('contacts')}</Title>
+
+                <Input
+                    label={t('linkedin')}
+                    type="text"
+                    defaultValue={data && data.linkedin ? data.linkedin : ''}
+                    errorMessage={errors?.linkedin?.message as string}
+                    setValue={setValue}
+                    {...register('linkedin')}
+                />
+
+                <Input
+                    label={t('email')}
+                    type="email"
+                    defaultValue={data && data.email ? data.email : ''}
+                    errorMessage={errors?.email?.message as string}
+                    setValue={setValue}
+                    {...register('email', {
+                        pattern: {
+                            value: emailPattern,
+                            message: formT('errorEmailPattern'),
+                        },
+                    })}
+                />
+
+                <Input
+                    label={t('telegram')}
+                    type="text"
+                    defaultValue={data && data.telegram ? data.telegram : ''}
+                    errorMessage={errors?.telegram?.message as string}
+                    setValue={setValue}
+                    {...register('telegram', {
+                        pattern: {
+                            value: telegramPattern,
+                            message: formT('errorTelegramPattern'),
+                        },
+                    })}
+                />
+
+                <Title noMarginBottom>{t('links')}</Title>
+
+                <Input
+                    label={t('codewars')}
+                    type="text"
+                    defaultValue={data && data.codewars ? data.codewars : ''}
+                    errorMessage={errors?.codewars?.message as string}
+                    setValue={setValue}
+                    {...register('codewars')}
+                />
+
+                <Input
+                    label={t('stackoverflow')}
+                    type="text"
+                    defaultValue={
+                        data && data.stackoverflow ? data.stackoverflow : ''
+                    }
+                    errorMessage={errors?.stackoverflow?.message as string}
+                    setValue={setValue}
+                    {...register('stackoverflow')}
+                />
+
+                <Input
+                    label={t('github')}
+                    type="text"
+                    defaultValue={data && data.github ? data.github : ''}
+                    errorMessage={errors?.github?.message as string}
+                    setValue={setValue}
+                    {...register('github')}
                 />
 
                 <div className={styles.buttons}>
