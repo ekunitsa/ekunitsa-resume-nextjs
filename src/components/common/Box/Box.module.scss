@@ -9,6 +9,7 @@ $desktop-corner-radius: 60px;
     padding: $spacer-4;
     background-color: $color-white;
     border: 1px solid $color-stroke;
+    min-width: 0;
 
     @include media-breakpoint-up(lg) {
         padding: $spacer-8;

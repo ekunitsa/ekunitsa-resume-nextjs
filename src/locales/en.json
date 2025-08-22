@@ -20,8 +20,7 @@
     "TopInfoLinksT": {
         "codewars": "Codewars",
         "stackoverflow": "Stackoverflow (RU)",
-        "github": "Github",
-        "trailblazer": "Trailblazer"
+        "github": "Github"
     },
     "PhotoT": {
         "alt": "Kunitsa Eugine"
@@ -128,6 +127,7 @@
         "errorRequiredField": "Required field",
         "errorAuthFailed": "Something is not listed correctly :(",
         "errorServerActionFailed": "The server request failed with an error",
+        "errorDatePattern": "The date is incorrect",
         "saveBtn": "Save"
     },
     "SkillsFormT": {
@@ -139,13 +139,24 @@
     "SidebarT": {
         "title": "Menu",
         "menuDashboard": "Dashboard",
+        "menuLanguages": "Languages",
         "menuSkills": "Skills"
     },
     "DashboardT": {
         "title": "Dashboard",
-        "openToWork": "Open to work"
+        "openToWork": "Open to work",
+        "description": "The information on this page applies to ALL languages.",
+        "startWorkDate": "Date of beginning of work (Format: YYYY-MM-DD)",
+        "birthdayDate": "Birthday (Format: YYYY-MM-DD)",
+        "showAge": "Display age"
     },
     "TopInfoOpenToWorkT": {
         "description": "In search of new career opportunities :)"
+    },
+    "LanguagesListT": {
+        "title": "Languages"
+    },
+    "LanguagesFormT": {
+        "title": "Languages"
     }
 }

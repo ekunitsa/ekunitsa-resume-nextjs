@@ -20,8 +20,7 @@
     "TopInfoLinksT": {
         "codewars": "Codewars",
         "stackoverflow": "Stackoverflow",
-        "github": "Github",
-        "trailblazer": "Trailblazer"
+        "github": "Github"
     },
     "PhotoT": {
         "alt": "Куниця Євгеній"
@@ -128,6 +127,7 @@
         "errorRequiredField": "Обов'язкове поле",
         "errorAuthFailed": "Щось вказано не вірно :(",
         "errorServerActionFailed": "Серверний запит виконався з помилкою",
+        "errorDatePattern": "Дата вказана невірно",
         "saveBtn": "Зберегти"
     },
     "SkillsFormT": {
@@ -139,13 +139,24 @@
     "SidebarT": {
         "title": "Меню",
         "menuDashboard": "Дашборд",
+        "menuLanguages": "Мови",
         "menuSkills": "Навички"
     },
     "DashboardT": {
         "title": "Дашборд",
-        "openToWork": "Відкритий до нових пропозицій"
+        "openToWork": "Відкритий до нових пропозицій",
+        "description": "Інформація на цій сторінці застосовується для ВСІХ мов",
+        "startWorkDate": "Дата початку роботи (Формат: YYYY-MM-DD)",
+        "birthdayDate": "День народження (Формат: YYYY-MM-DD)",
+        "showAge": "Виводити вік"
     },
     "TopInfoOpenToWorkT": {
         "description": "У пошуку нових кар'єрних можливостей :)"
+    },
+    "LanguagesListT": {
+        "title": "Мови"
+    },
+    "LanguagesFormT": {
+        "title": "Мови"
     }
 }

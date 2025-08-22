@@ -4,10 +4,12 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-import { Box } from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Checkbox } from '@/components/form/Checkbox/Checkbox';
+import { Input } from '@/components/form/Input/Input';
+
+import { datePattern } from '@/utils/patterns';
 
 import { DashboardI } from '@/types/types';
 
@@ -28,6 +30,7 @@ export const Dashboard = ({ data }: DashboardProps) => {
         register,
         handleSubmit,
         setError,
+        setValue,
         formState: { errors, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
@@ -46,8 +49,9 @@ export const Dashboard = ({ data }: DashboardProps) => {
     };
 
     return (
-        <Box corners={['bottomLeft', 'topRight']} className={styles.wrapper}>
+        <>
             <Title noMarginBottom>{t('title')}</Title>
+            <p>{t('description')}</p>
             <form
                 className={styles.form}
                 onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
@@ -57,6 +61,44 @@ export const Dashboard = ({ data }: DashboardProps) => {
                     label={t('openToWork')}
                     defaultChecked={data?.openToWork}
                     {...register('openToWork')}
+                />
+
+                <Input
+                    label={t('startWorkDate')}
+                    type="text"
+                    defaultValue={
+                        data && data.startWorkDate ? data.startWorkDate : ''
+                    }
+                    errorMessage={errors?.startWorkDate?.message as string}
+                    setValue={setValue}
+                    {...register('startWorkDate', {
+                        pattern: {
+                            value: datePattern,
+                            message: formT('errorDatePattern'),
+                        },
+                    })}
+                />
+
+                <Input
+                    label={t('birthdayDate')}
+                    type="text"
+                    defaultValue={
+                        data && data.birthdayDate ? data.birthdayDate : ''
+                    }
+                    errorMessage={errors?.birthdayDate?.message as string}
+                    setValue={setValue}
+                    {...register('birthdayDate', {
+                        pattern: {
+                            value: datePattern,
+                            message: formT('errorDatePattern'),
+                        },
+                    })}
+                />
+
+                <Checkbox
+                    label={t('showAge')}
+                    defaultChecked={data?.showAge}
+                    {...register('showAge')}
                 />
 
                 <div className={styles.buttons}>
@@ -75,6 +117,6 @@ export const Dashboard = ({ data }: DashboardProps) => {
                     </p>
                 )}
             </form>
-        </Box>
+        </>
     );
 };

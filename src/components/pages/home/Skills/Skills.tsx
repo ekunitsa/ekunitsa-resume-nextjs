@@ -14,39 +14,41 @@ export const Skills = async () => {
 
     const data = await getSkills(locale);
 
-    return (
-        <Box corners={['topRight', 'bottomLeft']} title={t('title')}>
-            <div className={styles.wrapper}>
-                {data?.primary && (
-                    <div className={styles.section}>
-                        <div className={styles.title}>{t('primary')}</div>
-                        <div className={styles.list}>
-                            {data?.primary.map((item) => (
-                                <SkillsItem
-                                    key={item}
-                                    text={item}
-                                    type="primary"
-                                />
-                            ))}
+    if (data?.primary || data?.secondary) {
+        return (
+            <Box corners={['topRight', 'bottomLeft']} title={t('title')}>
+                <div className={styles.wrapper}>
+                    {data?.primary && (
+                        <div className={styles.section}>
+                            <div className={styles.title}>{t('primary')}</div>
+                            <div className={styles.list}>
+                                {data?.primary.map((item) => (
+                                    <SkillsItem
+                                        key={item}
+                                        text={item}
+                                        type="primary"
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
-                {data?.secondary && (
-                    <div className={styles.section}>
-                        <div className={styles.title}>{t('secondary')}</div>
-                        <div className={styles.list}>
-                            {data?.secondary.map((item) => (
-                                <SkillsItem
-                                    key={item}
-                                    text={item}
-                                    type="secondary"
-                                />
-                            ))}
+                    {data?.secondary && (
+                        <div className={styles.section}>
+                            <div className={styles.title}>{t('secondary')}</div>
+                            <div className={styles.list}>
+                                {data?.secondary.map((item) => (
+                                    <SkillsItem
+                                        key={item}
+                                        text={item}
+                                        type="secondary"
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
-        </Box>
-    );
+                    )}
+                </div>
+            </Box>
+        );
+    }
 };

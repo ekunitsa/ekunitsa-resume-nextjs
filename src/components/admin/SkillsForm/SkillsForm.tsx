@@ -4,7 +4,6 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 
-import { Box } from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
@@ -57,7 +56,7 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
     };
 
     return (
-        <Box corners={['bottomLeft', 'topRight']} className={styles.wrapper}>
+        <>
             <Title noMarginBottom>{t('title')}</Title>
 
             <div>{t('description')}</div>
@@ -68,7 +67,7 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                 noValidate
             >
                 <Input
-                    label={t('primary')}
+                    label={`${t('primary')}*`}
                     type="text"
                     defaultValue={
                         data && data.primary && data.primary.length > 0
@@ -83,7 +82,7 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                 />
 
                 <Input
-                    label={t('secondary')}
+                    label={`${t('secondary')}*`}
                     type="text"
                     defaultValue={
                         data && data.secondary && data.secondary.length > 0
@@ -113,6 +112,6 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                     </p>
                 )}
             </form>
-        </Box>
+        </>
     );
 };

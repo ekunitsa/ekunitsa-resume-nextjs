@@ -25,11 +25,6 @@ export const TopInfoLinks = () => {
             link: 'https://github.com/ekunitsa?tab=repositories',
             title: t('github'),
         },
-        {
-            icon: '/static/img/svg/trailblazer.svg',
-            link: 'https://trailblazer.me/id/crus',
-            title: t('trailblazer'),
-        },
     ];
 
     return (

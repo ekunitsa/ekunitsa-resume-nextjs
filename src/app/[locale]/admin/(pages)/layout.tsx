@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 
 import { Sidebar } from '@/components/admin/Sidebar/Sidebar';
+import { Box } from '@/components/common/Box/Box';
 
 import styles from './layout.module.scss';
 
 interface AdminLayoutProps {
-    children: ReactNode;
+    children: React.ReactNode;
 }
 export default function AdminLayout({ children }: AdminLayoutProps) {
     const { SidebarT } = useMessages();
@@ -21,7 +21,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 <Sidebar />
             </NextIntlClientProvider>
 
-            {children}
+            <Box
+                corners={['bottomLeft', 'topRight']}
+                className={styles.contentWrapper}
+            >
+                {children}
+            </Box>
         </div>
     );
 }

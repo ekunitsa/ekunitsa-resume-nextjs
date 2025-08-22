@@ -44,4 +44,12 @@ export interface SkillsInputI {
 
 export interface DashboardI {
     openToWork: boolean;
+    startWorkDate: string | null;
+    birthdayDate: string | null;
+    showAge: boolean;
+}
+
+export interface TableHeaderI {
+    columnName: string;
+    tableHeader: string;
 }

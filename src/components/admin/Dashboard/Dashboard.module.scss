@@ -1,11 +1,5 @@
 @import "@/assets/scss/abstract/_all";
 
-.wrapper {
-    display: flex;
-    gap: $spacer-4;
-    flex-direction: column;
-}
-
 .form {
     display: flex;
     gap: $spacer-4;
@@ -19,4 +13,5 @@
 
 .errorMessage {
     color: $color-red;
+    font-size: $fs-small;
 }

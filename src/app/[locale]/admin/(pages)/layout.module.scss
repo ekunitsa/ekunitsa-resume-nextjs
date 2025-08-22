@@ -15,3 +15,9 @@
         gap: $spacer-12;
     }
 }
+
+.contentWrapper {
+    display: flex;
+    gap: $spacer-4;
+    flex-direction: column;
+}

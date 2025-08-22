@@ -8,15 +8,21 @@ const prisma = new PrismaClient();
 
 export async function postPatchDashboard(data: DashboardI) {
     try {
-        const { openToWork } = data;
+        const { openToWork, startWorkDate, birthdayDate, showAge } = data;
 
-        await prisma.globalSettings.upsert({
+        await prisma.dashboard.upsert({
             where: { id: 1 },
             update: {
                 openToWork,
+                startWorkDate,
+                birthdayDate,
+                showAge,
             },
             create: {
                 openToWork,
+                startWorkDate,
+                birthdayDate,
+                showAge,
             },
         });
 
@@ -29,10 +35,13 @@ export async function postPatchDashboard(data: DashboardI) {
 }
 
 export async function getDashboard() {
-    const dashboard = await prisma.globalSettings.findUnique({
+    const dashboard = await prisma.dashboard.findUnique({
         where: { id: 1 },
         select: {
             openToWork: true,
+            startWorkDate: true,
+            birthdayDate: true,
+            showAge: true,
         },
     });
 

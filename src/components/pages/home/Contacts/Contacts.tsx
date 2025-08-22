@@ -21,7 +21,7 @@ export const Contacts = () => {
         {
             icon: <CiLinkedin className={styles.icon} />,
             link: 'https://www.linkedin.com/in/ekunitsa/',
-            title: 'ekunitsa',
+            title: 'LinkedIn',
         },
         {
             icon: <CiMail className={styles.icon} />,

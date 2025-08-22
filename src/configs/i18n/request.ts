@@ -9,7 +9,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     const locale = (await requestLocale) as Locale;
 
     if (!locale || !routing.locales.includes(locale)) {
-        console.log('something wrong with locales', locale);
+        console.log('something wrong with locales', locale); // TODO: .well-known ???
         notFound();
     }
 
