@@ -1,6 +1,6 @@
 import { CiLinkedin, CiMail, CiMap } from 'react-icons/ci';
 import { PiTelegramLogoThin } from 'react-icons/pi';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import { Box } from '@/components/common/Box/Box';
 
@@ -11,15 +11,18 @@ import { ContactsItem } from './ContactsItem/ContactsItem';
 import styles from './Contacts.module.scss';
 
 import { getDashboard } from '@/app/api/actions/dashboard';
+import { getMainInformation } from '@/app/api/actions/mainInformation';
 
 export const Contacts = async () => {
     const t = await getTranslations('ContactsT');
+    const locale = await getLocale();
     const dashboardSettings = await getDashboard();
+    const mainInformation = await getMainInformation(locale);
 
     const data: ContactsItemI[] = [
         {
             icon: <CiMap className={styles.icon} />,
-            title: t('country'),
+            title: mainInformation?.place || '',
         },
     ];
 

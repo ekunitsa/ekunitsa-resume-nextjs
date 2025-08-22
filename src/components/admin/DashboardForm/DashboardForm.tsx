@@ -13,16 +13,16 @@ import { datePattern, emailPattern, telegramPattern } from '@/utils/patterns';
 
 import { DashboardI } from '@/types/types';
 
-import styles from './Dashboard.module.scss';
+import styles from './DashboardForm.module.scss';
 
 import { postPatchDashboard } from '@/app/api/actions/dashboard';
 
-interface DashboardProps {
+interface DashboardFormProps {
     data: DashboardI | null;
 }
 
-export const Dashboard = ({ data }: DashboardProps) => {
-    const t = useTranslations('DashboardT');
+export const DashboardForm = ({ data }: DashboardFormProps) => {
+    const t = useTranslations('DashboardFormT');
     const formT = useTranslations('FormT');
     const router = useRouter();
 

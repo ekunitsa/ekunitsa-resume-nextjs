@@ -35,6 +35,7 @@ export async function getMainInformation(language: string) {
     const mainInformation = await prisma.mainInformation.findUnique({
         where: { language },
         select: {
+            language: true,
             name: true,
             role: true,
             place: true,

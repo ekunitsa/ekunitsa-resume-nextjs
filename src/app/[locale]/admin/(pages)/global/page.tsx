@@ -5,6 +5,8 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 
+import { GlobalForm } from '@/components/admin/GlobalForm/GlobalForm';
+
 import { Locale } from '@/types/types';
 
 import { getMainInformation } from '@/app/api/actions/mainInformation';
@@ -40,7 +42,7 @@ const GlobalPage = async ({ params: { locale } }: GlobalPageProps) => {
                 FormT,
             }}
         >
-            Global form
+            <GlobalForm data={data} />
         </NextIntlClientProvider>
     );
 };

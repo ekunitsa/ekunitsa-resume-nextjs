@@ -12,22 +12,16 @@
         "notFoundTitle": "Сторінка не знайдена"
     },
     "TopInfoT": {
-        "name": "Куниця Євгеній",
-        "position": "Front-End Архімаг (Рівень Senior)",
         "years": ">{years}",
         "inTheProfession": "років в професії"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
-        "stackoverflow": "Stackoverflow (RU)",
+        "stackoverflow": "Stackoverflow",
         "github": "Github"
-    },
-    "PhotoT": {
-        "alt": "Куниця Євгеній"
     },
     "ContactsT": {
         "title": "Контакти",
-        "country": "Україна",
         "linkedin": "LinkedIn"
     },
     "LanguagesT": {
@@ -146,7 +140,7 @@
         "menuLanguages": "Мови",
         "menuSkills": "Навички"
     },
-    "DashboardT": {
+    "DashboardFormT": {
         "title": "Дашборд",
         "openToWork": "Відкритий до нових пропозицій",
         "description": "Інформація на цій сторінці застосовується для ВСІХ мов",
@@ -170,5 +164,11 @@
     },
     "LanguagesFormT": {
         "title": "Мови"
+    },
+    "GlobalFormT": {
+        "title": "Загальна інформація",
+        "name": "Ім'я",
+        "role": "Роль",
+        "place": "Країна проживання"
     }
 }

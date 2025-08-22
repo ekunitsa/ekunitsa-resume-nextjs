@@ -1,10 +1,13 @@
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 import styles from './Photo.module.scss';
 
-export const Photo = () => {
-    const t = useTranslations('PhotoT');
+import { getMainInformation } from '@/app/api/actions/mainInformation';
+
+export const Photo = async () => {
+    const locale = await getLocale();
+    const mainInformation = await getMainInformation(locale);
 
     return (
         <>
@@ -13,7 +16,7 @@ export const Photo = () => {
                 width={400}
                 height={538}
                 className={styles.image}
-                alt={t('alt')}
+                alt={mainInformation?.name || ''}
                 priority
             />
         </>

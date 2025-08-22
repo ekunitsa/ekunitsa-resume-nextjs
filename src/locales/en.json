@@ -12,22 +12,16 @@
         "notFoundTitle": "Page not found"
     },
     "TopInfoT": {
-        "name": "Kunitsa Eugine",
-        "position": "Front-End Archmage (Level Senior)",
         "years": ">{years}",
         "inTheProfession": "years in the craft"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
-        "stackoverflow": "Stackoverflow (RU)",
+        "stackoverflow": "Stackoverflow",
         "github": "Github"
-    },
-    "PhotoT": {
-        "alt": "Kunitsa Eugine"
     },
     "ContactsT": {
         "title": "Contacts",
-        "country": "Ukraine",
         "linkedin": "LinkedIn"
     },
     "LanguagesT": {
@@ -146,10 +140,10 @@
         "menuLanguages": "Languages",
         "menuSkills": "Skills"
     },
-    "DashboardT": {
+    "DashboardFormT": {
         "title": "Dashboard",
         "openToWork": "Open to work",
-        "description": "The information on this page applies to ALL languages.",
+        "description": "The information on this page applies to ALL languages",
         "startWorkDate": "Date of beginning of work (Format: YYYY-MM-DD)",
         "birthdayDate": "Birthday (Format: YYYY-MM-DD)",
         "showAge": "Display age",
@@ -170,5 +164,11 @@
     },
     "LanguagesFormT": {
         "title": "Languages"
+    },
+    "GlobalFormT": {
+        "title": "General information",
+        "name": "Name",
+        "role": "Role",
+        "place": "Country of residence"
     }
 }

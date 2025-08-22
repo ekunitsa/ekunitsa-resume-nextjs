@@ -5,7 +5,7 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 
-import { Dashboard } from '@/components/admin/Dashboard/Dashboard';
+import { DashboardForm } from '@/components/admin/DashboardForm/DashboardForm';
 
 import { Locale } from '@/types/types';
 
@@ -31,18 +31,18 @@ export async function generateMetadata({
 const DashboardPage = async ({ params: { locale } }: DashboardPageProps) => {
     setRequestLocale(locale);
 
-    const { DashboardT, FormT } = await getMessages();
+    const { DashboardFormT, FormT } = await getMessages();
 
     const data = await getDashboard();
 
     return (
         <NextIntlClientProvider
             messages={{
-                DashboardT,
+                DashboardFormT,
                 FormT,
             }}
         >
-            <Dashboard data={data} />
+            <DashboardForm data={data} />
         </NextIntlClientProvider>
     );
 };
