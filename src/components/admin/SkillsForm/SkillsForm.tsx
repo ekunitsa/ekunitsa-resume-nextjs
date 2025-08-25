@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
-import { Input } from '@/components/form/Input/Input';
+import { Textarea } from '@/components/form/Textarea/Textarea';
 
 import { SkillsInputI } from '@/types/types';
 
@@ -66,9 +66,8 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                 onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
                 noValidate
             >
-                <Input
+                <Textarea
                     label={`${t('primary')}*`}
-                    type="text"
                     defaultValue={
                         data && data.primary && data.primary.length > 0
                             ? data.primary.join(',')
@@ -81,9 +80,8 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                     })}
                 />
 
-                <Input
+                <Textarea
                     label={`${t('secondary')}*`}
-                    type="text"
                     defaultValue={
                         data && data.secondary && data.secondary.length > 0
                             ? data.secondary.join(',')

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';
@@ -26,6 +27,13 @@ export const LanguagesForm = ({ data }: LanguagesFormProps) => {
     const formT = useTranslations('FormT');
     const locale = useLocale();
     const router = useRouter();
+
+    useEffect(() => {
+        if (data && data.language !== locale) {
+            router.replace('/admin/languages');
+            router.refresh();
+        }
+    }, []);
 
     const {
         register,
