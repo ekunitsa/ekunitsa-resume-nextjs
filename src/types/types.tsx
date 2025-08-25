@@ -17,7 +17,7 @@ export interface AboutItemI {
 }
 
 export interface LanguagesItemI {
-    title: string;
+    label: string;
     level: string;
 }
 
@@ -65,4 +65,13 @@ export interface MainInformationI {
 export interface TableHeaderI {
     columnName: string;
     tableHeader: string;
+    size?: number;
+}
+
+export interface LanguageDataI {
+    id: number;
+    language: string;
+    label: string;
+    level: string;
+    position: number;
 }

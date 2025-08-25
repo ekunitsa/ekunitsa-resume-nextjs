@@ -25,12 +25,7 @@
         "linkedin": "LinkedIn"
     },
     "LanguagesT": {
-        "title": "Мови",
-        "ru": "Російська",
-        "ua": "Українська",
-        "en": "Англійська",
-        "fluent": "Вільно",
-        "intermediate": "Intermediate"
+        "title": "Мови"
     },
     "ExperienceT": {
         "title": "Досвід роботи",
@@ -122,10 +117,13 @@
         "errorRequiredField": "Обов'язкове поле",
         "errorAuthFailed": "Щось вказано не вірно :(",
         "errorServerActionFailed": "Серверний запит виконався з помилкою",
+        "errorServerDeleteActionFailed": "Серверний запит видалення виконався з помилкою",
         "errorDatePattern": "Дата вказана невірно",
         "errorEmailPattern": "Email вказан невірно",
         "errorTelegramPattern": "Telegram вказан невірно",
-        "saveBtn": "Зберегти"
+        "errorPositiveNumberPattern": "Тільки позитивні числа",
+        "saveBtn": "Зберегти",
+        "deleteMsg": "Ви впевнені, що хочете видалити цей запис?"
     },
     "SkillsFormT": {
         "title": "Навички",
@@ -160,10 +158,19 @@
         "description": "У пошуку нових кар'єрних можливостей :)"
     },
     "LanguagesListT": {
-        "title": "Мови"
+        "title": "Мови",
+        "position": "Позиція",
+        "label": "Мова",
+        "level": "Рівень",
+        "btnAdd": "Додати",
+        "btnEdit": "Редагувати"
     },
     "LanguagesFormT": {
-        "title": "Мови"
+        "title": "Мови",
+        "position": "Позиція",
+        "label": "Мова",
+        "level": "Рівень",
+        "btnAdd": "Додати"
     },
     "GlobalFormT": {
         "title": "Загальна інформація",

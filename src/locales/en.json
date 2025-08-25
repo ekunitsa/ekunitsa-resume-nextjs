@@ -25,12 +25,7 @@
         "linkedin": "LinkedIn"
     },
     "LanguagesT": {
-        "title": "Languages",
-        "ru": "Russian",
-        "ua": "Ukrainian",
-        "en": "English",
-        "fluent": "Fluent",
-        "intermediate": "Intermediate"
+        "title": "Languages"
     },
     "ExperienceT": {
         "title": "Work experience",
@@ -122,10 +117,13 @@
         "errorRequiredField": "Required field",
         "errorAuthFailed": "Something is not listed correctly :(",
         "errorServerActionFailed": "The server request failed with an error",
+        "errorServerDeleteActionFailed": "The server request for deletion was failed with an error",
         "errorDatePattern": "The date is incorrect",
         "errorEmailPattern": "The email is incorrect",
         "errorTelegramPattern": "The telegram is incorrect",
-        "saveBtn": "Save"
+        "errorPositiveNumberPattern": "Only positive numbers",
+        "saveBtn": "Save",
+        "deleteMsg": "Are you sure you want to delete this entry?"
     },
     "SkillsFormT": {
         "title": "Skills",
@@ -160,10 +158,19 @@
         "description": "In search of new career opportunities :)"
     },
     "LanguagesListT": {
-        "title": "Languages"
+        "title": "Languages",
+        "position": "Position",
+        "label": "Language",
+        "level": "Level",
+        "btnAdd": "Add",
+        "btnEdit": "Edit"
     },
     "LanguagesFormT": {
-        "title": "Languages"
+        "title": "Languages",
+        "position": "Position",
+        "label": "Language",
+        "level": "Level",
+        "btnAdd": "Add"
     },
     "GlobalFormT": {
         "title": "General information",

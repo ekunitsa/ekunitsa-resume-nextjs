@@ -1,42 +1,32 @@
-import { useTranslations } from 'next-intl';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import { Box } from '@/components/common/Box/Box';
-
-import { LanguagesItemI } from '@/types/types';
 
 import { LanguagesItem } from './LanguagesItem/LanguagesItem';
 
 import styles from './Languages.module.scss';
 
-export const Languages = () => {
-    const t = useTranslations('LanguagesT');
+import { getLanguagesList } from '@/app/api/actions/languages';
 
-    const data: LanguagesItemI[] = [
-        {
-            title: t('ua'),
-            level: t('fluent'),
-        },
-        {
-            title: t('ru'),
-            level: t('fluent'),
-        },
-        {
-            title: t('en'),
-            level: t('intermediate'),
-        },
-    ];
+export const Languages = async () => {
+    const t = await getTranslations('LanguagesT');
+    const locale = await getLocale();
 
-    return (
-        <Box corners={['topRight']} title={t('title')}>
-            <div className={styles.list}>
-                {data.map((item) => (
-                    <LanguagesItem
-                        key={item.title}
-                        title={item.title}
-                        level={item.level}
-                    />
-                ))}
-            </div>
-        </Box>
-    );
+    const data = await getLanguagesList(locale);
+
+    if (data && data.length > 0) {
+        return (
+            <Box corners={['topRight']} title={t('title')}>
+                <div className={styles.list}>
+                    {data.map((item) => (
+                        <LanguagesItem
+                            key={item.id}
+                            label={item.label}
+                            level={item.level}
+                        />
+                    ))}
+                </div>
+            </Box>
+        );
+    }
 };

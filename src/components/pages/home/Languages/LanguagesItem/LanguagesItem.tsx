@@ -2,10 +2,10 @@ import { LanguagesItemI } from '@/types/types';
 
 import styles from './LanguagesItem.module.scss';
 
-export const LanguagesItem = ({ title, level }: LanguagesItemI) => {
+export const LanguagesItem = ({ label, level }: LanguagesItemI) => {
     return (
         <div className={styles.item}>
-            <div>{title}</div>
+            <div>{label}</div>
             <div>{level}</div>
         </div>
     );

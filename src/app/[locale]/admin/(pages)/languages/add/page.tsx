@@ -5,6 +5,8 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 
+import { LanguagesForm } from '@/components/admin/languages/LanguagesForm/LanguagesForm';
+
 import { Locale } from '@/types/types';
 
 interface LanguagesAddPageProps {
@@ -38,7 +40,7 @@ const LanguagesAddPage = async ({
                 LanguagesFormT,
             }}
         >
-            LanguagesForm
+            <LanguagesForm />
         </NextIntlClientProvider>
     );
 };

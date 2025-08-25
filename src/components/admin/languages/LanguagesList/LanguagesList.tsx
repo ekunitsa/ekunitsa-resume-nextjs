@@ -1,6 +1,5 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+import { AiOutlineEdit } from 'react-icons/ai';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import { Button } from '@/components/common/Button/Button';
 import { Table } from '@/components/common/Table/Table';
@@ -8,46 +7,61 @@ import { Title } from '@/components/common/Title/Title';
 
 import styles from './LanguagesList.module.scss';
 
-// const data = [
-//     {
-//         firstName: 'tanner',
-//         lastName: 'linsley',
-//         age: 24,
-//     },
-//     {
-//         firstName: 'tandy',
-//         lastName: 'miller',
-//         age: 40,
-//     },
-//     {
-//         firstName: 'joe',
-//         lastName: 'dirte',
-//         age: <Button href="/">test</Button>,
-//     },
-// ];
+import { getLanguagesList } from '@/app/api/actions/languages';
 
-// const header = [
-//     {
-//         columnName: 'firstName',
-//         tableHeader: 'TH1',
-//     },
-//     {
-//         columnName: 'lastName',
-//         tableHeader: 'TH2',
-//     },
-//     {
-//         columnName: 'age',
-//         tableHeader: 'TH3',
-//     },
-// ];
+export const LanguagesList = async () => {
+    const t = await getTranslations('LanguagesListT');
+    const locale = await getLocale();
 
-export const LanguagesList = () => {
-    const t = useTranslations('LanguagesListT');
+    const data = await getLanguagesList(locale);
+
+    const extendedData = data
+        ? data.map((item) => {
+              return {
+                  ...item,
+                  actions: (
+                      <Button href={`/admin/languages/edit/${item.id}`} square>
+                          <AiOutlineEdit size={24} />
+                      </Button>
+                  ),
+              };
+          })
+        : [];
+
+    const header = [
+        {
+            columnName: 'position',
+            tableHeader: t('position'),
+            size: 100,
+        },
+        {
+            columnName: 'label',
+            tableHeader: t('label'),
+        },
+        {
+            columnName: 'level',
+            tableHeader: t('level'),
+        },
+        {
+            columnName: 'actions',
+            tableHeader: '',
+            size: 48,
+        },
+    ];
 
     return (
         <>
-            <Title noMarginBottom>{t('title')}</Title>
-            {/* <Table data={data} header={header} /> */}
+            <div className={styles.header}>
+                <Title noMarginBottom>{t('title')}</Title>
+
+                <div>
+                    <Button href="/admin/languages/add">{t('btnAdd')}</Button>
+                </div>
+            </div>
+
+            {extendedData && extendedData.length > 0 && (
+                <Table data={extendedData} header={header} />
+            )}
         </>
     );
 };

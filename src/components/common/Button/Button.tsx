@@ -12,6 +12,7 @@ interface ButtonProps {
     className?: string;
     disabled?: boolean;
     href?: string;
+    square?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -19,6 +20,7 @@ export const Button = ({
     buttonType,
     children,
     className,
+    square,
     disabled = false,
     href,
     onClick,
@@ -26,7 +28,12 @@ export const Button = ({
     return (
         <>
             {href ? (
-                <Link href={href} className={classNames(styles.btn, className)}>
+                <Link
+                    href={href}
+                    className={classNames(styles.btn, className, {
+                        [styles.square]: square,
+                    })}
+                >
                     {children}
                 </Link>
             ) : (
@@ -34,7 +41,9 @@ export const Button = ({
                     type={buttonType}
                     onClick={onClick}
                     disabled={disabled}
-                    className={classNames(styles.btn, className)}
+                    className={classNames(styles.btn, className, {
+                        [styles.square]: square,
+                    })}
                 >
                     {children}
                 </button>

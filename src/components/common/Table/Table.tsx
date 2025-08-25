@@ -23,6 +23,7 @@ export const Table = ({ data, header }: TableProps) => {
     const columns = header.map((item) => {
         return columnHelper.accessor(item.columnName, {
             header: item.tableHeader,
+            size: item.size,
             cell: (info) => info.getValue(),
         });
     });
@@ -42,7 +43,12 @@ export const Table = ({ data, header }: TableProps) => {
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <th key={header.id}>
+                                    <th
+                                        key={header.id}
+                                        {...(header.column.columnDef.size && {
+                                            width: header.column.columnDef.size,
+                                        })}
+                                    >
                                         {flexRender(
                                             header.column.columnDef.header,
                                             header.getContext(),
