@@ -17,7 +17,7 @@ export async function postPatchExperience(data: ExperienceDataI) {
             workDateEnd,
             workNow,
             description,
-            technology,
+            technologies,
         } = data;
 
         if (!language) {
@@ -38,7 +38,7 @@ export async function postPatchExperience(data: ExperienceDataI) {
                 workDateEnd,
                 workNow,
                 description,
-                technology,
+                technologies,
             },
             create: {
                 language,
@@ -50,7 +50,7 @@ export async function postPatchExperience(data: ExperienceDataI) {
                 workDateEnd,
                 workNow,
                 description,
-                technology,
+                technologies,
             },
         });
 
@@ -79,7 +79,7 @@ export async function getExperienceList(language: string) {
             workDateEnd: true,
             workNow: true,
             description: true,
-            technology: true,
+            technologies: true,
         },
     });
 
@@ -104,7 +104,7 @@ export async function getExperienceItem(id: number) {
             workDateEnd: true,
             workNow: true,
             description: true,
-            technology: true,
+            technologies: true,
         },
     });
 

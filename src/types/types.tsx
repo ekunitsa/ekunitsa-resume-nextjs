@@ -12,7 +12,7 @@ export interface ContactsItemI {
     title: string;
 }
 export interface AboutItemI {
-    text: string;
+    description: string;
     bold?: boolean;
 }
 
@@ -95,5 +95,5 @@ export interface ExperienceDataI {
     workDateEnd: string;
     workNow: boolean;
     description: string;
-    technology: string;
+    technologies: string;
 }

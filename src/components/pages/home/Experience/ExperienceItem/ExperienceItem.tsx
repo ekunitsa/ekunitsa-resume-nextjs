@@ -54,7 +54,7 @@ export const ExperienceItem = ({
                         <CiDesktop className={styles.icon} />
                     </div>
                     <div className={styles.technology}>
-                        {t('technology')} {technology}
+                        {t('technologies')} {technology}
                     </div>
                 </div>
             )}

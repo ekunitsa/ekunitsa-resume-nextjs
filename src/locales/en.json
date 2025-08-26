@@ -1,9 +1,7 @@
 {
     "MetaDataT": {
         "title": "Kunitsa Eugine | Front-End Archmage (Level Senior) | CV",
-        "description": "Front-End Archmage (Level Senior)",
-        "notFoundTitle": "Kunitsa Eugine | Front-End Archmage (Level Senior) | CV",
-        "notFoundDescription": "Front-End Archmage (Level Senior)"
+        "description": "Front-End Archmage (Level Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -84,23 +82,16 @@
         "project7technology": "React, Next.js v14, SCSS, Typescript, NX, Storybook"
     },
     "ExperienceItemT": {
-        "technology": "Technology:"
+        "technologies": "Technologies:"
     },
     "AboutT": {
         "title": "About me",
-        "yearsOld": "{years} years old;",
-        "about2": "Since the beginning of my career, I have only worked remotely;",
-        "about3": "Beware of overtime;",
-        "about4": "Gamer and geek;",
-        "about5": "I speak russian. Level of spoken English: don't push the horses;",
-        "about6": "FE Team Lead: I have experience managing teams of up to 5 developers;",
-        "about7": "After the outbreak of full-scale war in February 2022: I do not cooperate with companies that pay taxes to the russian federation. Not in any form."
+        "yearsOld": "{years} years old;"
     },
     "SkillsT": {
         "title": "Skills",
         "primary": "Main",
-        "secondary": "Secondary",
-        "more": "And much more"
+        "secondary": "Secondary"
     },
     "NotFoundT": {
         "title": "404 | Page not found",
@@ -164,8 +155,7 @@
         "position": "Position",
         "label": "Language",
         "level": "Level",
-        "btnAdd": "Add",
-        "btnEdit": "Edit"
+        "btnAdd": "Add"
     },
     "LanguagesFormT": {
         "title": "Languages",
@@ -179,5 +169,36 @@
         "name": "Name",
         "role": "Role",
         "place": "Country of residence"
+    },
+    "AboutListT": {
+        "title": "About me",
+        "position": "Position",
+        "description": "Description",
+        "btnAdd": "Add"
+    },
+    "AboutFormT": {
+        "title": "About me",
+        "position": "Position",
+        "description": "Description",
+        "bold": "Mark in bold",
+        "btnAdd": "Add"
+    },
+    "ExperienceListT": {
+        "title": "Work experience",
+        "position": "Position",
+        "companyName": "Company",
+        "btnAdd": "Add"
+    },
+    "ExperienceFormT": {
+        "title": "Work experience",
+        "position": "Position",
+        "companyName": "Company",
+        "role": "Role",
+        "workTime": "Working hour",
+        "workDateStart": "Start date",
+        "workDateEnd": "End date",
+        "workNow": "I am currently working here",
+        "description": "Description",
+        "technologies": "Technologies"
     }
 }
