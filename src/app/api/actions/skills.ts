@@ -35,7 +35,7 @@ export async function postPatchSkills(data: SkillsInputI) {
 }
 
 export async function getSkills(language: string) {
-    const skills = await prisma.skills.findUnique({
+    const response = await prisma.skills.findUnique({
         where: { language },
         select: {
             language: true,
@@ -44,9 +44,9 @@ export async function getSkills(language: string) {
         },
     });
 
-    if (!skills) {
+    if (!response) {
         return null;
     }
 
-    return skills;
+    return response;
 }

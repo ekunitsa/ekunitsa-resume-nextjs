@@ -135,6 +135,8 @@
         "title": "Menu",
         "menuDashboard": "Dashboard",
         "menuGlobal": "General information",
+        "menuAbout": "About me",
+        "menuExperience": "Work experience",
         "menuLanguages": "Languages",
         "menuSkills": "Skills"
     },

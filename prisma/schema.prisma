@@ -62,3 +62,33 @@ model Languages {
 
   @@index([language, position])
 }
+
+model About {
+  id          Int      @id @default(autoincrement())
+  language    String
+  description String
+  bold        Boolean  @default(false)
+  position    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([language, position])
+}
+
+model Experience {
+  id            Int      @id @default(autoincrement())
+  language      String
+  position      Int
+  companyName   String
+  role          String
+  workTime      String
+  workDateStart String
+  workDateEnd   String?
+  workNow       Boolean  @default(false)
+  description   String
+  technology    String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([language, position])
+}

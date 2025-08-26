@@ -2,29 +2,29 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { LanguageDataI } from '@/types/types';
+import { AboutDataI } from '@/types/types';
 
-export async function postPatchLanguage(data: LanguageDataI) {
+export async function postPatchAbout(data: AboutDataI) {
     try {
-        const { language, position, label, level, id } = data;
+        const { language, position, description, bold, id } = data;
 
         if (!language) {
-            console.error('postPatchLanguage: Invalid data object, !language');
+            console.error('postPatchAbout: Invalid data object, !language');
             return { ok: false };
         }
 
-        await prisma.languages.upsert({
+        await prisma.about.upsert({
             where: { id },
             update: {
                 position,
-                label,
-                level,
+                description,
+                bold,
             },
             create: {
                 language,
                 position,
-                label,
-                level,
+                description,
+                bold,
             },
         });
 
@@ -36,8 +36,8 @@ export async function postPatchLanguage(data: LanguageDataI) {
     }
 }
 
-export async function getLanguagesList(language: string) {
-    const response = await prisma.languages.findMany({
+export async function getAboutList(language: string) {
+    const response = await prisma.about.findMany({
         where: { language },
         orderBy: {
             position: 'asc',
@@ -46,8 +46,8 @@ export async function getLanguagesList(language: string) {
             id: true,
             language: false,
             position: true,
-            label: true,
-            level: true,
+            description: true,
+            bold: true,
         },
     });
 
@@ -58,15 +58,15 @@ export async function getLanguagesList(language: string) {
     return response;
 }
 
-export async function getLanguage(id: number) {
-    const response = await prisma.languages.findUnique({
+export async function getAboutItem(id: number) {
+    const response = await prisma.about.findUnique({
         where: { id },
         select: {
             id: true,
             language: true,
             position: true,
-            label: true,
-            level: true,
+            description: true,
+            bold: true,
         },
     });
 
@@ -77,9 +77,9 @@ export async function getLanguage(id: number) {
     return response;
 }
 
-export async function deleteLanguage(id: number) {
+export async function deleteAboutItem(id: number) {
     try {
-        await prisma.languages.delete({
+        await prisma.about.delete({
             where: { id },
         });
 

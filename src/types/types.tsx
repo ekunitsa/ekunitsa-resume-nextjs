@@ -75,3 +75,25 @@ export interface LanguageDataI {
     level: string;
     position: number;
 }
+
+export interface AboutDataI {
+    id: number;
+    language: string;
+    description: string;
+    bold: boolean;
+    position: number;
+}
+
+export interface ExperienceDataI {
+    id: number;
+    language: string;
+    position: number;
+    companyName: string;
+    role: string;
+    workTime: string;
+    workDateStart: string;
+    workDateEnd: string;
+    workNow: boolean;
+    description: string;
+    technology: string;
+}

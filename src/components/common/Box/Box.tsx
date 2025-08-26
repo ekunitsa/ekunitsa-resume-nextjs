@@ -6,7 +6,7 @@ import styles from './Box.module.scss';
 
 interface BoxProps {
     corners?: Array<'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'>;
-    height100percent?: boolean;
+    fullHeight?: boolean;
     title?: string;
     className?: string;
     children: React.ReactNode;
@@ -15,7 +15,7 @@ interface BoxProps {
 export const Box = ({
     children,
     corners,
-    height100percent,
+    fullHeight,
     title,
     className,
 }: BoxProps) => {
@@ -26,7 +26,7 @@ export const Box = ({
                 [styles.cornerTopRight]: corners?.includes('topRight'),
                 [styles.cornerBottomLeft]: corners?.includes('bottomLeft'),
                 [styles.cornerBottomRight]: corners?.includes('bottomRight'),
-                [styles.height100percent]: height100percent,
+                [styles.fullHeight]: fullHeight,
             })}
         >
             {title && <Title>{title}</Title>}

@@ -79,21 +79,23 @@ export const Experience = () => {
     ];
 
     return (
-        <Box corners={['topLeft']} height100percent title={t('title')}>
-            <div className={styles.list}>
-                {data.map((item, index) => (
-                    <ExperienceItem
-                        key={index}
-                        name={item.name}
-                        position={item.position}
-                        workTime={item.workTime}
-                        dates={item.dates}
-                        term={item.term}
-                        description={item.description}
-                        technology={item.technology}
-                    />
-                ))}
-            </div>
+        <Box corners={['topLeft']} fullHeight title={t('title')}>
+            {data && data.length > 0 && (
+                <div className={styles.list}>
+                    {data.map((item, index) => (
+                        <ExperienceItem
+                            key={index}
+                            name={item.name}
+                            position={item.position}
+                            workTime={item.workTime}
+                            dates={item.dates}
+                            term={item.term}
+                            description={item.description}
+                            technology={item.technology}
+                        />
+                    ))}
+                </div>
+            )}
         </Box>
     );
 };

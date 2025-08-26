@@ -32,7 +32,7 @@ export async function postPatchMainInformation(data: MainInformationI) {
 }
 
 export async function getMainInformation(language: string) {
-    const mainInformation = await prisma.mainInformation.findUnique({
+    const response = await prisma.mainInformation.findUnique({
         where: { language },
         select: {
             language: true,
@@ -42,9 +42,9 @@ export async function getMainInformation(language: string) {
         },
     });
 
-    if (!mainInformation) {
+    if (!response) {
         return null;
     }
 
-    return mainInformation;
+    return response;
 }

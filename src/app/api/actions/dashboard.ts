@@ -56,7 +56,7 @@ export async function postPatchDashboard(data: DashboardI) {
 }
 
 export async function getDashboard() {
-    const dashboard = await prisma.dashboard.findUnique({
+    const response = await prisma.dashboard.findUnique({
         where: { id: 1 },
         select: {
             openToWork: true,
@@ -72,9 +72,9 @@ export async function getDashboard() {
         },
     });
 
-    if (!dashboard) {
+    if (!response) {
         return null;
     }
 
-    return dashboard;
+    return response;
 }

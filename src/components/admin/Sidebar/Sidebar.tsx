@@ -21,6 +21,14 @@ export const Sidebar = () => {
             title: t('menuGlobal'),
         },
         {
+            link: '/admin/about',
+            title: t('menuAbout'),
+        },
+        {
+            link: '/admin/experience',
+            title: t('menuExperience'),
+        },
+        {
             link: '/admin/languages',
             title: t('menuLanguages'),
         },

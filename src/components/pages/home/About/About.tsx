@@ -37,7 +37,7 @@ export const About = async () => {
         },
     ];
 
-    if (dashboardSettings?.birthdayDate && dashboardSettings?.showAge) {
+    if (data && dashboardSettings?.birthdayDate && dashboardSettings?.showAge) {
         data.unshift({
             text: t('yearsOld', {
                 years: dayjs().diff(
@@ -49,18 +49,20 @@ export const About = async () => {
     }
 
     return (
-        <Box corners={['topRight']} height100percent title={t('title')}>
-            <div className={styles.list}>
-                <ul className={styles.ul}>
-                    {data.map((item, index) => (
-                        <AboutItem
-                            key={index}
-                            text={item.text}
-                            bold={item.bold}
-                        />
-                    ))}
-                </ul>
-            </div>
+        <Box corners={['topRight']} fullHeight title={t('title')}>
+            {data && data.length > 0 && (
+                <div className={styles.list}>
+                    <ul className={styles.ul}>
+                        {data.map((item, index) => (
+                            <AboutItem
+                                key={index}
+                                text={item.text}
+                                bold={item.bold}
+                            />
+                        ))}
+                    </ul>
+                </div>
+            )}
         </Box>
     );
 };

@@ -135,6 +135,8 @@
         "title": "Меню",
         "menuDashboard": "Дашборд",
         "menuGlobal": "Загальна інформація",
+        "menuAbout": "Про мене",
+        "menuExperience": "Досвід роботи",
         "menuLanguages": "Мови",
         "menuSkills": "Навички"
     },

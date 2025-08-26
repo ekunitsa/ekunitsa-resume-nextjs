@@ -14,9 +14,9 @@ export const Languages = async () => {
 
     const data = await getLanguagesList(locale);
 
-    if (data && data.length > 0) {
-        return (
-            <Box corners={['topRight']} title={t('title')}>
+    return (
+        <Box corners={['topRight']} title={t('title')}>
+            {data && data.length > 0 && (
                 <div className={styles.list}>
                     {data.map((item) => (
                         <LanguagesItem
@@ -26,7 +26,7 @@ export const Languages = async () => {
                         />
                     ))}
                 </div>
-            </Box>
-        );
-    }
+            )}
+        </Box>
+    );
 };
