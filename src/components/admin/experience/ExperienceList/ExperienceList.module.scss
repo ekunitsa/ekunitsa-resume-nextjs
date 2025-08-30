@@ -1,0 +1,8 @@
+@import "@/assets/scss/abstract/_all";
+
+.header {
+    display: flex;
+    gap: $spacer-4;
+    justify-content: space-between;
+    align-items: flex-start;
+}

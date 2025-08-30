@@ -21,16 +21,6 @@ export interface LanguagesItemI {
     level: string;
 }
 
-export interface ExperienceItemI {
-    name: string;
-    position: string;
-    workTime?: string;
-    dates?: string;
-    term?: string;
-    description?: string;
-    technology?: string;
-}
-
 export interface SidebarItemI {
     link: string;
     title: string;
@@ -92,7 +82,7 @@ export interface ExperienceDataI {
     role: string;
     workTime: string;
     workDateStart: string;
-    workDateEnd: string;
+    workDateEnd: string | null;
     workNow: boolean;
     description: string;
     technologies: string;

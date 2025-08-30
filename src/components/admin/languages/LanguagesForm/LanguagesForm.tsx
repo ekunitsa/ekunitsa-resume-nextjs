@@ -29,7 +29,7 @@ export const LanguagesForm = ({ data }: LanguagesFormProps) => {
     const router = useRouter();
 
     useEffect(() => {
-        if (data?.language !== locale) {
+        if (data && data.language !== locale) {
             router.replace('/admin/languages');
             router.refresh();
         }

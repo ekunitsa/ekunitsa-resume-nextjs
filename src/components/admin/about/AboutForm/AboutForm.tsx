@@ -31,7 +31,7 @@ export const AboutForm = ({ data }: AboutFormProps) => {
     const router = useRouter();
 
     useEffect(() => {
-        if (data?.language !== locale) {
+        if (data && data.language !== locale) {
             router.replace('/admin/about');
             router.refresh();
         }
