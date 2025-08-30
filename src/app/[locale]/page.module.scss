@@ -1,18 +1,12 @@
 @import "@/assets/scss/abstract/_all";
 
-.wrapper {
-    width: 100%;
-    margin: 0 auto;
-    max-width: $container;
-    padding: $spacer-8 $spacer-4;
-}
-
 .grid {
     display: grid;
     gap: $spacer-8;
     grid-template-columns: 1fr;
     grid-template-areas:
         "ti"
+        "ph"
         "cn"
         "ex"
         "sk"
@@ -37,11 +31,6 @@
 
 .photo {
     grid-area: ph;
-    display: none;
-
-    @include media-breakpoint-up(md) {
-        display: block;
-    }
 }
 
 .topInfo {

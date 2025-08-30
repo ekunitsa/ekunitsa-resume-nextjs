@@ -1,0 +1,23 @@
+@import "@/assets/scss/abstract/_all";
+
+.responsiveTable {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+}
+
+.table td,
+.table th {
+    padding: $spacer-3;
+    border: 1px solid $color-gray;
+    vertical-align: middle;
+}
+
+.table th {
+    font-weight: $fw-medium;
+    text-align: left;
+    background-color: $color-light-blue;
+    color: $color-black;
+}

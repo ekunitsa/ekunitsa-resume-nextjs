@@ -1,0 +1,32 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    display: flex;
+}
+
+.button {
+    color: $color-blue;
+    text-decoration: none;
+    font-weight: $fw-medium;
+    padding: 0 $spacer-3;
+    transition: all 0.2s ease-in-out;
+    font-size: $fs-base;
+
+    @include media-hover {
+        color: $color-dark-blue;
+    }
+
+    &:first-child {
+        border-right: 1px solid $color-black;
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+.active {
+    color: $color-dark-blue;
+    cursor: default;
+}

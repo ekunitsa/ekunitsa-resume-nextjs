@@ -1,0 +1,23 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    max-width: 480px;
+    display: flex;
+    gap: $spacer-4;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    gap: $spacer-4;
+    flex-direction: column;
+}
+
+.button {
+    width: 100%;
+}
+
+.errorMessage {
+    color: $color-red;
+    font-size: $fs-small;
+}

@@ -1,9 +1,7 @@
 {
     "MetaDataT": {
-        "title": "Kunitsa Eugine Sergeyevich | Front-end developer | CV",
-        "description": "Front-end developer",
-        "notFoundTitle": "Kunitsa Eugine Sergeyevich | Front-end developer | CV",
-        "notFoundDescription": "Front-end developer"
+        "title": "Kunitsa Eugine | Front-End Archmage (Level Senior) | CV",
+        "description": "Front-End Archmage (Level Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -12,104 +10,145 @@
         "notFoundTitle": "Page not found"
     },
     "TopInfoT": {
-        "name": "Kunitsa Eugine Sergeyevich",
-        "position": "Senior Front-End Developer",
         "years": ">{years}",
-        "inTheProfession": "years in the profession",
-        "open": "In search of new career opportunities"
+        "inTheProfession": "years in the craft"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
-        "stackoverflow": "Stackoverflow (RU)",
-        "github": "Github",
-        "trailblazer": "Trailblazer"
-    },
-    "PhotoT": {
-        "alt": "Kunitsa Eugine Sergeyevich"
+        "stackoverflow": "Stackoverflow",
+        "github": "Github"
     },
     "ContactsT": {
         "title": "Contacts",
-        "country": "Ukraine"
+        "linkedin": "LinkedIn"
     },
     "LanguagesT": {
-        "title": "Languages",
-        "ru": "Russian",
-        "ua": "Ukrainian",
-        "en": "English",
-        "fluent": "Fluent",
-        "intermediate": "Intermediate"
+        "title": "Languages"
     },
     "ExperienceT": {
-        "title": "Work experience",
-
-        "project1name": "Freelance",
-        "project1position": "Markup developer",
-        "project1dates": "May 2010 - January 2012",
-        "project1term": "1 year 9 months",
-        "project1description": "Development of websites and small orders for one-time clients",
-
-        "project2name": "NeoPulse Web Studio",
-        "project2position": "Markup developer",
-        "project2workTime": "Full-time, remote",
-        "project2dates": "January 2012 - November 2014",
-        "project2term": "2 years 11 months",
-        "project2description": "Website support and development",
-        "project2technology": "HTML, CSS, jQuery, Opencart, Joomla, Wordpress, Codeigniter, Yii",
-
-        "project3name": "Software Product Group (PPR)",
-        "project3position": "Frontend developer",
-        "project3workTime": "Full-time, remote",
-        "project3dates": "June 2015 - April 2021",
-        "project3term": "5 years 11 months",
-        "project3description": "Support and development of large websites, portals, interfaces, internal systems",
-        "project3technology": "Webpack, Smarty, Twig, Bootstrap, NPM, jQuery, JS, SASS, Symfony + sonata, Wordpress, ECSS, Vue.js, React",
-
-        "project4name": "LIFE PAY",
-        "project4position": "Frontend developer",
-        "project4workTime": "Part-time work (2 to 8 hours a day), remote",
-        "project4dates": "July 2019 - February 2022",
-        "project4term": "2 years 8 months",
-        "project4description": "Website development and support.",
-        "project4technology": "HTML, jQuery, JS, SASS, Wordpress, Git, ECSS",
-
-        "project5name": "VR EXPO WORLD",
-        "project5position": "Frontend developer",
-        "project5workTime": "Part-time work (up to 4 hours a day), remote",
-        "project5dates": "April 2021 - February 2022",
-        "project5term": "11 months",
-        "project5description": "Development and support of company websites.",
-        "project5technology": "HTML, jQuery, JS, SASS, Wordpress, Opencart",
-
-        "project6name": "Raccoon LLC",
-        "project6position": "SFCC Frontend developer",
-        "project6workTime": "Full-time, remote",
-        "project6dates": "June 2022 - October 2023",
-        "project6term": "1 year 5 months",
-        "project6description": "Development of online stores at SFCC",
-        "project6technology": "ISML, SCSS, BEM, bootstrap, jQuery, lightning, custom editors with React",
-
-        "project7name": "TurboZNO",
-        "project7position": "Frontend developer | FE Team lead",
-        "project7workTime": "Full-time, remote",
-        "project7dates": "February 2024 - now",
-        "project7description": "Web application ecosystem development",
-        "project7technology": "React, Next.js v14, SCSS, Typescript, NX, Storybook"
+        "title": "Work experience"
     },
     "ExperienceItemT": {
-        "technology": "Technology:"
+        "technologies": "Technologies:",
+        "years": "{years, plural, one {# year} other {# years}}",
+        "months": "{months, plural, one {# month} other {# months}}",
+        "now": "Now"
     },
     "AboutT": {
         "title": "About me",
-        "about1": "{years} years old;",
-        "about2": "Since the beginning of my career, I have only worked remotely;",
-        "about3": "Beware of overtime;",
-        "about4": "Gamer and geek;",
-        "about5": "After the outbreak of full-scale war in February 2022: I do not cooperate with companies that pay taxes to the russian federation. Not in any form."
+        "yearsOld": "{years} years old;"
     },
     "SkillsT": {
         "title": "Skills",
         "primary": "Main",
-        "secondary": "Secondary",
-        "more": "And much more"
+        "secondary": "Secondary"
+    },
+    "NotFoundT": {
+        "title": "404 | Page not found",
+        "toHome": "Back to CV",
+        "description": "Unfortunately, you have reached this page by some obscure error. Please go to the main page :)"
+    },
+    "LoginT": {
+        "title": "Admin Panel",
+        "email": "Email",
+        "password": "Password",
+        "btn": "Sign in"
+    },
+    "FormT": {
+        "errorRequiredField": "Required field",
+        "errorAuthFailed": "Something is not listed correctly :(",
+        "errorServerActionFailed": "The server request failed with an error",
+        "errorServerDeleteActionFailed": "The server request for deletion was failed with an error",
+        "errorDatePattern": "The date is incorrect",
+        "errorEmailPattern": "The email is incorrect",
+        "errorTelegramPattern": "The telegram is incorrect",
+        "errorPositiveNumberPattern": "Only positive numbers",
+        "saveBtn": "Save",
+        "deleteMsg": "Are you sure you want to delete this entry?"
+    },
+    "SkillsFormT": {
+        "title": "Skills",
+        "description": "Each tag must be separated by a comma",
+        "primary": "Main",
+        "secondary": "Secondary"
+    },
+    "SidebarT": {
+        "title": "Menu",
+        "menuDashboard": "Dashboard",
+        "menuGlobal": "General information",
+        "menuAbout": "About me",
+        "menuExperience": "Work experience",
+        "menuLanguages": "Languages",
+        "menuSkills": "Skills"
+    },
+    "DashboardFormT": {
+        "title": "Dashboard",
+        "openToWork": "Open to work",
+        "description": "The information on this page applies to ALL languages",
+        "startWorkDate": "Date of beginning of work (Format: YYYY-MM-DD)",
+        "birthdayDate": "Birthday (Format: YYYY-MM-DD)",
+        "showAge": "Display age",
+        "contacts": "Contacts",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "telegram": "Telegram (Format: https://t.me/nickname)",
+        "links": "Links",
+        "codewars": "Codewars",
+        "stackoverflow": "Stackoverflow",
+        "github": "Github"
+    },
+    "TopInfoOpenToWorkT": {
+        "description": "In search of new career opportunities :)"
+    },
+    "LanguagesListT": {
+        "title": "Languages",
+        "position": "Position",
+        "label": "Language",
+        "level": "Level",
+        "btnAdd": "Add"
+    },
+    "LanguagesFormT": {
+        "title": "Languages",
+        "position": "Position",
+        "label": "Language",
+        "level": "Level",
+        "btnAdd": "Add"
+    },
+    "GlobalFormT": {
+        "title": "General information",
+        "name": "Name",
+        "role": "Role",
+        "place": "Country of residence"
+    },
+    "AboutListT": {
+        "title": "About me",
+        "position": "Position",
+        "description": "Description",
+        "btnAdd": "Add"
+    },
+    "AboutFormT": {
+        "title": "About me",
+        "position": "Position",
+        "description": "Description",
+        "bold": "Mark in bold",
+        "btnAdd": "Add"
+    },
+    "ExperienceListT": {
+        "title": "Work experience",
+        "position": "Position",
+        "companyName": "Company",
+        "btnAdd": "Add"
+    },
+    "ExperienceFormT": {
+        "title": "Work experience",
+        "position": "Position",
+        "companyName": "Company",
+        "role": "Role",
+        "workTime": "Working hour",
+        "workDateStart": "Start date (Format: YYYY-MM-DD)",
+        "workDateEnd": "End date (Format: YYYY-MM-DD)",
+        "workNow": "I am currently working here",
+        "description": "Description",
+        "technologies": "Technologies"
     }
 }

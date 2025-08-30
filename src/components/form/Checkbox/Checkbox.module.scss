@@ -1,0 +1,48 @@
+@import "@/assets/scss/abstract/_all";
+
+.mark {
+    border: 1px solid $color-gray;
+    border-bottom-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: block;
+    flex-shrink: 0;
+    height: 20px;
+    width: 20px;
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url("./img/check.svg") center / contain no-repeat;
+        display: none;
+        height: 16px;
+        width: 16px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:checked ~ .mark::after {
+        display: block;
+    }
+}
+
+.label {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-size: $fs-small;
+    gap: $spacer-2;
+}

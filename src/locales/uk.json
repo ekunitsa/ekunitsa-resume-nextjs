@@ -1,9 +1,7 @@
 {
     "MetaDataT": {
-        "title": "Куниця Євгеній Сергійович | Front-end developer | CV",
-        "description": "Front-end developer",
-        "notFoundTitle": "Куниця Євгеній Сергійович | Front-end developer | CV",
-        "notFoundDescription": "Front-end developer"
+        "title": "Куниця Євгеній | Front-End Архімаг (Рівень Senior) | CV",
+        "description": "Front-End Архімаг (Рівень Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -12,104 +10,145 @@
         "notFoundTitle": "Сторінка не знайдена"
     },
     "TopInfoT": {
-        "name": "Куниця Євгеній Сергійович",
-        "position": "Senior Front-End Developer",
         "years": ">{years}",
-        "inTheProfession": "років в професії",
-        "open": "У пошуку нових кар'єрних можливостей"
+        "inTheProfession": "років в професії"
     },
     "TopInfoLinksT": {
         "codewars": "Codewars",
         "stackoverflow": "Stackoverflow",
-        "github": "Github",
-        "trailblazer": "Trailblazer"
-    },
-    "PhotoT": {
-        "alt": "Куниця Євгеній Сергійович"
+        "github": "Github"
     },
     "ContactsT": {
         "title": "Контакти",
-        "country": "Україна"
+        "linkedin": "LinkedIn"
     },
     "LanguagesT": {
-        "title": "Мови",
-        "ru": "Російська",
-        "ua": "Українська",
-        "en": "Англійська",
-        "fluent": "Вільно",
-        "intermediate": "Intermediate"
+        "title": "Мови"
     },
     "ExperienceT": {
-        "title": "Досвід роботи",
-
-        "project1name": "Фріланс",
-        "project1position": "Markup developer",
-        "project1dates": "Травень 2010 р. – Січень 2012 р.",
-        "project1term": "1 рік 9 міс.",
-        "project1description": "Розробка веб-сайтів і невеликих проектів",
-
-        "project2name": "Веб-студія NeoPulse",
-        "project2position": "Markup developer",
-        "project2workTime": "Повний робочий день, віддалено",
-        "project2dates": "Січень 2012 р. – Листопад 2014 р.",
-        "project2term": "2 роки 11 міс.",
-        "project2description": "Підтримка та розробка веб-сайтів",
-        "project2technology": "HTML, CSS, jQuery, Opencart, Joomla, Wordpress, Codeigniter, Yii",
-
-        "project3name": "Програмний Продукт (PPR)",
-        "project3position": "Frontend developer",
-        "project3workTime": "Повний робочий день, віддалено",
-        "project3dates": "Червень 2015 р. – Квітень 2021 г.",
-        "project3term": "5 років 11 міс.",
-        "project3description": "Підтримка та розробка маштабних сайтів, порталів, інтерфейсів, внутрішних систем",
-        "project3technology": "Webpack, Smarty, Twig, Bootstrap, NPM, jQuery, JS, SASS, Symfony + sonata, Wordpress, ECSS, Vue.js, React",
-
-        "project4name": "LIFE PAY",
-        "project4position": "Frontend developer",
-        "project4workTime": "Часткова занятість (від 2 до 8 годин в день), віддалено",
-        "project4dates": "Липень 2019 р. - Лютий 2022 р.",
-        "project4term": "2 роки 8 міс.",
-        "project4description": "Розробка та підтримка веб-сайтів",
-        "project4technology": "HTML, jQuery, JS, SASS, Wordpress, Git, ECSS",
-
-        "project5name": "VR EXPO WORLD",
-        "project5position": "Frontend developer",
-        "project5workTime": "Часткова занятість (до 4-х годин в день), віддалено",
-        "project5dates": "Квітень 2021 р. - Лютий 2022 р.",
-        "project5term": "11 міс.",
-        "project5description": "Розробка та підтримка веб-сайтів компанії",
-        "project5technology": "HTML, jQuery, JS, SASS, Wordpress, Opencart",
-
-        "project6name": "Raccoon LLC",
-        "project6position": "SFCC Frontend developer",
-        "project6workTime": "Повний робочий день, віддалено",
-        "project6dates": "Червень 2022 р. - Жовтень 2023 р.",
-        "project6term": "1 рік 5 міс.",
-        "project6description": "Розробка веб-магазинів на SFCC",
-        "project6technology": "ISML, SCSS, BEM, bootstrap, jQuery, lightning, custom editors с використанням React",
-
-        "project7name": "TurboZNO",
-        "project7position": "Frontend developer | FE Team lead",
-        "project7workTime": "Повний робочий день, віддалено",
-        "project7dates": "Лютий 2024 - зараз",
-        "project7description": "Розробка екосистеми веб-додатків",
-        "project7technology": "React, Next.js v14, SCSS, Typescript, NX, Storybook"
+        "title": "Досвід роботи"
     },
     "ExperienceItemT": {
-        "technology": "Технології:"
+        "technologies": "Технології:",
+        "years": "{years, plural, one {# рік} few {# роки} many {# років} other {# років}}",
+        "months": "{months, plural, one {# місяць} few {# місяці} many {# місяців} other {# місяців}}",
+        "now": "Зараз"
     },
     "AboutT": {
         "title": "Про мене",
-        "about1": "{years} рік;",
-        "about2": "З самого початку кар'єри працював віддалено;",
-        "about3": "Остерігаюсь овертаймів;",
-        "about4": "Геймер та гік;",
-        "about5": "Після початку повномасштабної війни в лютому 2022 року: я не співпрацюю з компаніями, які платять податки в російську федерацію. Ні при яких умовах."
+        "yearsOld": "{years, plural, one {# рік} few {# роки} many {# років} other {# років}}"
     },
     "SkillsT": {
         "title": "Навички",
         "primary": "Основні",
-        "secondary": "Додаткові",
-        "more": "Та багато іншого"
+        "secondary": "Додаткові"
+    },
+    "NotFoundT": {
+        "title": "404 | Сторінку не знайдено",
+        "toHome": "Повернутися до резюме",
+        "description": "На жаль, ви потрапили на цю сторінку через якусь незрозумілу помилку. Будь ласка, перейдіть на головну сторінку :)"
+    },
+    "LoginT": {
+        "title": "Адмін-панель",
+        "email": "Email",
+        "password": "Пароль",
+        "btn": "Увійти"
+    },
+    "FormT": {
+        "errorRequiredField": "Обов'язкове поле",
+        "errorAuthFailed": "Щось вказано не вірно :(",
+        "errorServerActionFailed": "Серверний запит виконався з помилкою",
+        "errorServerDeleteActionFailed": "Серверний запит видалення виконався з помилкою",
+        "errorDatePattern": "Дата вказана невірно",
+        "errorEmailPattern": "Email вказан невірно",
+        "errorTelegramPattern": "Telegram вказан невірно",
+        "errorPositiveNumberPattern": "Тільки позитивні числа",
+        "saveBtn": "Зберегти",
+        "deleteMsg": "Ви впевнені, що хочете видалити цей запис?"
+    },
+    "SkillsFormT": {
+        "title": "Навички",
+        "description": "Кожен тег має бути розділений комою",
+        "primary": "Основні",
+        "secondary": "Додаткові"
+    },
+    "SidebarT": {
+        "title": "Меню",
+        "menuDashboard": "Дашборд",
+        "menuGlobal": "Загальна інформація",
+        "menuAbout": "Про мене",
+        "menuExperience": "Досвід роботи",
+        "menuLanguages": "Мови",
+        "menuSkills": "Навички"
+    },
+    "DashboardFormT": {
+        "title": "Дашборд",
+        "openToWork": "Відкритий до нових пропозицій",
+        "description": "Інформація на цій сторінці застосовується для ВСІХ мов",
+        "startWorkDate": "Дата початку роботи (Формат: YYYY-MM-DD)",
+        "birthdayDate": "День народження (Формат: YYYY-MM-DD)",
+        "showAge": "Виводити вік",
+        "contacts": "Контакти",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "telegram": "Telegram (Формат: https://t.me/nickname)",
+        "links": "Посилання",
+        "codewars": "Codewars",
+        "stackoverflow": "Stackoverflow",
+        "github": "Github"
+    },
+    "TopInfoOpenToWorkT": {
+        "description": "У пошуку нових кар'єрних можливостей :)"
+    },
+    "LanguagesListT": {
+        "title": "Мови",
+        "position": "Позиція",
+        "label": "Мова",
+        "level": "Рівень",
+        "btnAdd": "Додати"
+    },
+    "LanguagesFormT": {
+        "title": "Мови",
+        "position": "Позиція",
+        "label": "Мова",
+        "level": "Рівень",
+        "btnAdd": "Додати"
+    },
+    "GlobalFormT": {
+        "title": "Загальна інформація",
+        "name": "Ім'я",
+        "role": "Роль",
+        "place": "Країна проживання"
+    },
+    "AboutListT": {
+        "title": "Про мене",
+        "position": "Позиція",
+        "description": "Опис",
+        "btnAdd": "Додати"
+    },
+    "AboutFormT": {
+        "title": "Про мене",
+        "position": "Позиція",
+        "description": "Опис",
+        "bold": "Позначити жирним",
+        "btnAdd": "Додати"
+    },
+    "ExperienceListT": {
+        "title": "Досвід роботи",
+        "position": "Позиція",
+        "companyName": "Компанія",
+        "btnAdd": "Додати"
+    },
+    "ExperienceFormT": {
+        "title": "Досвід роботи",
+        "position": "Позиція",
+        "companyName": "Компанія",
+        "role": "Роль",
+        "workTime": "Робочий час",
+        "workDateStart": "Дата початку роботи (Формат: YYYY-MM-DD)",
+        "workDateEnd": "Дата закінчення роботи (Формат: YYYY-MM-DD)",
+        "workNow": "Працюю зараз",
+        "description": "Опис",
+        "technologies": "Технології"
     }
 }

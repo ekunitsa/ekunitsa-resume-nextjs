@@ -1,0 +1,33 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    position: relative;
+    display: flex;
+    gap: $spacer-1;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label {
+    display: block;
+    font-size: $fs-small;
+    color: $color-black;
+}
+
+.input {
+    padding: $spacer-2 $spacer-3;
+    height: 48px;
+    border: 1px solid $color-gray;
+    width: 100%;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    &::placeholder {
+        color: $color-gray;
+    }
+}
+
+.errorMessage {
+    color: $color-red;
+    font-size: $fs-small;
+}

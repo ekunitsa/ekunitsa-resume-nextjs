@@ -1,0 +1,58 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-5;
+    margin-top: $spacer-6;
+}
+
+.name {
+    font-size: $fs-xlarge;
+    line-height: $lh-base;
+    font-weight: $fw-medium;
+    max-width: 600px;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-xxlarge;
+    }
+
+    @include media-breakpoint-up(xl) {
+        font-size: $fs-xxxlarge;
+    }
+}
+
+.position {
+    position: relative;
+    color: $color-blue;
+    font-size: $fs-large;
+    padding-bottom: $spacer-4;
+    line-height: $lh-base;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-xlarge;
+    }
+
+    &::after {
+        content: "";
+        background-color: $color-gray;
+        bottom: 0;
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 150px;
+    }
+}
+
+.inTheProfession {
+    font-size: $fs-base;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-large;
+    }
+}
+
+.blue {
+    font-weight: $fw-medium;
+    color: $color-blue;
+}

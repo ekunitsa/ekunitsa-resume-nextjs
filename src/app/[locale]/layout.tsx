@@ -1,11 +1,18 @@
+import classNames from 'classnames';
 import type { Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
+import { getServerSession } from 'next-auth';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
-import { locales } from '@/configs/config';
+import { AdminBar } from '@/components/admin/AdminBar/AdminBar';
+
+import { routing } from '@/configs/i18n/routing';
 
 import { Locale } from '@/types/types';
 
 import '@/assets/scss/common.scss';
+import styles from './layout.module.scss';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -33,16 +40,37 @@ export const metadata = {
 };
 
 export function generateStaticParams() {
-    return locales.map((locale) => ({ locale }));
+    return routing.locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
     children,
     params: { locale },
 }: LayoutProps) {
+    const { LocaleSwitcherT } = await getMessages();
+    const session = await getServerSession();
+
     return (
         <html lang={locale}>
-            <body className={montserrat.className}>{children}</body>
+            <body className={montserrat.className}>
+                {session?.user && (
+                    <NextIntlClientProvider
+                        messages={{
+                            LocaleSwitcherT,
+                        }}
+                    >
+                        <AdminBar />
+                    </NextIntlClientProvider>
+                )}
+
+                <div
+                    className={classNames(styles.wrapper, {
+                        [styles.logged]: !!session,
+                    })}
+                >
+                    {children}
+                </div>
+            </body>
         </html>
     );
 }

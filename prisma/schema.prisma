@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skills {
+  id        Int      @id @default(autoincrement())
+  language  String   @unique
+  primary   String[]
+  secondary String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Dashboard {
+  id            Int      @id @default(autoincrement())
+  openToWork    Boolean  @default(false)
+  startWorkDate String?
+  birthdayDate  String?
+  showAge       Boolean  @default(true)
+  linkedin      String?
+  email         String?
+  telegram      String?
+  codewars      String?
+  stackoverflow String?
+  github        String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model MainInformation {
+  id        Int      @id @default(autoincrement())
+  language  String   @unique
+  name      String
+  role      String
+  place     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Languages {
+  id        Int      @id @default(autoincrement())
+  language  String
+  label     String
+  level     String
+  position  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([language, position])
+}
+
+model About {
+  id          Int      @id @default(autoincrement())
+  language    String
+  description String
+  bold        Boolean  @default(false)
+  position    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([language, position])
+}
+
+model Experience {
+  id            Int      @id @default(autoincrement())
+  language      String
+  position      Int
+  companyName   String
+  role          String
+  workTime      String
+  workDateStart String
+  workDateEnd   String?
+  workNow       Boolean  @default(false)
+  description   String
+  technologies  String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([language, position])
+}

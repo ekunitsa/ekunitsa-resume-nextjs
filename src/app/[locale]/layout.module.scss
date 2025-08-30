@@ -1,0 +1,12 @@
+@import "@/assets/scss/abstract/_all";
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+    max-width: $container;
+    padding: $spacer-8 $spacer-4;
+
+    &.logged {
+        padding-top: calc($spacer-8 + 32px);
+    }
+}

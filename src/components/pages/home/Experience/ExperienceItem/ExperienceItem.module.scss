@@ -1,0 +1,41 @@
+@import "@/assets/scss/abstract/_all";
+
+.item {
+    padding-bottom: $spacer-5;
+    border-bottom: 1px dashed $color-black;
+    font-size: $fs-base;
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-4;
+    color: $color-black;
+
+    &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+}
+
+.name {
+    font-weight: $fw-medium;
+}
+
+.position {
+    font-weight: $fw-regular;
+    font-size: $fs-small;
+}
+
+.diff {
+    font-weight: $fw-medium;
+    white-space: nowrap;
+}
+
+.icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.row {
+    display: flex;
+    gap: $spacer-2;
+    line-height: 24px;
+}
