@@ -1,7 +1,5 @@
 # Eugine Kunitsa CV project
 
-:warning: 28.07.2025: Admin panel in the works (postgresql, prisma, next-auth) :)
-
 Main stack: TS | NEXT.JS v14 | NEXT-INTL | SCSS
 
 Code quality tools: PRETTIER | ESLINT | STYLELINT | HUSKY
@@ -10,11 +8,17 @@ Node.js version - 20.9.0
 
 Result url - https://ekunitsa.com/
 
-## For start
+## Admin panel (postgresql, prisma, next-auth)
 
--   npm i
--   npm run dev
+If you want to deploy this locally, you will need to manually create an "administrator" user in the database. Registration is not provided.
 
-## For build
+### For start
 
--   npm run build
+-   `npm i`
+-   Prepare the .env file following the example in .env.example
+-   `npx prisma db push` - for preparing the database
+-   `npm run dev`
+
+### For build
+
+-   `npm run build`
