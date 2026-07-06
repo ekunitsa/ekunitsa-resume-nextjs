@@ -12,14 +12,14 @@ import { Locale } from '@/types/types';
 import { getSkills } from '@/app/api/actions/skills';
 
 interface SkillsPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: SkillsPageProps) {
+export async function generateMetadata({ params }: SkillsPageProps) {
+    const { locale } = await params;
+    
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -28,7 +28,9 @@ export async function generateMetadata({
     };
 }
 
-const SkillsPage = async ({ params: { locale } }: SkillsPageProps) => {
+const SkillsPage = async ({ params }: SkillsPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { SkillsFormT, FormT } = await getMessages();

@@ -10,14 +10,14 @@ import { LanguagesList } from '@/components/admin/languages/LanguagesList/Langua
 import { Locale } from '@/types/types';
 
 interface LanguagesPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: LanguagesPageProps) {
+export async function generateMetadata({ params }: LanguagesPageProps) {
+    const { locale } = await params;
+    
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -26,7 +26,9 @@ export async function generateMetadata({
     };
 }
 
-const LanguagesPage = async ({ params: { locale } }: LanguagesPageProps) => {
+const LanguagesPage = async ({ params }: LanguagesPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { FormT, LanguagesListT } = await getMessages();

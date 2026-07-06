@@ -12,15 +12,15 @@ import { Locale } from '@/types/types';
 import { getLanguage } from '@/app/api/actions/languages';
 
 interface LanguagesEditPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
         id: string;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: LanguagesEditPageProps) {
+export async function generateMetadata({ params }: LanguagesEditPageProps) {
+    const { locale } = await params;
+    
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -29,9 +29,9 @@ export async function generateMetadata({
     };
 }
 
-const LanguagesEditPage = async ({
-    params: { locale, id },
-}: LanguagesEditPageProps) => {
+const LanguagesEditPage = async ({ params }: LanguagesEditPageProps) => {
+    const { locale, id } = await params;
+
     setRequestLocale(locale);
 
     const { FormT, LanguagesFormT } = await getMessages();

@@ -10,14 +10,14 @@ import { ExperienceForm } from '@/components/admin/experience/ExperienceForm/Exp
 import { Locale } from '@/types/types';
 
 interface ExperienceAddPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: ExperienceAddPageProps) {
+export async function generateMetadata({ params }: ExperienceAddPageProps) {
+    const { locale } = await params;
+
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -26,9 +26,9 @@ export async function generateMetadata({
     };
 }
 
-const ExperienceAddPage = async ({
-    params: { locale },
-}: ExperienceAddPageProps) => {
+const ExperienceAddPage = async ({ params }: ExperienceAddPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { FormT, ExperienceFormT } = await getMessages();

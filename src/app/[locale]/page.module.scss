@@ -1,4 +1,4 @@
-@import "@/assets/scss/abstract/_all";
+@use "assets/scss/abstract/all" as *;
 
 .grid {
     display: grid;

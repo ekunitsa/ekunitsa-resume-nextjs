@@ -8,12 +8,14 @@ import { Locale } from '@/types/types';
 import styles from './page.module.scss';
 
 interface LoginPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({ params: { locale } }: LoginPageProps) {
+export async function generateMetadata({ params }: LoginPageProps) {
+    const { locale } = await params;
+
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -22,7 +24,9 @@ export async function generateMetadata({ params: { locale } }: LoginPageProps) {
     };
 }
 
-const LoginPage = ({ params: { locale } }: LoginPageProps) => {
+const LoginPage = async ({ params }: LoginPageProps) => {
+    const { locale } = await params;
+    
     setRequestLocale(locale);
 
     const { LoginT, FormT } = useMessages();

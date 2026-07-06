@@ -4,10 +4,10 @@
         "esModuleInterop": true,
         "incremental": true,
         "isolatedModules": true,
-        "jsx": "preserve",
+        "jsx": "react-jsx",
         "lib": ["dom", "dom.iterable", "esnext"],
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "noEmit": true,
         "resolveJsonModule": true,
         "skipLibCheck": true,
@@ -17,10 +17,10 @@
                 "name": "next"
             }
         ],
-        "baseUrl": ".",
         "paths": {
             "@/*": ["./src/*"]
-        }
+        },
+        "target": "ES2017"
     },
     "include": [
         "next-env.d.ts",
@@ -29,7 +29,8 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "**/*.js",
-        "./.next/types/**/*.ts"
+        "./.next/types/**/*.ts",
+        ".next/dev/types/**/*.ts"
     ],
     "exclude": ["node_modules", ".next", ".vercel", "out"]
 }

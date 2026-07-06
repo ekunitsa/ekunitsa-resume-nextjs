@@ -12,14 +12,14 @@ import { Locale } from '@/types/types';
 import { getMainInformation } from '@/app/api/actions/mainInformation';
 
 interface GlobalPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: GlobalPageProps) {
+export async function generateMetadata({ params }: GlobalPageProps) {
+    const { locale } = await params;
+    
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -28,7 +28,9 @@ export async function generateMetadata({
     };
 }
 
-const GlobalPage = async ({ params: { locale } }: GlobalPageProps) => {
+const GlobalPage = async ({ params }: GlobalPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { GlobalFormT, FormT } = await getMessages();

@@ -9,14 +9,12 @@ import { AdminBar } from '@/components/admin/AdminBar/AdminBar';
 
 import { routing } from '@/configs/i18n/routing';
 
-import { Locale } from '@/types/types';
-
 import '@/assets/scss/common.scss';
 import styles from './layout.module.scss';
 
 interface LayoutProps {
     children: React.ReactNode;
-    params: { locale: Locale };
+    params: Promise<{ locale: string }>;
 }
 
 export const viewport: Viewport = {
@@ -43,10 +41,9 @@ export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({
-    children,
-    params: { locale },
-}: LayoutProps) {
+export default async function LocaleLayout({ children, params }: LayoutProps) {
+    const { locale } = await params;
+    
     const { LocaleSwitcherT } = await getMessages();
     const session = await getServerSession();
 

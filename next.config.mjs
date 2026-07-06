@@ -1,9 +1,13 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import path from "node:path";
 
 const withNextIntl = createNextIntlPlugin("./src/configs/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    sassOptions: {
+        loadPaths: [path.join(process.cwd(), "src")],
+    },
     images: {
         remotePatterns: [
             {
@@ -13,13 +17,14 @@ const nextConfig = {
             },
         ],
     },
-    webpack(config) {
-        config.module.rules.push({
-            test: /\.svg$/i,
-            issuer: /\.[jt]sx?$/,
-            use: ["@svgr/webpack"],
-        });
-        return config;
+
+    turbopack: {
+        rules: {
+            "*.svg": {
+                loaders: ["@svgr/webpack"],
+                as: "*.js",
+            },
+        },
     },
 };
 

@@ -15,12 +15,13 @@ import { Locale } from '@/types/types';
 import styles from './page.module.scss';
 
 interface HomePageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({ params: { locale } }: HomePageProps) {
+export async function generateMetadata({ params }: HomePageProps) {
+    const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -31,7 +32,9 @@ export async function generateMetadata({ params: { locale } }: HomePageProps) {
 
 export const revalidate = 0;
 
-const HomePage = ({ params: { locale } }: HomePageProps) => {
+const HomePage = async ({ params }: HomePageProps) => {
+    const { locale } = await params;
+    
     setRequestLocale(locale);
 
     const { LocaleSwitcherT } = useMessages();

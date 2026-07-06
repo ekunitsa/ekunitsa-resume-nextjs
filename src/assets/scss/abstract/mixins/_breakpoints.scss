@@ -1,4 +1,6 @@
 /* stylelint-disable */
+@use "../variables/all" as *;
+
 @function breakpoint-next(
     $name,
     $breakpoints: $grid-breakpoints,

@@ -12,14 +12,13 @@ import { Locale } from '@/types/types';
 import { getDashboard } from '@/app/api/actions/dashboard';
 
 interface DashboardPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: DashboardPageProps) {
+export async function generateMetadata({ params }: DashboardPageProps) {
+    const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -28,7 +27,9 @@ export async function generateMetadata({
     };
 }
 
-const DashboardPage = async ({ params: { locale } }: DashboardPageProps) => {
+const DashboardPage = async ({ params }: DashboardPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { DashboardFormT, FormT } = await getMessages();

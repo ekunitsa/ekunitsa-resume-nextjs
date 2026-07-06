@@ -10,14 +10,14 @@ import { AboutForm } from '@/components/admin/about/AboutForm/AboutForm';
 import { Locale } from '@/types/types';
 
 interface AboutAddPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: AboutAddPageProps) {
+export async function generateMetadata({ params }: AboutAddPageProps) {
+    const { locale } = await params;
+
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -26,7 +26,9 @@ export async function generateMetadata({
     };
 }
 
-const AboutAddPage = async ({ params: { locale } }: AboutAddPageProps) => {
+const AboutAddPage = async ({ params }: AboutAddPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { FormT, AboutFormT } = await getMessages();

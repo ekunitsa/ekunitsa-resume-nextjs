@@ -9,14 +9,14 @@ import { Locale } from '@/types/types';
 import styles from './page.module.scss';
 
 interface NotFoundPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: NotFoundPageProps) {
+export async function generateMetadata({ params }: NotFoundPageProps) {
+    const { locale } = await params;
+    
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -25,7 +25,9 @@ export async function generateMetadata({
     };
 }
 
-const NotFoundPage = ({ params: { locale } }: NotFoundPageProps) => {
+const NotFoundPage = async ({ params }: NotFoundPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const t = useTranslations('NotFoundT');

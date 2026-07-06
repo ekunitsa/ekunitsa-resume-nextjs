@@ -12,15 +12,15 @@ import { Locale } from '@/types/types';
 import { getExperienceItem } from '@/app/api/actions/experience';
 
 interface ExperienceEditPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
         id: string;
-    };
+    }>;
 }
 
-export async function generateMetadata({
-    params: { locale },
-}: ExperienceEditPageProps) {
+export async function generateMetadata({ params }: ExperienceEditPageProps) {
+    const { locale } = await params;
+
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -29,9 +29,9 @@ export async function generateMetadata({
     };
 }
 
-const ExperienceEditPage = async ({
-    params: { locale, id },
-}: ExperienceEditPageProps) => {
+const ExperienceEditPage = async ({ params }: ExperienceEditPageProps) => {
+    const { locale, id } = await params;
+    
     setRequestLocale(locale);
 
     const { FormT, ExperienceFormT } = await getMessages();

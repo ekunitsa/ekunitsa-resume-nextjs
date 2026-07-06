@@ -1,6 +1,6 @@
 /* stylelint-disable property-no-vendor-prefix */
-@import "./abstract/all";
-@import "scss-reset/reset";
+@use "abstract/all" as *;
+@use "scss-reset/reset";
 
 html,
 body {
