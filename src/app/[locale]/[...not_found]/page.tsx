@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { Button } from '@/components/common/Button/Button';
@@ -16,7 +15,7 @@ interface NotFoundPageProps {
 
 export async function generateMetadata({ params }: NotFoundPageProps) {
     const { locale } = await params;
-    
+
     const t = await getTranslations({ locale, namespace: 'MetaDataT' });
 
     return {
@@ -30,7 +29,7 @@ const NotFoundPage = async ({ params }: NotFoundPageProps) => {
 
     setRequestLocale(locale);
 
-    const t = useTranslations('NotFoundT');
+    const t = await getTranslations('NotFoundT');
 
     return (
         <>

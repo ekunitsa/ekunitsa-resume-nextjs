@@ -1,5 +1,9 @@
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import {
+    getMessages,
+    getTranslations,
+    setRequestLocale,
+} from 'next-intl/server';
 
 import { LocaleSwitcher } from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 import { About } from '@/components/pages/home/About/About';
@@ -34,10 +38,10 @@ export const revalidate = 0;
 
 const HomePage = async ({ params }: HomePageProps) => {
     const { locale } = await params;
-    
+
     setRequestLocale(locale);
 
-    const { LocaleSwitcherT } = useMessages();
+    const { LocaleSwitcherT } = await getMessages();
 
     return (
         <div className={styles.grid}>

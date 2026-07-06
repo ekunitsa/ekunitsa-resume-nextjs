@@ -4,9 +4,9 @@ import createIntlMiddleware from 'next-intl/middleware';
 
 import { routing } from './configs/i18n/routing';
 
-export const middleware = (request: NextRequest) => {
+export async function proxy(request: NextRequest) {
     return adminAuthMiddleware(request);
-};
+}
 
 const adminAuthMiddleware = async (request: NextRequest) => {
     const url = request.nextUrl.pathname;

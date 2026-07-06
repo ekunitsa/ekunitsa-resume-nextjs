@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import NextAuth from 'next-auth';
-import { NextAuthHandlerParams } from 'next-auth/core';
+import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { prisma } from '@/lib/prisma';
@@ -40,6 +40,6 @@ const handlerAuth = NextAuth({
         signIn: '/admin',
     },
     secret: process.env.NEXTAUTH_SECRET,
-}) as NextAuthHandlerParams;
+}) as NextAuthOptions;
 
 export { handlerAuth as GET, handlerAuth as POST };

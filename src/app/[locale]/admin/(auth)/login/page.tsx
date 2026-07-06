@@ -1,5 +1,9 @@
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import {
+    getMessages,
+    getTranslations,
+    setRequestLocale,
+} from 'next-intl/server';
 
 import { Login } from '@/components/admin/Login/Login';
 
@@ -26,10 +30,10 @@ export async function generateMetadata({ params }: LoginPageProps) {
 
 const LoginPage = async ({ params }: LoginPageProps) => {
     const { locale } = await params;
-    
+
     setRequestLocale(locale);
 
-    const { LoginT, FormT } = useMessages();
+    const { LoginT, FormT } = await getMessages();
 
     return (
         <div className={styles.wrapper}>
