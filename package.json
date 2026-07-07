@@ -48,11 +48,11 @@
         "typescript": "^6"
     },
     "lint-staged": {
-        "src/**/*.{js,jsx,ts,tsx}": [
-            "biome check ."
+        "*.{js,jsx,ts,tsx}": [
+            "biome check --no-errors-on-unmatched"
         ],
-        "src/**/*.{css,scss}": [
-            "stylelint \"./src/**/*.scss\""
+        "*.{css,scss}": [
+            "stylelint --allow-empty-input"
         ]
     }
 }
