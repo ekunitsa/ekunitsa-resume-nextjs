@@ -1,14 +1,10 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-
+import { getExperienceList } from '@/app/api/actions/experience';
 import { Box } from '@/components/common/Box/Box';
-
-import { ExperienceDataI } from '@/types/types';
-
-import { ExperienceItem } from './ExperienceItem/ExperienceItem';
+import type { ExperienceDataI } from '@/types/types';
 
 import styles from './Experience.module.scss';
-
-import { getExperienceList } from '@/app/api/actions/experience';
+import { ExperienceItem } from './ExperienceItem/ExperienceItem';
 
 export const Experience = async () => {
     const t = await getTranslations('ExperienceT');
@@ -17,7 +13,13 @@ export const Experience = async () => {
     const data = await getExperienceList(locale);
 
     return (
-        <Box corners={['topLeft']} fullHeight title={t('title')}>
+        <Box
+            corners={[
+                'topLeft',
+            ]}
+            fullHeight
+            title={t('title')}
+        >
             {data && data.length > 0 && (
                 <div className={styles.list}>
                     {data.map((item) => (

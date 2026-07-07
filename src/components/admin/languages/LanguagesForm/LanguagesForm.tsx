@@ -1,22 +1,18 @@
 'use client';
 
-import { useEffect } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { AiOutlineDelete } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-
+import { useEffect } from 'react';
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { deleteLanguage, postPatchLanguage } from '@/app/api/actions/languages';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
 
+import type { LanguageDataI } from '@/types/types';
 import { positiveNumberPattern } from '@/utils/patterns';
-
-import { LanguageDataI } from '@/types/types';
-
 import styles from './LanguagesForm.module.scss';
-
-import { deleteLanguage, postPatchLanguage } from '@/app/api/actions/languages';
 
 interface LanguagesFormProps {
     data?: LanguageDataI | null;
@@ -49,7 +45,7 @@ export const LanguagesForm = ({ data }: LanguagesFormProps) => {
         const { label, level, position } = formData;
 
         const response = await postPatchLanguage({
-            id: data && data.id ? data.id : 0,
+            id: data?.id ? data.id : 0,
             language: locale,
             label,
             level,
@@ -103,7 +99,7 @@ export const LanguagesForm = ({ data }: LanguagesFormProps) => {
                 <Input
                     label={`${t('label')}*`}
                     type="text"
-                    defaultValue={data && data.label ? data.label : ''}
+                    defaultValue={data?.label ? data.label : ''}
                     errorMessage={errors?.label?.message as string}
                     setValue={setValue}
                     {...register('label', {
@@ -114,7 +110,7 @@ export const LanguagesForm = ({ data }: LanguagesFormProps) => {
                 <Input
                     label={`${t('level')}*`}
                     type="text"
-                    defaultValue={data && data.level ? data.level : ''}
+                    defaultValue={data?.level ? data.level : ''}
                     errorMessage={errors?.level?.message as string}
                     setValue={setValue}
                     {...register('level', {
@@ -126,7 +122,7 @@ export const LanguagesForm = ({ data }: LanguagesFormProps) => {
                     label={`${t('position')}*`}
                     type="text"
                     defaultValue={
-                        data && data.position ? data.position.toString() : ''
+                        data?.position ? data.position.toString() : ''
                     }
                     errorMessage={errors?.position?.message as string}
                     setValue={setValue}

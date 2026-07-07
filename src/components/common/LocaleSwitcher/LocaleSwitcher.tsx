@@ -1,8 +1,8 @@
 'use client';
 
-import { useTransition } from 'react';
 import classNames from 'classnames';
 import { useLocale, useTranslations } from 'next-intl';
+import { useTransition } from 'react';
 
 import { routing, usePathname, useRouter } from '@/configs/i18n/routing';
 
@@ -21,7 +21,9 @@ export const LocaleSwitcher = () => {
 
         if (value !== currentLocale) {
             startTransition(() => {
-                router.replace(pathname, { locale: value });
+                router.replace(pathname, {
+                    locale: value,
+                });
             });
         }
     }
@@ -33,12 +35,15 @@ export const LocaleSwitcher = () => {
                     key={item}
                     onClick={onSelectChange}
                     value={item}
+                    type="button"
                     disabled={isPending}
                     className={classNames(styles.button, {
                         [styles.active]: item === currentLocale,
                     })}
                 >
-                    {t('locale', { locale: item })}
+                    {t('locale', {
+                        locale: item,
+                    })}
                 </button>
             ))}
         </div>

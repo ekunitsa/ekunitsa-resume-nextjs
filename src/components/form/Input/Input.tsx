@@ -1,14 +1,13 @@
 'use client';
 
+import classNames from 'classnames';
 import {
-    ChangeEvent,
+    type ChangeEvent,
     forwardRef,
-    InputHTMLAttributes,
-    Ref,
+    type InputHTMLAttributes,
     useState,
 } from 'react';
-import { FieldValues, UseFormSetValue } from 'react-hook-form';
-import classNames from 'classnames';
+import type { FieldValues, UseFormSetValue } from 'react-hook-form';
 
 import styles from './Input.module.scss';
 
@@ -30,7 +29,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             label,
             value = '',
             id = name,
-            autoFocus = false,
             errorMessage = '',
             defaultValue = '',
             setValue,
@@ -63,12 +61,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
                 <input
                     {...props}
-                    ref={ref as Ref<HTMLInputElement> | undefined}
+                    ref={ref}
                     id={id}
                     name={name}
                     value={value || inputValue}
                     type={type}
-                    autoFocus={autoFocus}
                     onChange={handleChange}
                     className={styles.input}
                 />

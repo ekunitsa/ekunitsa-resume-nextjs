@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { AboutItemI } from '@/types/types';
+import type { AboutItemI } from '@/types/types';
 
 import styles from './AboutItem.module.scss';
 

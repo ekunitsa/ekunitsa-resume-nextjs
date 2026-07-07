@@ -1,10 +1,9 @@
+import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
-
-import { Locale } from '@/types/types';
-
+import type { Locale } from '@/types/types';
 import styles from './page.module.scss';
 
 interface NotFoundPageProps {
@@ -13,10 +12,15 @@ interface NotFoundPageProps {
     }>;
 }
 
-export async function generateMetadata({ params }: NotFoundPageProps) {
+export async function generateMetadata({
+    params,
+}: NotFoundPageProps): Promise<Metadata> {
     const { locale } = await params;
 
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),
@@ -37,7 +41,9 @@ const NotFoundPage = async ({ params }: NotFoundPageProps) => {
             <div className={styles.description}>{t('description')}</div>
 
             <div className={styles.buttons}>
-                <Button href="/">{t('toHome')}</Button>
+                <NextIntlClientProvider>
+                    <Button href="/">{t('toHome')}</Button>
+                </NextIntlClientProvider>
             </div>
         </>
     );

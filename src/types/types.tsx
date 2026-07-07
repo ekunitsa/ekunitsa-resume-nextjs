@@ -66,6 +66,8 @@ export interface LanguageDataI {
     position: number;
 }
 
+export interface LanguageDataListI extends Omit<LanguageDataI, 'language'> {}
+
 export interface AboutDataI {
     id: number;
     language: string;
@@ -73,6 +75,8 @@ export interface AboutDataI {
     bold: boolean;
     position: number;
 }
+
+export interface AboutDataListI extends Omit<AboutDataI, 'language'> {}
 
 export interface ExperienceDataI {
     id: number;
@@ -87,3 +91,6 @@ export interface ExperienceDataI {
     description: string;
     technologies: string;
 }
+
+export interface ExperienceDataListI
+    extends Omit<ExperienceDataI, 'language'> {}

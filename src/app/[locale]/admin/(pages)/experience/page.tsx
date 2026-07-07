@@ -1,13 +1,12 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
 import { ExperienceList } from '@/components/admin/experience/ExperienceList/ExperienceList';
-
-import { Locale } from '@/types/types';
+import type { Locale } from '@/types/types';
 
 interface ExperiencePageProps {
     params: Promise<{
@@ -15,10 +14,15 @@ interface ExperiencePageProps {
     }>;
 }
 
-export async function generateMetadata({ params }: ExperiencePageProps) {
+export async function generateMetadata({
+    params,
+}: ExperiencePageProps): Promise<Metadata> {
     const { locale } = await params;
 
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),

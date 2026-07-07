@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { DashboardI } from '@/types/types';
+import type { DashboardI } from '@/types/types';
 
 export async function postPatchDashboard(data: DashboardI) {
     try {
@@ -20,7 +20,9 @@ export async function postPatchDashboard(data: DashboardI) {
         } = data;
 
         await prisma.dashboard.upsert({
-            where: { id: 1 },
+            where: {
+                id: 1,
+            },
             update: {
                 openToWork,
                 startWorkDate,
@@ -47,17 +49,23 @@ export async function postPatchDashboard(data: DashboardI) {
             },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }
 
-export async function getDashboard() {
+export async function getDashboard(): Promise<DashboardI | null> {
     const response = await prisma.dashboard.findUnique({
-        where: { id: 1 },
+        where: {
+            id: 1,
+        },
         select: {
             openToWork: true,
             startWorkDate: true,

@@ -1,16 +1,11 @@
 import dayjs from 'dayjs';
 import { getLocale, getTranslations } from 'next-intl/server';
-
-import { Box } from '@/components/common/Box/Box';
-
-import { AboutItemI } from '@/types/types';
-
-import { AboutItem } from './AboutItem/AboutItem';
-
-import styles from './About.module.scss';
-
 import { getAboutList } from '@/app/api/actions/about';
 import { getDashboard } from '@/app/api/actions/dashboard';
+import { Box } from '@/components/common/Box/Box';
+import type { AboutItemI } from '@/types/types';
+import styles from './About.module.scss';
+import { AboutItem } from './AboutItem/AboutItem';
 
 export const About = async () => {
     const t = await getTranslations('AboutT');
@@ -30,7 +25,13 @@ export const About = async () => {
     }
 
     return (
-        <Box corners={['topRight']} fullHeight title={t('title')}>
+        <Box
+            corners={[
+                'topRight',
+            ]}
+            fullHeight
+            title={t('title')}
+        >
             {data && data.length > 0 && (
                 <div className={styles.list}>
                     <ul className={styles.ul}>

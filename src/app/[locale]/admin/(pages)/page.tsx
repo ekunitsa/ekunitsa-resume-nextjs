@@ -1,15 +1,13 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
-import { DashboardForm } from '@/components/admin/DashboardForm/DashboardForm';
-
-import { Locale } from '@/types/types';
-
 import { getDashboard } from '@/app/api/actions/dashboard';
+import { DashboardForm } from '@/components/admin/DashboardForm/DashboardForm';
+import type { Locale } from '@/types/types';
 
 interface DashboardPageProps {
     params: Promise<{
@@ -17,9 +15,14 @@ interface DashboardPageProps {
     }>;
 }
 
-export async function generateMetadata({ params }: DashboardPageProps) {
+export async function generateMetadata({
+    params,
+}: DashboardPageProps): Promise<Metadata> {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),

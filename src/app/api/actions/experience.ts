@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { ExperienceDataI } from '@/types/types';
+import type { ExperienceDataI, ExperienceDataListI } from '@/types/types';
 
 export async function postPatchExperience(data: ExperienceDataI) {
     try {
@@ -24,11 +24,15 @@ export async function postPatchExperience(data: ExperienceDataI) {
             console.error(
                 'postPatchExperience: Invalid data object, !language',
             );
-            return { ok: false };
+            return {
+                ok: false,
+            };
         }
 
         await prisma.experience.upsert({
-            where: { id },
+            where: {
+                id,
+            },
             update: {
                 position,
                 companyName,
@@ -54,17 +58,25 @@ export async function postPatchExperience(data: ExperienceDataI) {
             },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }
 
-export async function getExperienceList(language: string) {
+export async function getExperienceList(
+    language: string,
+): Promise<ExperienceDataListI[] | null> {
     const response = await prisma.experience.findMany({
-        where: { language },
+        where: {
+            language,
+        },
         orderBy: {
             position: 'asc',
         },
@@ -92,7 +104,9 @@ export async function getExperienceList(language: string) {
 
 export async function getExperienceItem(id: number) {
     const response = await prisma.experience.findUnique({
-        where: { id },
+        where: {
+            id,
+        },
         select: {
             id: true,
             language: true,
@@ -118,13 +132,19 @@ export async function getExperienceItem(id: number) {
 export async function deleteExperienceItem(id: number) {
     try {
         await prisma.experience.delete({
-            where: { id },
+            where: {
+                id,
+            },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }

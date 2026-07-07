@@ -1,7 +1,0 @@
-.eslintignore
-.husky
-.next
-.prettierignore
-.stylelintignore
-coverage
-node_modules

@@ -1,4 +1,7 @@
-type EnMessages = typeof import('./src/locales/en.json');
-type UkMessages = typeof import('./src/locales/uk.json');
+import type messages from './src/locales/en.json';
 
-declare interface IntlMessages extends UkMessages, EnMessages {}
+declare module 'next-intl' {
+    interface AppConfig {
+        Messages: typeof messages;
+    }
+}

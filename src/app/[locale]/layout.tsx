@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
 import { getServerSession } from 'next-auth';
 import { NextIntlClientProvider } from 'next-intl';
@@ -14,7 +14,9 @@ import styles from './layout.module.scss';
 
 interface LayoutProps {
     children: React.ReactNode;
-    params: Promise<{ locale: string }>;
+    params: Promise<{
+        locale: string;
+    }>;
 }
 
 export const viewport: Viewport = {
@@ -25,25 +27,38 @@ export const viewport: Viewport = {
 };
 
 const montserrat = Montserrat({
-    weight: ['400', '500', '600', '700'],
-    style: ['normal', 'italic'],
-    subsets: ['latin', 'cyrillic-ext'],
+    weight: [
+        '400',
+        '500',
+        '600',
+        '700',
+    ],
+    style: [
+        'normal',
+        'italic',
+    ],
+    subsets: [
+        'latin',
+        'cyrillic-ext',
+    ],
     display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
     icons: {
         icon: '/static/img/favicon.ico',
     },
 };
 
 export function generateStaticParams() {
-    return routing.locales.map((locale) => ({ locale }));
+    return routing.locales.map((locale) => ({
+        locale,
+    }));
 }
 
 export default async function LocaleLayout({ children, params }: LayoutProps) {
     const { locale } = await params;
-    
+
     const { LocaleSwitcherT } = await getMessages();
     const session = await getServerSession();
 
@@ -59,7 +74,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
                         <AdminBar />
                     </NextIntlClientProvider>
                 )}
-
                 <div
                     className={classNames(styles.wrapper, {
                         [styles.logged]: !!session,

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import createIntlMiddleware from 'next-intl/middleware';
 
@@ -37,5 +37,7 @@ const intlMiddleware = (request: NextRequest) => {
 };
 
 export const config = {
-    matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+    matcher: [
+        '/((?!api|_next|_vercel|.*\\..*).*)',
+    ],
 };

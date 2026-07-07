@@ -1,4 +1,4 @@
-import { LanguagesItemI } from '@/types/types';
+import type { LanguagesItemI } from '@/types/types';
 
 import styles from './LanguagesItem.module.scss';
 

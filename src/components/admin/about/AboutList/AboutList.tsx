@@ -1,13 +1,10 @@
-import { AiOutlineEdit } from 'react-icons/ai';
 import { getLocale, getTranslations } from 'next-intl/server';
-
+import { AiOutlineEdit } from 'react-icons/ai';
+import { getAboutList } from '@/app/api/actions/about';
 import { Button } from '@/components/common/Button/Button';
 import { Table } from '@/components/common/Table/Table';
 import { Title } from '@/components/common/Title/Title';
-
 import styles from './AboutList.module.scss';
-
-import { getAboutList } from '@/app/api/actions/about';
 
 export const AboutList = async () => {
     const t = await getTranslations('AboutListT');

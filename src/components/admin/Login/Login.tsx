@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
 
 import { Box } from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
@@ -49,10 +49,18 @@ export const Login = () => {
             router.replace('/admin');
             router.refresh(); // for update SSR components
         }
-    }, [isSubmitSuccessful]);
+    }, [
+        isSubmitSuccessful,
+    ]);
 
     return (
-        <Box corners={['bottomLeft', 'topRight']} className={styles.wrapper}>
+        <Box
+            corners={[
+                'bottomLeft',
+                'topRight',
+            ]}
+            className={styles.wrapper}
+        >
             <Title noMarginBottom>{t('title')}</Title>
 
             <form

@@ -1,17 +1,12 @@
+import { getLocale, getTranslations } from 'next-intl/server';
 import { CiLinkedin, CiMail, CiMap } from 'react-icons/ci';
 import { PiTelegramLogoThin } from 'react-icons/pi';
-import { getLocale, getTranslations } from 'next-intl/server';
-
-import { Box } from '@/components/common/Box/Box';
-
-import { ContactsItemI } from '@/types/types';
-
-import { ContactsItem } from './ContactsItem/ContactsItem';
-
-import styles from './Contacts.module.scss';
-
 import { getDashboard } from '@/app/api/actions/dashboard';
 import { getMainInformation } from '@/app/api/actions/mainInformation';
+import { Box } from '@/components/common/Box/Box';
+import type { ContactsItemI } from '@/types/types';
+import styles from './Contacts.module.scss';
+import { ContactsItem } from './ContactsItem/ContactsItem';
 
 export const Contacts = async () => {
     const t = await getTranslations('ContactsT');
@@ -51,7 +46,12 @@ export const Contacts = async () => {
     }
 
     return (
-        <Box corners={['topLeft']} title={t('title')}>
+        <Box
+            corners={[
+                'topLeft',
+            ]}
+            title={t('title')}
+        >
             <div className={styles.list}>
                 {data.map((item) => (
                     <ContactsItem

@@ -1,15 +1,13 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
-import { SkillsForm } from '@/components/admin/SkillsForm/SkillsForm';
-
-import { Locale } from '@/types/types';
-
 import { getSkills } from '@/app/api/actions/skills';
+import { SkillsForm } from '@/components/admin/SkillsForm/SkillsForm';
+import type { Locale } from '@/types/types';
 
 interface SkillsPageProps {
     params: Promise<{
@@ -17,10 +15,15 @@ interface SkillsPageProps {
     }>;
 }
 
-export async function generateMetadata({ params }: SkillsPageProps) {
+export async function generateMetadata({
+    params,
+}: SkillsPageProps): Promise<Metadata> {
     const { locale } = await params;
-    
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),

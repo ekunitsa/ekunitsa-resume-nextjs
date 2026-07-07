@@ -1,12 +1,10 @@
-import { CiBoxList, CiCalendar, CiClock2, CiDesktop } from 'react-icons/ci';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import { getLocale, getTranslations } from 'next-intl/server';
-
+import { CiBoxList, CiCalendar, CiClock2, CiDesktop } from 'react-icons/ci';
+import type { ExperienceDataI } from '@/types/types';
 import { capitalizeFirst } from '@/utils/utils';
-
-import { ExperienceDataI } from '@/types/types';
 
 import 'dayjs/locale/en';
 import 'dayjs/locale/uk';
@@ -43,8 +41,18 @@ export const ExperienceItem = async ({ data }: ExperienceItemProps) => {
 
         const diffParts = [];
 
-        if (diffYears > 0) diffParts.push(t('years', { years: diffYears }));
-        if (diffMonths > 0) diffParts.push(t('months', { months: diffMonths }));
+        if (diffYears > 0)
+            diffParts.push(
+                t('years', {
+                    years: diffYears,
+                }),
+            );
+        if (diffMonths > 0)
+            diffParts.push(
+                t('months', {
+                    months: diffMonths,
+                }),
+            );
 
         return diffParts.join(' ');
     };

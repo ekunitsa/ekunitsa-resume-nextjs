@@ -1,14 +1,12 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
 import { Login } from '@/components/admin/Login/Login';
-
-import { Locale } from '@/types/types';
-
+import type { Locale } from '@/types/types';
 import styles from './page.module.scss';
 
 interface LoginPageProps {
@@ -17,10 +15,15 @@ interface LoginPageProps {
     }>;
 }
 
-export async function generateMetadata({ params }: LoginPageProps) {
+export async function generateMetadata({
+    params,
+}: LoginPageProps): Promise<Metadata> {
     const { locale } = await params;
 
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),

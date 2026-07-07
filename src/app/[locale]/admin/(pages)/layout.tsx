@@ -22,7 +22,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             </NextIntlClientProvider>
 
             <Box
-                corners={['bottomLeft', 'topRight']}
+                corners={[
+                    'bottomLeft',
+                    'topRight',
+                ]}
                 className={styles.contentWrapper}
             >
                 {children}

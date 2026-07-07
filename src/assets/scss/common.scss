@@ -1,6 +1,6 @@
-/* stylelint-disable property-no-vendor-prefix */
-@use "abstract/all" as *;
+@use "abstract/variables/colors" as colors;
 @use "scss-reset/reset";
+@forward "abstract/all";
 
 html,
 body {
@@ -8,7 +8,7 @@ body {
 }
 
 body {
-    background-color: $color-light-white;
+    background-color: colors.$color-light-white;
 }
 
 .pointer-events-none {

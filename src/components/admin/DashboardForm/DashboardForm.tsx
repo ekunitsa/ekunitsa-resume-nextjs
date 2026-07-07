@@ -1,21 +1,17 @@
 'use client';
 
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
+import { postPatchDashboard } from '@/app/api/actions/dashboard';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Checkbox } from '@/components/form/Checkbox/Checkbox';
 import { Input } from '@/components/form/Input/Input';
 
+import type { DashboardI } from '@/types/types';
 import { datePattern, emailPattern, telegramPattern } from '@/utils/patterns';
-
-import { DashboardI } from '@/types/types';
-
 import styles from './DashboardForm.module.scss';
-
-import { postPatchDashboard } from '@/app/api/actions/dashboard';
 
 interface DashboardFormProps {
     data: DashboardI | null;
@@ -66,9 +62,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('startWorkDate')}
                     type="text"
-                    defaultValue={
-                        data && data.startWorkDate ? data.startWorkDate : ''
-                    }
+                    defaultValue={data?.startWorkDate ? data.startWorkDate : ''}
                     errorMessage={errors?.startWorkDate?.message as string}
                     setValue={setValue}
                     {...register('startWorkDate', {
@@ -82,9 +76,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('birthdayDate')}
                     type="text"
-                    defaultValue={
-                        data && data.birthdayDate ? data.birthdayDate : ''
-                    }
+                    defaultValue={data?.birthdayDate ? data.birthdayDate : ''}
                     errorMessage={errors?.birthdayDate?.message as string}
                     setValue={setValue}
                     {...register('birthdayDate', {
@@ -106,7 +98,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('linkedin')}
                     type="text"
-                    defaultValue={data && data.linkedin ? data.linkedin : ''}
+                    defaultValue={data?.linkedin ? data.linkedin : ''}
                     errorMessage={errors?.linkedin?.message as string}
                     setValue={setValue}
                     {...register('linkedin')}
@@ -115,7 +107,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('email')}
                     type="email"
-                    defaultValue={data && data.email ? data.email : ''}
+                    defaultValue={data?.email ? data.email : ''}
                     errorMessage={errors?.email?.message as string}
                     setValue={setValue}
                     {...register('email', {
@@ -129,7 +121,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('telegram')}
                     type="text"
-                    defaultValue={data && data.telegram ? data.telegram : ''}
+                    defaultValue={data?.telegram ? data.telegram : ''}
                     errorMessage={errors?.telegram?.message as string}
                     setValue={setValue}
                     {...register('telegram', {
@@ -145,7 +137,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('codewars')}
                     type="text"
-                    defaultValue={data && data.codewars ? data.codewars : ''}
+                    defaultValue={data?.codewars ? data.codewars : ''}
                     errorMessage={errors?.codewars?.message as string}
                     setValue={setValue}
                     {...register('codewars')}
@@ -154,9 +146,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('stackoverflow')}
                     type="text"
-                    defaultValue={
-                        data && data.stackoverflow ? data.stackoverflow : ''
-                    }
+                    defaultValue={data?.stackoverflow ? data.stackoverflow : ''}
                     errorMessage={errors?.stackoverflow?.message as string}
                     setValue={setValue}
                     {...register('stackoverflow')}
@@ -165,7 +155,7 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                 <Input
                     label={t('github')}
                     type="text"
-                    defaultValue={data && data.github ? data.github : ''}
+                    defaultValue={data?.github ? data.github : ''}
                     errorMessage={errors?.github?.message as string}
                     setValue={setValue}
                     {...register('github')}

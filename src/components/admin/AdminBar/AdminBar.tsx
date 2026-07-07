@@ -1,12 +1,9 @@
 'use client';
 
-import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
 import { signOut } from 'next-auth/react';
-
+import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
 import { LocaleSwitcher } from '@/components/common/LocaleSwitcher/LocaleSwitcher';
-
 import { Link } from '@/configs/i18n/routing';
-
 import styles from './AdminBar.module.scss';
 
 export const AdminBar = () => {
@@ -24,6 +21,7 @@ export const AdminBar = () => {
                 <div className={styles.buttons}>
                     <LocaleSwitcher />
                     <button
+                        type="button"
                         className={styles.buttonLink}
                         onClick={() => signOut()}
                     >
