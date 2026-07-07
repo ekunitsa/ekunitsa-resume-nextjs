@@ -1,12 +1,8 @@
 import { getTranslations } from 'next-intl/server';
-
-import { TopInfoLinksItemI } from '@/types/types';
-
-import { TopInfoLinksItem } from '../TopInfoLinksItem/TopInfoLinksItem';
-
-import styles from './TopInfoLinks.module.scss';
-
 import { getDashboard } from '@/app/api/actions/dashboard';
+import type { TopInfoLinksItemI } from '@/types/types';
+import { TopInfoLinksItem } from '../TopInfoLinksItem/TopInfoLinksItem';
+import styles from './TopInfoLinks.module.scss';
 
 export const TopInfoLinks = async () => {
     const t = await getTranslations('TopInfoLinksT');

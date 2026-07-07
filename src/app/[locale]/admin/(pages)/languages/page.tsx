@@ -1,24 +1,28 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
 import { LanguagesList } from '@/components/admin/languages/LanguagesList/LanguagesList';
-
-import { Locale } from '@/types/types';
+import type { Locale } from '@/types/types';
 
 interface LanguagesPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
 export async function generateMetadata({
-    params: { locale },
-}: LanguagesPageProps) {
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    params,
+}: LanguagesPageProps): Promise<Metadata> {
+    const { locale } = await params;
+
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),
@@ -26,7 +30,9 @@ export async function generateMetadata({
     };
 }
 
-const LanguagesPage = async ({ params: { locale } }: LanguagesPageProps) => {
+const LanguagesPage = async ({ params }: LanguagesPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { FormT, LanguagesListT } = await getMessages();

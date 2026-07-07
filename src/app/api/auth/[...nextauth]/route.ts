@@ -1,29 +1,35 @@
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import bcrypt from 'bcrypt';
+import type { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth';
-import { NextAuthHandlerParams } from 'next-auth/core';
 import CredentialsProvider from 'next-auth/providers/credentials';
-
 import { prisma } from '@/lib/prisma';
 
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
-
-const handlerAuth = NextAuth({
+export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         CredentialsProvider({
             credentials: {
-                email: { label: 'Email', type: 'text' },
-                password: { label: 'Password', type: 'password' },
+                email: {
+                    label: 'Email',
+                    type: 'text',
+                },
+                password: {
+                    label: 'Password',
+                    type: 'password',
+                },
             },
             async authorize(credentials) {
                 const user = await prisma.user.findUnique({
-                    where: { email: credentials?.email || '' },
+                    where: {
+                        email: credentials?.email || '',
+                    },
                 });
 
-                if (!user || !user.password) return null;
+                if (!user?.password) return null;
 
                 const isPasswordValid = await bcrypt.compare(
-                    credentials!.password,
+                    credentials?.password ?? '',
                     user.password,
                 );
 
@@ -40,6 +46,8 @@ const handlerAuth = NextAuth({
         signIn: '/admin',
     },
     secret: process.env.NEXTAUTH_SECRET,
-}) as NextAuthHandlerParams;
+};
+
+const handlerAuth = NextAuth(authOptions);
 
 export { handlerAuth as GET, handlerAuth as POST };

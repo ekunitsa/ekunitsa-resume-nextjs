@@ -1,29 +1,47 @@
-/* stylelint-disable */
+@use "sass:list";
+@use "sass:map";
+@use "../variables/all" as *;
+
 @function breakpoint-next(
     $name,
     $breakpoints: $grid-breakpoints,
-    $breakpoint-names: map-keys($breakpoints)
+    $breakpoint-names: map.keys($breakpoints)
 ) {
-    $n: index($breakpoint-names, $name);
-    @return if(
-        $n !=null and $n < length($breakpoint-names),
-        nth($breakpoint-names, $n + 1),
-        null
-    );
+    $n: list.index($breakpoint-names, $name);
+
+    @if $n and $n < list.length($breakpoint-names) {
+        @return list.nth($breakpoint-names, $n + 1);
+    }
+
+    @return null;
 }
 
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-    $min: map-get($breakpoints, $name);
-    @return if($min !=0, $min, null);
+    $min: map.get($breakpoints, $name);
+
+    @if $min {
+        @return $min;
+    }
+
+    @return null;
 }
 
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
     $next: breakpoint-next($name, $breakpoints);
-    @return if($next, breakpoint-min($next, $breakpoints) - 0.02, null);
+
+    @if $next {
+        @return breakpoint-min($next, $breakpoints) - 0.02;
+    }
+
+    @return null;
 }
 
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-    @return if(breakpoint-min($name, $breakpoints) ==null, "", "-#{$name}");
+    @if not breakpoint-min($name, $breakpoints) {
+        @return "";
+    }
+
+    @return "-#{$name}";
 }
 
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
@@ -58,15 +76,15 @@
     $min: breakpoint-min($lower, $breakpoints);
     $max: breakpoint-max($upper, $breakpoints);
 
-    @if $min !=null and $max !=null {
+    @if $min and $max {
         @media (min-width: $min) and (max-width: $max) {
             @content;
         }
-    } @else if $max ==null {
+    } @else if not $max {
         @include media-breakpoint-up($lower, $breakpoints) {
             @content;
         }
-    } @else if $min ==null {
+    } @else if not $min {
         @include media-breakpoint-down($upper, $breakpoints) {
             @content;
         }
@@ -77,18 +95,17 @@
     $min: breakpoint-min($name, $breakpoints);
     $max: breakpoint-max($name, $breakpoints);
 
-    @if $min !=null and $max !=null {
+    @if $min and $max {
         @media (min-width: $min) and (max-width: $max) {
             @content;
         }
-    } @else if $max ==null {
+    } @else if not $max {
         @include media-breakpoint-up($name, $breakpoints) {
             @content;
         }
-    } @else if $min ==null {
+    } @else if not $min {
         @include media-breakpoint-down($name, $breakpoints) {
             @content;
         }
     }
 }
-/* stylelint-enable */

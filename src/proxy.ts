@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import createIntlMiddleware from 'next-intl/middleware';
 
 import { routing } from './configs/i18n/routing';
 
-export const middleware = (request: NextRequest) => {
+export async function proxy(request: NextRequest) {
     return adminAuthMiddleware(request);
-};
+}
 
 const adminAuthMiddleware = async (request: NextRequest) => {
     const url = request.nextUrl.pathname;
@@ -37,5 +37,7 @@ const intlMiddleware = (request: NextRequest) => {
 };
 
 export const config = {
-    matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+    matcher: [
+        '/((?!api|_next|_vercel|.*\\..*).*)',
+    ],
 };

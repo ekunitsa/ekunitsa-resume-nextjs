@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { SkillsInputI } from '@/types/types';
+import type { SkillsInputI } from '@/types/types';
 
 export async function postPatchSkills(data: SkillsInputI) {
     try {
@@ -10,11 +10,15 @@ export async function postPatchSkills(data: SkillsInputI) {
 
         if (!language || !Array.isArray(primary) || !Array.isArray(secondary)) {
             console.error('postPatchSkills: Invalid data object');
-            return { ok: false };
+            return {
+                ok: false,
+            };
         }
 
         await prisma.skills.upsert({
-            where: { language },
+            where: {
+                language,
+            },
             update: {
                 primary,
                 secondary,
@@ -26,17 +30,25 @@ export async function postPatchSkills(data: SkillsInputI) {
             },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }
 
-export async function getSkills(language: string) {
+export async function getSkills(
+    language: string,
+): Promise<SkillsInputI | null> {
     const response = await prisma.skills.findUnique({
-        where: { language },
+        where: {
+            language,
+        },
         select: {
             language: true,
             primary: true,

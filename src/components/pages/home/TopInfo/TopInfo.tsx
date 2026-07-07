@@ -1,13 +1,11 @@
 import dayjs from 'dayjs';
 import { getLocale, getTranslations } from 'next-intl/server';
-
-import { TopInfoLinks } from './TopInfoLinks/TopInfoLinks';
-import { TopInfoOpenToWork } from './TopInfoOpenToWork/TopInfoOpenToWork';
-
-import styles from './TopInfo.module.scss';
-
 import { getDashboard } from '@/app/api/actions/dashboard';
 import { getMainInformation } from '@/app/api/actions/mainInformation';
+
+import styles from './TopInfo.module.scss';
+import { TopInfoLinks } from './TopInfoLinks/TopInfoLinks';
+import { TopInfoOpenToWork } from './TopInfoOpenToWork/TopInfoOpenToWork';
 
 export const TopInfo = async () => {
     const t = await getTranslations('TopInfoT');

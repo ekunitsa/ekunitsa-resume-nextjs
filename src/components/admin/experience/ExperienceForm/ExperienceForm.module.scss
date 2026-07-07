@@ -1,4 +1,4 @@
-@import "@/assets/scss/abstract/_all";
+@use "assets/scss/abstract/all" as *;
 
 .header {
     display: flex;
@@ -6,6 +6,9 @@
     justify-content: space-between;
     align-items: flex-start;
 }
+
+
+
 
 .form {
     display: flex;

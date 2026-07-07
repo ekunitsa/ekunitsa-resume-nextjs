@@ -1,24 +1,28 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
 import { ExperienceForm } from '@/components/admin/experience/ExperienceForm/ExperienceForm';
-
-import { Locale } from '@/types/types';
+import type { Locale } from '@/types/types';
 
 interface ExperienceAddPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
 export async function generateMetadata({
-    params: { locale },
-}: ExperienceAddPageProps) {
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    params,
+}: ExperienceAddPageProps): Promise<Metadata> {
+    const { locale } = await params;
+
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),
@@ -26,9 +30,9 @@ export async function generateMetadata({
     };
 }
 
-const ExperienceAddPage = async ({
-    params: { locale },
-}: ExperienceAddPageProps) => {
+const ExperienceAddPage = async ({ params }: ExperienceAddPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { FormT, ExperienceFormT } = await getMessages();

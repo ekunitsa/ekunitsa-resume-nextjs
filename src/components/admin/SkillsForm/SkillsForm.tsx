@@ -1,18 +1,14 @@
 'use client';
 
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
+import { postPatchSkills } from '@/app/api/actions/skills';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Textarea } from '@/components/form/Textarea/Textarea';
-
-import { SkillsInputI } from '@/types/types';
-
+import type { SkillsInputI } from '@/types/types';
 import styles from './SkillsForm.module.scss';
-
-import { postPatchSkills } from '@/app/api/actions/skills';
 
 interface SkillsFormProps {
     data: SkillsInputI | null;
@@ -69,7 +65,7 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                 <Textarea
                     label={`${t('primary')}*`}
                     defaultValue={
-                        data && data.primary && data.primary.length > 0
+                        data?.primary && data.primary.length > 0
                             ? data.primary.join(',')
                             : ''
                     }
@@ -83,7 +79,7 @@ export const SkillsForm = ({ data }: SkillsFormProps) => {
                 <Textarea
                     label={`${t('secondary')}*`}
                     defaultValue={
-                        data && data.secondary && data.secondary.length > 0
+                        data?.secondary && data.secondary.length > 0
                             ? data.secondary.join(',')
                             : ''
                     }

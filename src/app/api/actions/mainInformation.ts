@@ -2,14 +2,16 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { MainInformationI } from '@/types/types';
+import type { MainInformationI } from '@/types/types';
 
 export async function postPatchMainInformation(data: MainInformationI) {
     try {
         const { language, name, role, place } = data;
 
         await prisma.mainInformation.upsert({
-            where: { language },
+            where: {
+                language,
+            },
             update: {
                 name,
                 role,
@@ -23,17 +25,25 @@ export async function postPatchMainInformation(data: MainInformationI) {
             },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }
 
-export async function getMainInformation(language: string) {
+export async function getMainInformation(
+    language: string,
+): Promise<MainInformationI | null> {
     const response = await prisma.mainInformation.findUnique({
-        where: { language },
+        where: {
+            language,
+        },
         select: {
             language: true,
             name: true,

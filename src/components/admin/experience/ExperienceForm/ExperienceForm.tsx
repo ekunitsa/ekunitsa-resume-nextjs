@@ -1,27 +1,23 @@
 'use client';
 
-import { useEffect } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { AiOutlineDelete } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-
+import { useEffect } from 'react';
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
+import { AiOutlineDelete } from 'react-icons/ai';
+import {
+    deleteExperienceItem,
+    postPatchExperience,
+} from '@/app/api/actions/experience';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Checkbox } from '@/components/form/Checkbox/Checkbox';
 import { Input } from '@/components/form/Input/Input';
 import { Textarea } from '@/components/form/Textarea/Textarea';
 
+import type { ExperienceDataI } from '@/types/types';
 import { datePattern, positiveNumberPattern } from '@/utils/patterns';
-
-import { ExperienceDataI } from '@/types/types';
-
 import styles from './ExperienceForm.module.scss';
-
-import {
-    deleteExperienceItem,
-    postPatchExperience,
-} from '@/app/api/actions/experience';
 
 interface ExperienceFormProps {
     data?: ExperienceDataI | null;
@@ -64,7 +60,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
         } = formData;
 
         const response = await postPatchExperience({
-            id: data && data.id ? data.id : 0,
+            id: data?.id ? data.id : 0,
             language: locale,
             companyName,
             role,
@@ -124,9 +120,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                 <Input
                     label={`${t('companyName')}*`}
                     type="text"
-                    defaultValue={
-                        data && data.companyName ? data.companyName : ''
-                    }
+                    defaultValue={data?.companyName ? data.companyName : ''}
                     errorMessage={errors?.companyName?.message as string}
                     setValue={setValue}
                     {...register('companyName', {
@@ -137,7 +131,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                 <Input
                     label={`${t('role')}*`}
                     type="text"
-                    defaultValue={data && data.role ? data.role : ''}
+                    defaultValue={data?.role ? data.role : ''}
                     errorMessage={errors?.role?.message as string}
                     setValue={setValue}
                     {...register('role', {
@@ -148,7 +142,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                 <Input
                     label={`${t('workTime')}*`}
                     type="text"
-                    defaultValue={data && data.workTime ? data.workTime : ''}
+                    defaultValue={data?.workTime ? data.workTime : ''}
                     errorMessage={errors?.workTime?.message as string}
                     setValue={setValue}
                     {...register('workTime', {
@@ -159,9 +153,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                 <Input
                     label={`${t('workDateStart')}*`}
                     type="text"
-                    defaultValue={
-                        data && data.workDateStart ? data.workDateStart : ''
-                    }
+                    defaultValue={data?.workDateStart ? data.workDateStart : ''}
                     errorMessage={errors?.workDateStart?.message as string}
                     setValue={setValue}
                     {...register('workDateStart', {
@@ -176,9 +168,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                 <Input
                     label={t('workDateEnd')}
                     type="text"
-                    defaultValue={
-                        data && data.workDateEnd ? data.workDateEnd : ''
-                    }
+                    defaultValue={data?.workDateEnd ? data.workDateEnd : ''}
                     errorMessage={errors?.workDateEnd?.message as string}
                     setValue={setValue}
                     {...register('workDateEnd', {
@@ -197,9 +187,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
 
                 <Textarea
                     label={`${t('description')}*`}
-                    defaultValue={
-                        data && data.description ? data.description : ''
-                    }
+                    defaultValue={data?.description ? data.description : ''}
                     errorMessage={errors?.description?.message as string}
                     setValue={setValue}
                     {...register('description', {
@@ -209,9 +197,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
 
                 <Textarea
                     label={`${t('technologies')}*`}
-                    defaultValue={
-                        data && data.technologies ? data.technologies : ''
-                    }
+                    defaultValue={data?.technologies ? data.technologies : ''}
                     errorMessage={errors?.technologies?.message as string}
                     setValue={setValue}
                     {...register('technologies', {
@@ -223,7 +209,7 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                     label={`${t('position')}*`}
                     type="text"
                     defaultValue={
-                        data && data.position ? data.position.toString() : ''
+                        data?.position ? data.position.toString() : ''
                     }
                     errorMessage={errors?.position?.message as string}
                     setValue={setValue}

@@ -1,12 +1,9 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-
+import { getSkills } from '@/app/api/actions/skills';
 import { Box } from '@/components/common/Box/Box';
 
-import SkillsItem from './SkillsItem/SkillsItem';
-
 import styles from './Skills.module.scss';
-
-import { getSkills } from '@/app/api/actions/skills';
+import SkillsItem from './SkillsItem/SkillsItem';
 
 export const Skills = async () => {
     const t = await getTranslations('SkillsT');
@@ -16,7 +13,13 @@ export const Skills = async () => {
 
     if (data?.primary || data?.secondary) {
         return (
-            <Box corners={['topRight', 'bottomLeft']} title={t('title')}>
+            <Box
+                corners={[
+                    'topRight',
+                    'bottomLeft',
+                ]}
+                title={t('title')}
+            >
                 <div className={styles.wrapper}>
                     {data?.primary && (
                         <div className={styles.section}>

@@ -1,13 +1,10 @@
-import { AiOutlineEdit } from 'react-icons/ai';
 import { getLocale, getTranslations } from 'next-intl/server';
-
+import { AiOutlineEdit } from 'react-icons/ai';
+import { getExperienceList } from '@/app/api/actions/experience';
 import { Button } from '@/components/common/Button/Button';
 import { Table } from '@/components/common/Table/Table';
 import { Title } from '@/components/common/Title/Title';
-
 import styles from './ExperienceList.module.scss';
-
-import { getExperienceList } from '@/app/api/actions/experience';
 
 export const ExperienceList = async () => {
     const t = await getTranslations('ExperienceListT');

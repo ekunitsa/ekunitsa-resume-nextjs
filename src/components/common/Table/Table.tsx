@@ -1,16 +1,14 @@
 'use client';
 
-import { TableHeaderI } from '@/types/types';
-
-import styles from './Table.module.scss';
-
 import {
-    ColumnDef,
+    type ColumnDef,
     createColumnHelper,
     flexRender,
     getCoreRowModel,
     useReactTable,
 } from '@tanstack/react-table';
+import type { TableHeaderI } from '@/types/types';
+import styles from './Table.module.scss';
 
 interface TableProps {
     data: unknown[];

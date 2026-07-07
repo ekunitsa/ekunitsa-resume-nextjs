@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-import { LanguageDataI } from '@/types/types';
+import type { LanguageDataI, LanguageDataListI } from '@/types/types';
 
 export async function postPatchLanguage(data: LanguageDataI) {
     try {
@@ -10,11 +10,15 @@ export async function postPatchLanguage(data: LanguageDataI) {
 
         if (!language) {
             console.error('postPatchLanguage: Invalid data object, !language');
-            return { ok: false };
+            return {
+                ok: false,
+            };
         }
 
         await prisma.languages.upsert({
-            where: { id },
+            where: {
+                id,
+            },
             update: {
                 position,
                 label,
@@ -28,17 +32,25 @@ export async function postPatchLanguage(data: LanguageDataI) {
             },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }
 
-export async function getLanguagesList(language: string) {
+export async function getLanguagesList(
+    language: string,
+): Promise<LanguageDataListI[] | null> {
     const response = await prisma.languages.findMany({
-        where: { language },
+        where: {
+            language,
+        },
         orderBy: {
             position: 'asc',
         },
@@ -60,7 +72,9 @@ export async function getLanguagesList(language: string) {
 
 export async function getLanguage(id: number) {
     const response = await prisma.languages.findUnique({
-        where: { id },
+        where: {
+            id,
+        },
         select: {
             id: true,
             language: true,
@@ -80,13 +94,19 @@ export async function getLanguage(id: number) {
 export async function deleteLanguage(id: number) {
     try {
         await prisma.languages.delete({
-            where: { id },
+            where: {
+                id,
+            },
         });
 
-        return { ok: true };
+        return {
+            ok: true,
+        };
     } catch (error) {
         console.error(error);
 
-        return { ok: false };
+        return {
+            ok: false,
+        };
     }
 }

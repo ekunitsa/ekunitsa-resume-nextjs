@@ -1,13 +1,13 @@
 'use client';
 
+import classNames from 'classnames';
 import {
-    ChangeEvent,
+    type ChangeEvent,
     forwardRef,
-    TextareaHTMLAttributes,
+    type TextareaHTMLAttributes,
     useState,
 } from 'react';
-import { FieldValues, UseFormSetValue } from 'react-hook-form';
-import classNames from 'classnames';
+import type { FieldValues, UseFormSetValue } from 'react-hook-form';
 
 import styles from './Textarea.module.scss';
 

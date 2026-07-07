@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { Link, usePathname } from '@/configs/i18n/routing';
 
-import { SidebarItemI } from '@/types/types';
+import type { SidebarItemI } from '@/types/types';
 
 import styles from './SidebarItem.module.scss';
 

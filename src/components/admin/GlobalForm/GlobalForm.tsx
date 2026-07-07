@@ -1,18 +1,14 @@
 'use client';
 
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-
+import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
+import { postPatchMainInformation } from '@/app/api/actions/mainInformation';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
-
-import { MainInformationI } from '@/types/types';
-
+import type { MainInformationI } from '@/types/types';
 import styles from './GlobalForm.module.scss';
-
-import { postPatchMainInformation } from '@/app/api/actions/mainInformation';
 
 interface GlobalFormProps {
     data: MainInformationI | null;
@@ -64,7 +60,7 @@ export const GlobalForm = ({ data }: GlobalFormProps) => {
                 <Input
                     label={`${t('name')}*`}
                     type="text"
-                    defaultValue={data && data.name ? data.name : ''}
+                    defaultValue={data?.name ? data.name : ''}
                     errorMessage={errors?.name?.message as string}
                     setValue={setValue}
                     {...register('name', {
@@ -75,7 +71,7 @@ export const GlobalForm = ({ data }: GlobalFormProps) => {
                 <Input
                     label={`${t('role')}*`}
                     type="text"
-                    defaultValue={data && data.role ? data.role : ''}
+                    defaultValue={data?.role ? data.role : ''}
                     errorMessage={errors?.role?.message as string}
                     setValue={setValue}
                     {...register('role', {
@@ -86,7 +82,7 @@ export const GlobalForm = ({ data }: GlobalFormProps) => {
                 <Input
                     label={`${t('place')}*`}
                     type="text"
-                    defaultValue={data && data.place ? data.place : ''}
+                    defaultValue={data?.place ? data.place : ''}
                     errorMessage={errors?.place?.message as string}
                     setValue={setValue}
                     {...register('place', {

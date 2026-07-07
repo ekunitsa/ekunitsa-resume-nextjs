@@ -1,26 +1,29 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import {
     getMessages,
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-
-import { GlobalForm } from '@/components/admin/GlobalForm/GlobalForm';
-
-import { Locale } from '@/types/types';
-
 import { getMainInformation } from '@/app/api/actions/mainInformation';
+import { GlobalForm } from '@/components/admin/GlobalForm/GlobalForm';
+import type { Locale } from '@/types/types';
 
 interface GlobalPageProps {
-    params: {
+    params: Promise<{
         locale: Locale;
-    };
+    }>;
 }
 
 export async function generateMetadata({
-    params: { locale },
-}: GlobalPageProps) {
-    const t = await getTranslations({ locale, namespace: 'MetaDataT' });
+    params,
+}: GlobalPageProps): Promise<Metadata> {
+    const { locale } = await params;
+
+    const t = await getTranslations({
+        locale,
+        namespace: 'MetaDataT',
+    });
 
     return {
         title: t('title'),
@@ -28,7 +31,9 @@ export async function generateMetadata({
     };
 }
 
-const GlobalPage = async ({ params: { locale } }: GlobalPageProps) => {
+const GlobalPage = async ({ params }: GlobalPageProps) => {
+    const { locale } = await params;
+
     setRequestLocale(locale);
 
     const { GlobalFormT, FormT } = await getMessages();
