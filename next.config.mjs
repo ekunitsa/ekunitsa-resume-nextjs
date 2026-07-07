@@ -5,6 +5,10 @@ const withNextIntl = createNextIntlPlugin('./src/configs/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    serverExternalPackages: [
+        '@prisma/client',
+        'pg',
+    ],
     sassOptions: {
         loadPaths: [
             path.join(process.cwd(), 'src'),
