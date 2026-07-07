@@ -16,7 +16,8 @@ If you want to deploy this locally, you will need to manually create an "adminis
 
 - `npm i`
 - Prepare the .env file following the example in .env.example
-- `npx prisma db push` - for preparing the database
+- `npx prisma generate` - for preparing the prisma
+- `npx prisma db push` - for push database scheme
 - `npm run dev`
 
 ### For build
