@@ -4,7 +4,7 @@ Main stack: TS | NEXT.JS v16 | NEXT-INTL | SCSS
 
 Code quality tools: BIOME | STYLELINT | HUSKY
 
-Node.js version - 26.4.0
+Node.js version - 24.18.0
 
 Result url - https://ekunitsa.com/
 
