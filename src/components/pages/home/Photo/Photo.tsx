@@ -14,7 +14,8 @@ export const Photo = async () => {
             height={538}
             className={styles.image}
             alt={mainInformation?.name || ''}
-            priority
+            fetchPriority="high"
+            loading="eager"
         />
     );
 };

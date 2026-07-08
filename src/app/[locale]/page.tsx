@@ -47,11 +47,11 @@ const HomePage = async ({ params }: HomePageProps) => {
     const { LocaleSwitcherT } = await getMessages();
 
     return (
-        <div className={styles.grid}>
+        <main className={styles.grid}>
             <div className={styles.photo}>
                 <Photo />
             </div>
-            <div className={styles.topInfo}>
+            <header className={styles.topInfo}>
                 <NextIntlClientProvider
                     messages={{
                         LocaleSwitcherT,
@@ -60,23 +60,23 @@ const HomePage = async ({ params }: HomePageProps) => {
                     <LocaleSwitcher />
                 </NextIntlClientProvider>
                 <TopInfo />
-            </div>
-            <div className={styles.contacts}>
+            </header>
+            <aside className={styles.contacts}>
                 <Contacts />
-            </div>
-            <div className={styles.about}>
+            </aside>
+            <section className={styles.about}>
                 <About />
-            </div>
-            <div className={styles.languages}>
+            </section>
+            <aside className={styles.languages}>
                 <Languages />
-            </div>
-            <div className={styles.experience}>
+            </aside>
+            <section className={styles.experience}>
                 <Experience />
-            </div>
-            <div className={styles.skills}>
+            </section>
+            <aside className={styles.skills}>
                 <Skills />
-            </div>
-        </div>
+            </aside>
+        </main>
     );
 };
 

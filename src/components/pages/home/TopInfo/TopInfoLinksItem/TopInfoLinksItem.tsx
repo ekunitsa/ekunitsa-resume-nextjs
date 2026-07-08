@@ -13,7 +13,7 @@ export const TopInfoLinksItem = ({ title, icon, link }: TopInfoLinksItemI) => {
                 rel="noreferrer"
                 target="_blank"
             >
-                <Image src={icon} width={20} height={20} alt={title} />
+                <Image src={icon} width={20} height={20} alt="" />
                 <span>{title}</span>
             </a>
         </div>
