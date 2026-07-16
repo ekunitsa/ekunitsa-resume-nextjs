@@ -6,7 +6,7 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 import { getExperienceItem } from '@/app/api/actions/experience';
-import { ExperienceForm } from '@/components/admin/experience/ExperienceForm/ExperienceForm';
+import { ExperienceForm } from '@/components/admin/ExperienceForm/ExperienceForm';
 import type { Locale } from '@/types/types';
 
 interface ExperienceEditPageProps {
@@ -37,7 +37,7 @@ const ExperienceEditPage = async ({ params }: ExperienceEditPageProps) => {
 
     setRequestLocale(locale);
 
-    const { FormT, ExperienceFormT } = await getMessages();
+    const { FormT, ExperienceFormT, ResponseStatusT } = await getMessages();
     const data = await getExperienceItem(Number(id));
 
     return (
@@ -45,6 +45,7 @@ const ExperienceEditPage = async ({ params }: ExperienceEditPageProps) => {
             messages={{
                 FormT,
                 ExperienceFormT,
+                ResponseStatusT,
             }}
         >
             <ExperienceForm data={data} />

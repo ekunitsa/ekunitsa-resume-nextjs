@@ -41,7 +41,8 @@
     "SkillsT": {
         "title": "Навички",
         "primary": "Основні",
-        "secondary": "Додаткові"
+        "secondary": "Додаткові",
+        "ai": "ШІ"
     },
     "NotFoundT": {
         "title": "404 | Сторінку не знайдено",
@@ -70,7 +71,8 @@
         "title": "Навички",
         "description": "Кожен тег має бути розділений комою",
         "primary": "Основні",
-        "secondary": "Додаткові"
+        "secondary": "Додаткові",
+        "ai": "ШІ"
     },
     "SidebarT": {
         "title": "Меню",
@@ -150,5 +152,8 @@
         "workNow": "Працюю зараз",
         "description": "Опис",
         "technologies": "Технології"
+    },
+    "ResponseStatusT": {
+        "successMsg": "Форма успішно збережена"
     }
 }

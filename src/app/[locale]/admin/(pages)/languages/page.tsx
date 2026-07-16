@@ -5,7 +5,7 @@ import {
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-import { LanguagesList } from '@/components/admin/languages/LanguagesList/LanguagesList';
+import { LanguagesList } from '@/components/admin/LanguagesList/LanguagesList';
 import type { Locale } from '@/types/types';
 
 interface LanguagesPageProps {

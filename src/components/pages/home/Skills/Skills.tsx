@@ -1,9 +1,9 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getSkills } from '@/app/api/actions/skills';
 import { Box } from '@/components/common/Box/Box';
+import { Skill } from './Skill/Skill';
 
 import styles from './Skills.module.scss';
-import SkillsItem from './SkillsItem/SkillsItem';
 
 export const Skills = async () => {
     const t = await getTranslations('SkillsT');
@@ -11,7 +11,7 @@ export const Skills = async () => {
 
     const data = await getSkills(locale);
 
-    if (data?.primary || data?.secondary) {
+    if (data?.primary || data?.secondary || data?.ai) {
         return (
             <Box
                 corners={[
@@ -22,33 +22,23 @@ export const Skills = async () => {
             >
                 <div className={styles.wrapper}>
                     {data?.primary && (
-                        <div className={styles.section}>
-                            <div className={styles.title}>{t('primary')}</div>
-                            <div className={styles.list}>
-                                {data?.primary.map((item) => (
-                                    <SkillsItem
-                                        key={item}
-                                        text={item}
-                                        type="primary"
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                        <Skill
+                            data={data?.primary}
+                            tagType="primary"
+                            title={t('primary')}
+                        />
                     )}
 
                     {data?.secondary && (
-                        <div className={styles.section}>
-                            <div className={styles.title}>{t('secondary')}</div>
-                            <div className={styles.list}>
-                                {data?.secondary.map((item) => (
-                                    <SkillsItem
-                                        key={item}
-                                        text={item}
-                                        type="secondary"
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                        <Skill
+                            data={data?.secondary}
+                            tagType="secondary"
+                            title={t('secondary')}
+                        />
+                    )}
+
+                    {data?.ai && (
+                        <Skill data={data?.ai} tagType="ai" title={t('ai')} />
                     )}
                 </div>
             </Box>

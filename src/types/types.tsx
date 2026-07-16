@@ -30,6 +30,7 @@ export interface SkillsInputI {
     language: string;
     primary: string[];
     secondary: string[];
+    ai: string[];
 }
 
 export interface DashboardI {

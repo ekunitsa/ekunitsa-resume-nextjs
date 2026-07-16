@@ -6,7 +6,7 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 import { getLanguage } from '@/app/api/actions/languages';
-import { LanguagesForm } from '@/components/admin/languages/LanguagesForm/LanguagesForm';
+import { LanguagesForm } from '@/components/admin/LanguagesForm/LanguagesForm';
 import type { Locale } from '@/types/types';
 
 interface LanguagesEditPageProps {
@@ -37,7 +37,7 @@ const LanguagesEditPage = async ({ params }: LanguagesEditPageProps) => {
 
     setRequestLocale(locale);
 
-    const { FormT, LanguagesFormT } = await getMessages();
+    const { FormT, LanguagesFormT, ResponseStatusT } = await getMessages();
     const data = await getLanguage(Number(id));
 
     return (
@@ -45,6 +45,7 @@ const LanguagesEditPage = async ({ params }: LanguagesEditPageProps) => {
             messages={{
                 FormT,
                 LanguagesFormT,
+                ResponseStatusT,
             }}
         >
             <LanguagesForm data={data} />

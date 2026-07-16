@@ -5,31 +5,29 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { deleteAboutItem, postPatchAbout } from '@/app/api/actions/about';
+import { deleteLanguage, postPatchLanguage } from '@/app/api/actions/languages';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
-import { Checkbox } from '@/components/form/Checkbox/Checkbox';
 import { Input } from '@/components/form/Input/Input';
-import { Textarea } from '@/components/form/Textarea/Textarea';
 
-import type { AboutDataI } from '@/types/types';
+import type { LanguageDataI } from '@/types/types';
 import { positiveNumberPattern } from '@/utils/patterns';
-import styles from './AboutForm.module.scss';
+import { ResponseStatus } from '../ResponseStatus/ResponseStatus';
+import styles from './LanguagesForm.module.scss';
 
-interface AboutFormProps {
-    data?: AboutDataI | null;
+interface LanguagesFormProps {
+    data?: LanguageDataI | null;
 }
 
-export const AboutForm = ({ data }: AboutFormProps) => {
-    const t = useTranslations('AboutFormT');
+export const LanguagesForm = ({ data }: LanguagesFormProps) => {
+    const t = useTranslations('LanguagesFormT');
     const formT = useTranslations('FormT');
     const locale = useLocale();
     const router = useRouter();
 
     useEffect(() => {
         if (data && data.language !== locale) {
-            router.replace('/admin/about');
-            router.refresh();
+            router.replace('/admin/languages');
         }
     }, []);
 
@@ -38,25 +36,27 @@ export const AboutForm = ({ data }: AboutFormProps) => {
         handleSubmit,
         setError,
         setValue,
+        clearErrors,
         formState: { errors, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
     });
 
-    const onSubmit = async (formData: AboutDataI) => {
-        const { description, position, bold } = formData;
+    const onSubmit = async (formData: LanguageDataI) => {
+        clearErrors('root.serverError');
 
-        const response = await postPatchAbout({
+        const { label, level, position } = formData;
+
+        const response = await postPatchLanguage({
             id: data?.id ? data.id : 0,
             language: locale,
-            description,
-            bold,
+            label,
+            level,
             position: Number(position),
         });
 
         if (response.ok) {
-            router.replace('/admin/about');
-            router.refresh();
+            router.replace('/admin/languages');
         } else {
             setError('root.serverError', {
                 message: formT('errorServerActionFailed'),
@@ -65,12 +65,13 @@ export const AboutForm = ({ data }: AboutFormProps) => {
     };
 
     const onDelete = async () => {
+        clearErrors('root.serverError');
+
         if (data && window.confirm(formT('deleteMsg'))) {
-            const response = await deleteAboutItem(data.id);
+            const response = await deleteLanguage(data.id);
 
             if (response.ok) {
-                router.replace('/admin/about');
-                router.refresh();
+                router.replace('/admin/languages');
             } else {
                 setError('root.serverError', {
                     message: formT('errorServerDeleteActionFailed'),
@@ -98,20 +99,26 @@ export const AboutForm = ({ data }: AboutFormProps) => {
                 onSubmit={handleSubmit(onSubmit as SubmitHandler<FieldValues>)}
                 noValidate
             >
-                <Textarea
-                    label={`${t('description')}*`}
-                    defaultValue={data?.description ? data.description : ''}
-                    errorMessage={errors?.description?.message as string}
+                <Input
+                    label={`${t('label')}*`}
+                    type="text"
+                    defaultValue={data?.label ? data.label : ''}
+                    errorMessage={errors?.label?.message as string}
                     setValue={setValue}
-                    {...register('description', {
+                    {...register('label', {
                         required: formT('errorRequiredField'),
                     })}
                 />
 
-                <Checkbox
-                    label={t('bold')}
-                    defaultChecked={data?.bold}
-                    {...register('bold')}
+                <Input
+                    label={`${t('level')}*`}
+                    type="text"
+                    defaultValue={data?.level ? data.level : ''}
+                    errorMessage={errors?.level?.message as string}
+                    setValue={setValue}
+                    {...register('level', {
+                        required: formT('errorRequiredField'),
+                    })}
                 />
 
                 <Input
@@ -142,9 +149,9 @@ export const AboutForm = ({ data }: AboutFormProps) => {
                 </div>
 
                 {errors?.root?.serverError.message && (
-                    <p className={styles.errorMessage}>
+                    <ResponseStatus status={'error'}>
                         {errors?.root?.serverError.message}
-                    </p>
+                    </ResponseStatus>
                 )}
             </form>
         </>

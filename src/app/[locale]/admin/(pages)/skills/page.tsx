@@ -36,7 +36,7 @@ const SkillsPage = async ({ params }: SkillsPageProps) => {
 
     setRequestLocale(locale);
 
-    const { SkillsFormT, FormT } = await getMessages();
+    const { SkillsFormT, FormT, ResponseStatusT } = await getMessages();
 
     const data = await getSkills(locale);
 
@@ -45,6 +45,7 @@ const SkillsPage = async ({ params }: SkillsPageProps) => {
             messages={{
                 SkillsFormT,
                 FormT,
+                ResponseStatusT,
             }}
         >
             <SkillsForm data={data} />

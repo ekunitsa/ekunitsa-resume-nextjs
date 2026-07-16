@@ -17,6 +17,7 @@ import { Textarea } from '@/components/form/Textarea/Textarea';
 
 import type { ExperienceDataI } from '@/types/types';
 import { datePattern, positiveNumberPattern } from '@/utils/patterns';
+import { ResponseStatus } from '../ResponseStatus/ResponseStatus';
 import styles from './ExperienceForm.module.scss';
 
 interface ExperienceFormProps {
@@ -32,7 +33,6 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
     useEffect(() => {
         if (data && data.language !== locale) {
             router.replace('/admin/experience');
-            router.refresh();
         }
     }, []);
 
@@ -41,12 +41,15 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
         handleSubmit,
         setError,
         setValue,
+        clearErrors,
         formState: { errors, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
     });
 
     const onSubmit = async (formData: ExperienceDataI) => {
+        clearErrors('root.serverError');
+
         const {
             companyName,
             role,
@@ -75,7 +78,6 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
 
         if (response.ok) {
             router.replace('/admin/experience');
-            router.refresh();
         } else {
             setError('root.serverError', {
                 message: formT('errorServerActionFailed'),
@@ -84,12 +86,13 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
     };
 
     const onDelete = async () => {
+        clearErrors('root.serverError');
+
         if (data && window.confirm(formT('deleteMsg'))) {
             const response = await deleteExperienceItem(data.id);
 
             if (response.ok) {
                 router.replace('/admin/experience');
-                router.refresh();
             } else {
                 setError('root.serverError', {
                     message: formT('errorServerDeleteActionFailed'),
@@ -233,9 +236,9 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
                 </div>
 
                 {errors?.root?.serverError.message && (
-                    <p className={styles.errorMessage}>
+                    <ResponseStatus status={'error'}>
                         {errors?.root?.serverError.message}
-                    </p>
+                    </ResponseStatus>
                 )}
             </form>
         </>

@@ -36,7 +36,7 @@ const GlobalPage = async ({ params }: GlobalPageProps) => {
 
     setRequestLocale(locale);
 
-    const { GlobalFormT, FormT } = await getMessages();
+    const { GlobalFormT, FormT, ResponseStatusT } = await getMessages();
 
     const data = await getMainInformation(locale);
 
@@ -45,6 +45,7 @@ const GlobalPage = async ({ params }: GlobalPageProps) => {
             messages={{
                 GlobalFormT,
                 FormT,
+                ResponseStatusT,
             }}
         >
             <GlobalForm data={data} />

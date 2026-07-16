@@ -1,23 +1,7 @@
 @use "assets/scss/abstract/all" as *;
 
-.list {
-    display: flex;
-    gap: $spacer-2;
-    flex-wrap: wrap;
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
     gap: $spacer-6;
-}
-
-.title {
-    font-size: $fs-medium;
-}
-
-.section {
-    display: flex;
-    flex-direction: column;
-    gap: $spacer-4;
 }

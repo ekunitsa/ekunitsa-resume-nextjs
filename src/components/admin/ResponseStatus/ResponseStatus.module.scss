@@ -1,0 +1,15 @@
+@use "assets/scss/abstract/all" as *;
+
+.msg {
+    font-size: $fs-small;
+    font-weight: $fw-semi-bold;
+    text-align: right;
+}
+
+.success {
+    color: $color-green;
+}
+
+.error {
+    color: $color-red;
+}

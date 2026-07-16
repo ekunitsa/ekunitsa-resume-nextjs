@@ -2,15 +2,16 @@
 
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
 import { postPatchDashboard } from '@/app/api/actions/dashboard';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Checkbox } from '@/components/form/Checkbox/Checkbox';
 import { Input } from '@/components/form/Input/Input';
-
 import type { DashboardI } from '@/types/types';
 import { datePattern, emailPattern, telegramPattern } from '@/utils/patterns';
+import { ResponseStatus } from '../ResponseStatus/ResponseStatus';
 import styles from './DashboardForm.module.scss';
 
 interface DashboardFormProps {
@@ -21,21 +22,31 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
     const t = useTranslations('DashboardFormT');
     const formT = useTranslations('FormT');
     const router = useRouter();
+    const [successResponse, setSuccessResponse] = useState<boolean>(false);
 
     const {
         register,
         handleSubmit,
         setError,
         setValue,
+        clearErrors,
         formState: { errors, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
     });
 
     const onSubmit = async (formData: DashboardI) => {
+        clearErrors('root.serverError');
+
         const response = await postPatchDashboard(formData);
 
         if (response.ok) {
+            setSuccessResponse(true);
+
+            setTimeout(() => {
+                setSuccessResponse(false);
+            }, 3000);
+
             router.refresh();
         } else {
             setError('root.serverError', {
@@ -171,10 +182,12 @@ export const DashboardForm = ({ data }: DashboardFormProps) => {
                     </Button>
                 </div>
 
-                {errors?.root?.serverError.message && (
-                    <p className={styles.errorMessage}>
+                {(errors?.root?.serverError.message || successResponse) && (
+                    <ResponseStatus
+                        status={successResponse ? 'success' : 'error'}
+                    >
                         {errors?.root?.serverError.message}
-                    </p>
+                    </ResponseStatus>
                 )}
             </form>
         </>

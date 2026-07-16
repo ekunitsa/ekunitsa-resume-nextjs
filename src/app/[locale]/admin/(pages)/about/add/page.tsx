@@ -5,7 +5,7 @@ import {
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-import { AboutForm } from '@/components/admin/about/AboutForm/AboutForm';
+import { AboutForm } from '@/components/admin/AboutForm/AboutForm';
 import type { Locale } from '@/types/types';
 
 interface AboutAddPageProps {
@@ -35,13 +35,14 @@ const AboutAddPage = async ({ params }: AboutAddPageProps) => {
 
     setRequestLocale(locale);
 
-    const { FormT, AboutFormT } = await getMessages();
+    const { FormT, AboutFormT, ResponseStatusT } = await getMessages();
 
     return (
         <NextIntlClientProvider
             messages={{
                 FormT,
                 AboutFormT,
+                ResponseStatusT,
             }}
         >
             <AboutForm />

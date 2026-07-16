@@ -2,12 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { useState } from 'react';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
 import { postPatchMainInformation } from '@/app/api/actions/mainInformation';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
 import type { MainInformationI } from '@/types/types';
+import { ResponseStatus } from '../ResponseStatus/ResponseStatus';
 import styles from './GlobalForm.module.scss';
 
 interface GlobalFormProps {
@@ -19,18 +21,22 @@ export const GlobalForm = ({ data }: GlobalFormProps) => {
     const formT = useTranslations('FormT');
     const locale = useLocale();
     const router = useRouter();
+    const [successResponse, setSuccessResponse] = useState<boolean>(false);
 
     const {
         register,
         handleSubmit,
         setError,
         setValue,
+        clearErrors,
         formState: { errors, isSubmitting },
     } = useForm({
         mode: 'onSubmit',
     });
 
     const onSubmit = async (formData: MainInformationI) => {
+        clearErrors('root.serverError');
+
         const { name, role, place } = formData;
 
         const response = await postPatchMainInformation({
@@ -41,6 +47,12 @@ export const GlobalForm = ({ data }: GlobalFormProps) => {
         });
 
         if (response.ok) {
+            setSuccessResponse(true);
+
+            setTimeout(() => {
+                setSuccessResponse(false);
+            }, 3000);
+
             router.refresh();
         } else {
             setError('root.serverError', {
@@ -100,10 +112,12 @@ export const GlobalForm = ({ data }: GlobalFormProps) => {
                     </Button>
                 </div>
 
-                {errors?.root?.serverError.message && (
-                    <p className={styles.errorMessage}>
+                {(errors?.root?.serverError.message || successResponse) && (
+                    <ResponseStatus
+                        status={successResponse ? 'success' : 'error'}
+                    >
                         {errors?.root?.serverError.message}
-                    </p>
+                    </ResponseStatus>
                 )}
             </form>
         </>

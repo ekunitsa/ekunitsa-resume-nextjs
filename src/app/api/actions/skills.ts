@@ -6,9 +6,14 @@ import type { SkillsInputI } from '@/types/types';
 
 export async function postPatchSkills(data: SkillsInputI) {
     try {
-        const { language, primary, secondary } = data;
+        const { language, primary, secondary, ai } = data;
 
-        if (!language || !Array.isArray(primary) || !Array.isArray(secondary)) {
+        if (
+            !language ||
+            !Array.isArray(primary) ||
+            !Array.isArray(secondary) ||
+            !Array.isArray(ai)
+        ) {
             console.error('postPatchSkills: Invalid data object');
             return {
                 ok: false,
@@ -22,11 +27,13 @@ export async function postPatchSkills(data: SkillsInputI) {
             update: {
                 primary,
                 secondary,
+                ai,
             },
             create: {
                 language,
                 primary,
                 secondary,
+                ai,
             },
         });
 
@@ -53,6 +60,7 @@ export async function getSkills(
             language: true,
             primary: true,
             secondary: true,
+            ai: true,
         },
     });
 

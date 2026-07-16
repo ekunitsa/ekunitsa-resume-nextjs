@@ -5,7 +5,7 @@ import {
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-import { ExperienceForm } from '@/components/admin/experience/ExperienceForm/ExperienceForm';
+import { ExperienceForm } from '@/components/admin/ExperienceForm/ExperienceForm';
 import type { Locale } from '@/types/types';
 
 interface ExperienceAddPageProps {
@@ -35,13 +35,14 @@ const ExperienceAddPage = async ({ params }: ExperienceAddPageProps) => {
 
     setRequestLocale(locale);
 
-    const { FormT, ExperienceFormT } = await getMessages();
+    const { FormT, ExperienceFormT, ResponseStatusT } = await getMessages();
 
     return (
         <NextIntlClientProvider
             messages={{
                 FormT,
                 ExperienceFormT,
+                ResponseStatusT,
             }}
         >
             <ExperienceForm />

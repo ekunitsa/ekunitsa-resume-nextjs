@@ -59,7 +59,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     const session = await getServerSession();
 
     return (
-        <html lang={locale}>
+        <html lang={locale} data-scroll-behavior="smooth">
             <body className={montserrat.className}>
                 {session?.user && (
                     <NextIntlClientProvider

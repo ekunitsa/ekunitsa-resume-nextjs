@@ -5,7 +5,7 @@ import {
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-import { AboutList } from '@/components/admin/about/AboutList/AboutList';
+import { AboutList } from '@/components/admin/AboutList/AboutList';
 import type { Locale } from '@/types/types';
 
 interface AboutPageProps {

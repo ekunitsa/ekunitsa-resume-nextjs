@@ -41,7 +41,8 @@
     "SkillsT": {
         "title": "Skills",
         "primary": "Main",
-        "secondary": "Secondary"
+        "secondary": "Secondary",
+        "ai": "AI"
     },
     "NotFoundT": {
         "title": "404 | Page not found",
@@ -70,7 +71,8 @@
         "title": "Skills",
         "description": "Each tag must be separated by a comma",
         "primary": "Main",
-        "secondary": "Secondary"
+        "secondary": "Secondary",
+        "ai": "AI"
     },
     "SidebarT": {
         "title": "Menu",
@@ -150,5 +152,8 @@
         "workNow": "I am currently working here",
         "description": "Description",
         "technologies": "Technologies"
+    },
+    "ResponseStatusT": {
+        "successMsg": "The form has been successfully saved"
     }
 }

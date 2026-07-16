@@ -5,7 +5,7 @@ import {
     getTranslations,
     setRequestLocale,
 } from 'next-intl/server';
-import { ExperienceList } from '@/components/admin/experience/ExperienceList/ExperienceList';
+import { ExperienceList } from '@/components/admin/ExperienceList/ExperienceList';
 import type { Locale } from '@/types/types';
 
 interface ExperiencePageProps {

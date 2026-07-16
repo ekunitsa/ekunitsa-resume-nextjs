@@ -20,6 +20,7 @@ model Skills {
   language  String   @unique
   primary   String[]
   secondary String[]
+  ai        String[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

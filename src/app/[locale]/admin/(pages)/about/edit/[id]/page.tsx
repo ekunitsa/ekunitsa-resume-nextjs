@@ -6,7 +6,7 @@ import {
     setRequestLocale,
 } from 'next-intl/server';
 import { getAboutItem } from '@/app/api/actions/about';
-import { AboutForm } from '@/components/admin/about/AboutForm/AboutForm';
+import { AboutForm } from '@/components/admin/AboutForm/AboutForm';
 import type { Locale } from '@/types/types';
 
 interface AboutEditPageProps {
@@ -37,7 +37,7 @@ const AboutEditPage = async ({ params }: AboutEditPageProps) => {
 
     setRequestLocale(locale);
 
-    const { FormT, AboutFormT } = await getMessages();
+    const { FormT, AboutFormT, ResponseStatusT } = await getMessages();
     const data = await getAboutItem(Number(id));
 
     return (
@@ -45,6 +45,7 @@ const AboutEditPage = async ({ params }: AboutEditPageProps) => {
             messages={{
                 FormT,
                 AboutFormT,
+                ResponseStatusT,
             }}
         >
             <AboutForm data={data} />

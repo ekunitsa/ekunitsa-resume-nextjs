@@ -35,7 +35,7 @@ const DashboardPage = async ({ params }: DashboardPageProps) => {
 
     setRequestLocale(locale);
 
-    const { DashboardFormT, FormT } = await getMessages();
+    const { DashboardFormT, FormT, ResponseStatusT } = await getMessages();
 
     const data = await getDashboard();
 
@@ -44,6 +44,7 @@ const DashboardPage = async ({ params }: DashboardPageProps) => {
             messages={{
                 DashboardFormT,
                 FormT,
+                ResponseStatusT,
             }}
         >
             <DashboardForm data={data} />
