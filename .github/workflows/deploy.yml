@@ -1,0 +1,74 @@
+name: Deploy Production
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Deploy application
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+        run: |
+          ssh \
+            -i ~/.ssh/deploy_key \
+            -p "$DEPLOY_PORT" \
+            "$DEPLOY_USER@$DEPLOY_HOST" \
+            "PROJECT_PATH='$PROJECT_PATH' bash -s" <<'EOF'
+              set -Eeuo pipefail
+
+              cd "$PROJECT_PATH"
+
+              echo "Current PM2 status:"
+              pm2 list
+
+              echo "Fetching repository:"
+              git fetch origin
+
+              echo "Updating master branch:"
+              git reset --hard origin/master
+
+              echo "Installing dependencies:"
+              npm ci
+
+              echo "Generating Prisma Client:"
+              npx prisma generate
+
+              echo "Building application:"
+              npm run build
+
+              echo "Restarting application:"
+              pm2 restart ekunitsa-resume --update-env
+
+              echo "Saving PM2 process list:"
+              pm2 save
+
+              echo "Final PM2 status:"
+              pm2 list
+          EOF
