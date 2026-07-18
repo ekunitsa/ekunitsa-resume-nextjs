@@ -35,12 +35,13 @@ jobs:
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
           PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+          DEPLOY_BRANCH: ${{ github.ref_name }}
         run: |
           ssh \
             -i ~/.ssh/deploy_key \
             -p "$DEPLOY_PORT" \
             "$DEPLOY_USER@$DEPLOY_HOST" \
-            "PROJECT_PATH='$PROJECT_PATH' bash -s" <<'EOF'
+            "PROJECT_PATH='$PROJECT_PATH' DEPLOY_BRANCH='$DEPLOY_BRANCH' bash -s" <<'EOF'
               set -Eeuo pipefail
 
               cd "$PROJECT_PATH"
@@ -48,11 +49,13 @@ jobs:
               echo "Current PM2 status:"
               pm2 list
 
-              echo "Fetching repository:"
-              git fetch origin
+              echo "Fetching branch: $DEPLOY_BRANCH"
+              git fetch origin "$DEPLOY_BRANCH"
 
-              echo "Updating master branch:"
-              git reset --hard origin/master
+              echo "Deploying branch: $DEPLOY_BRANCH"
+
+              git checkout -B "$DEPLOY_BRANCH" "origin/$DEPLOY_BRANCH"
+              git reset --hard "origin/$DEPLOY_BRANCH"
 
               echo "Installing dependencies:"
               npm ci
@@ -68,7 +71,4 @@ jobs:
 
               echo "Saving PM2 process list:"
               pm2 save
-
-              echo "Final PM2 status:"
-              pm2 list
           EOF
