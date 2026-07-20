@@ -74,30 +74,30 @@ jobs:
                       "$DEPLOY_USER@$DEPLOY_HOST:/tmp/deploy.tar.gz"
 
             - name: Extract deployment archive
-                env:
-                    DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-                    DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-                    DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-                    PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
-                run: |
-                    ssh \
-                        -i ~/.ssh/deploy_key \
-                        -o IdentitiesOnly=yes \
-                        -p "$DEPLOY_PORT" \
-                        "$DEPLOY_USER@$DEPLOY_HOST" \
-                        "PROJECT_PATH='$PROJECT_PATH' bash -s" << 'EOF'
-                            set -e
+              env:
+                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+                  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+                  PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+              run: |
+                  ssh \
+                      -i ~/.ssh/deploy_key \
+                      -o IdentitiesOnly=yes \
+                      -p "$DEPLOY_PORT" \
+                      "$DEPLOY_USER@$DEPLOY_HOST" \
+                      "PROJECT_PATH='$PROJECT_PATH' bash -s" << 'EOF'
+                          set -e
 
-                            mkdir -p "$PROJECT_PATH"
+                          mkdir -p "$PROJECT_PATH"
 
-                            find "$PROJECT_PATH" \
-                                -mindepth 1 \
-                                -maxdepth 1 \
-                                ! -name '.env' \
-                                -exec rm -rf {} +
+                          find "$PROJECT_PATH" \
+                              -mindepth 1 \
+                              -maxdepth 1 \
+                              ! -name '.env' \
+                              -exec rm -rf {} +
 
-                            tar -xzf /tmp/deploy.tar.gz \
-                                -C "$PROJECT_PATH"
+                          tar -xzf /tmp/deploy.tar.gz \
+                              -C "$PROJECT_PATH"
 
-                            ls -la "$PROJECT_PATH"
-                        EOF
+                          ls -la "$PROJECT_PATH"
+                      EOF
