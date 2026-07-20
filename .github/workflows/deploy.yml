@@ -92,14 +92,8 @@ jobs:
                       -o IdentitiesOnly=yes \
                       -p "$DEPLOY_PORT" \
                       "$DEPLOY_USER@$DEPLOY_HOST" \
-                      "PROJECT_PATH='$PROJECT_PATH' bash -s" <<'EOF'
+                      "bash -s" <<'EOF'
                   set -e
 
-                  pm2 delete ekunitsa-resume || true
-
-                  pm2 start server.js \
-                      --name ekunitsa-resume \
-                      --cwd "$PROJECT_PATH"
-
-                  pm2 save
+                  pm2 restart ekunitsa-resume
                   EOF
