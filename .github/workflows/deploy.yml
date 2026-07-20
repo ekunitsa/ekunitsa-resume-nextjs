@@ -100,3 +100,30 @@ jobs:
 
                   ls -la "$PROJECT_PATH"
                   EOF
+
+            - name: Restart application with PM2
+              env:
+                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+                  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+                  PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+              run: |
+                  ssh \
+                      -i ~/.ssh/deploy_key \
+                      -o IdentitiesOnly=yes \
+                      -p "$DEPLOY_PORT" \
+                      "$DEPLOY_USER@$DEPLOY_HOST" \
+                      "PROJECT_PATH='$PROJECT_PATH' bash -s" <<'EOF'
+                  set -e
+
+                  cd "$PROJECT_PATH"
+
+                  pm2 delete ekunitsa-resume || true
+
+                  pm2 start server.js \
+                      --name ekunitsa-resume \
+                      --cwd "$PROJECT_PATH"
+
+                  pm2 save
+                  pm2 status
+                  EOF
