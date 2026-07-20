@@ -97,6 +97,7 @@ jobs:
                       -exec rm -rf {} +
 
                   tar -xzf /tmp/deploy.tar.gz -C "$PROJECT_PATH"
+                  rm -f /tmp/deploy.tar.gz
 
                   ls -la "$PROJECT_PATH"
                   EOF
@@ -125,5 +126,4 @@ jobs:
                       --cwd "$PROJECT_PATH"
 
                   pm2 save
-                  pm2 status
                   EOF
