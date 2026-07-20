@@ -1,74 +1,45 @@
-name: Deploy Production
+name: Build Production
 
 on:
-  workflow_dispatch:
-
-concurrency:
-  group: production-deploy
-  cancel-in-progress: false
+    workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy to VPS
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Configure SSH
-        env:
-          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+                  cache: npm
 
-          ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Deploy application
-        env:
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
-          DEPLOY_BRANCH: ${{ github.ref_name }}
-        run: |
-          ssh \
-            -i ~/.ssh/deploy_key \
-            -p "$DEPLOY_PORT" \
-            "$DEPLOY_USER@$DEPLOY_HOST" \
-            "PROJECT_PATH='$PROJECT_PATH' DEPLOY_BRANCH='$DEPLOY_BRANCH' bash -s" <<'EOF'
-              set -Eeuo pipefail
+            - name: Generate Prisma Client
+              run: npx prisma generate
 
-              cd "$PROJECT_PATH"
+            - name: Build application
+              run: npm run build
 
-              echo "Current PM2 status:"
-              pm2 list
+            - name: Prepare standalone artifact
+              run: |
+                  cp -r public .next/standalone/public
+                  mkdir -p .next/standalone/.next
+                  cp -r .next/static .next/standalone/.next/static
 
-              echo "Fetching branch: $DEPLOY_BRANCH"
-              git fetch origin "$DEPLOY_BRANCH"
+            - name: Create deployment archive
+              run: |
+                  cd .next/standalone
+                  tar -czf ../../deploy.tar.gz .
 
-              echo "Deploying branch: $DEPLOY_BRANCH"
-
-              git checkout -B "$DEPLOY_BRANCH" "origin/$DEPLOY_BRANCH"
-              git reset --hard "origin/$DEPLOY_BRANCH"
-
-              echo "Installing dependencies:"
-              npm ci
-
-              echo "Generating Prisma Client:"
-              npx prisma generate
-
-              echo "Building application:"
-              npm run build
-
-              echo "Restarting application:"
-              pm2 restart ekunitsa-resume --update-env
-
-              echo "Saving PM2 process list:"
-              pm2 save
-          EOF
+            - name: Upload deployment artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: production-build
+                  path: deploy.tar.gz
+                  retention-days: 3
