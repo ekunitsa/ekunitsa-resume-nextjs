@@ -22,9 +22,13 @@ jobs:
 
             - name: Generate Prisma Client
               run: npx prisma generate
+              env:
+                DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
             - name: Build application
               run: npm run build
+              env:
+                DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
             - name: Prepare standalone artifact
               run: |
