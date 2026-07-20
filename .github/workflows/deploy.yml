@@ -85,19 +85,18 @@ jobs:
                       -o IdentitiesOnly=yes \
                       -p "$DEPLOY_PORT" \
                       "$DEPLOY_USER@$DEPLOY_HOST" \
-                      "PROJECT_PATH='$PROJECT_PATH' bash -s" << 'EOF'
-                          set -e
+                      "PROJECT_PATH='$PROJECT_PATH' bash -s" <<'EOF'
+                  set -e
 
-                          mkdir -p "$PROJECT_PATH"
+                  mkdir -p "$PROJECT_PATH"
 
-                          find "$PROJECT_PATH" \
-                              -mindepth 1 \
-                              -maxdepth 1 \
-                              ! -name '.env' \
-                              -exec rm -rf {} +
+                  find "$PROJECT_PATH" \
+                      -mindepth 1 \
+                      -maxdepth 1 \
+                      ! -name '.env' \
+                      -exec rm -rf {} +
 
-                          tar -xzf /tmp/deploy.tar.gz \
-                              -C "$PROJECT_PATH"
+                  tar -xzf /tmp/deploy.tar.gz -C "$PROJECT_PATH"
 
-                          ls -la "$PROJECT_PATH"
-                      EOF
+                  ls -la "$PROJECT_PATH"
+                  EOF
