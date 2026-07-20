@@ -45,13 +45,6 @@ jobs:
                   cd .next/standalone
                   tar -czf ../../deploy.tar.gz .
 
-            - name: Upload deployment artifact
-              uses: actions/upload-artifact@v6
-              with:
-                  name: production-build
-                  path: deploy.tar.gz
-                  retention-days: 3
-
             - name: Configure SSH
               run: |
                   mkdir -p ~/.ssh
