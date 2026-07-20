@@ -50,21 +50,25 @@ jobs:
 
             - name: Configure SSH
               env:
+                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
                   DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
                   DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
                   DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
               run: |
                   mkdir -p ~/.ssh
-                  printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+                  printf '%s\n' "$DEPLOY_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
                   chmod 600 ~/.ssh/deploy_key
                   ssh-keyscan -p "$DEPLOY_PORT" "$DEPLOY_HOST" >> ~/.ssh/known_hosts
 
             - name: Upload deployment archive
               env:
+                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
                   DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
                   DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
               run: |
                   scp \
+                      -i ~/.ssh/deploy_key \
+                      -o IdentitiesOnly=yes \
                       -P "$DEPLOY_PORT" \
                       deploy.tar.gz \
-                      "deploy@$DEPLOY_HOST:/tmp/ekunitsa-resume-deploy.tar.gz"
+                      "$DEPLOY_USER@$DEPLOY_HOST:/tmp/ekunitsa-resume-deploy.tar.gz"
