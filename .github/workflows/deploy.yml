@@ -7,6 +7,14 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
+        env:
+            DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+            DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+            DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+            PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+            DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+
         steps:
             - name: Checkout repository
               uses: actions/checkout@v5
@@ -22,13 +30,9 @@ jobs:
 
             - name: Generate Prisma Client
               run: npx prisma generate
-              env:
-                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
             - name: Build application
               run: npm run build
-              env:
-                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
             - name: Prepare standalone artifact
               run: |
@@ -49,11 +53,6 @@ jobs:
                   retention-days: 3
 
             - name: Configure SSH
-              env:
-                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-                  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-                  DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
               run: |
                   mkdir -p ~/.ssh
                   printf '%s\n' "$DEPLOY_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
@@ -61,10 +60,6 @@ jobs:
                   ssh-keyscan -p "$DEPLOY_PORT" "$DEPLOY_HOST" >> ~/.ssh/known_hosts
 
             - name: Upload deployment archive
-              env:
-                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-                  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
               run: |
                   scp \
                       -i ~/.ssh/deploy_key \
@@ -74,11 +69,6 @@ jobs:
                       "$DEPLOY_USER@$DEPLOY_HOST:/tmp/deploy.tar.gz"
 
             - name: Extract deployment archive
-              env:
-                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-                  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-                  PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
               run: |
                   ssh \
                       -i ~/.ssh/deploy_key \
@@ -103,11 +93,6 @@ jobs:
                   EOF
 
             - name: Restart application with PM2
-              env:
-                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-                  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
-                  PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
               run: |
                   ssh \
                       -i ~/.ssh/deploy_key \
@@ -116,8 +101,6 @@ jobs:
                       "$DEPLOY_USER@$DEPLOY_HOST" \
                       "PROJECT_PATH='$PROJECT_PATH' bash -s" <<'EOF'
                   set -e
-
-                  cd "$PROJECT_PATH"
 
                   pm2 delete ekunitsa-resume || true
 
