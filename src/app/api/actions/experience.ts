@@ -1,11 +1,14 @@
 'use server';
 
+import { requireAdmin } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 import type { ExperienceDataI, ExperienceDataListI } from '@/types/types';
 
 export async function postPatchExperience(data: ExperienceDataI) {
     try {
+        await requireAdmin();
+
         const {
             id,
             language,
@@ -131,6 +134,8 @@ export async function getExperienceItem(id: number) {
 
 export async function deleteExperienceItem(id: number) {
     try {
+        await requireAdmin();
+
         await prisma.experience.delete({
             where: {
                 id,

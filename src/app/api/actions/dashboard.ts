@@ -1,11 +1,14 @@
 'use server';
 
+import { requireAdmin } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 import type { DashboardI } from '@/types/types';
 
 export async function postPatchDashboard(data: DashboardI) {
     try {
+        await requireAdmin();
+
         const {
             openToWork,
             startWorkDate,

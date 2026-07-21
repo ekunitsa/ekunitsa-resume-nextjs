@@ -1,11 +1,14 @@
 'use server';
 
+import { requireAdmin } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 import type { MainInformationI } from '@/types/types';
 
 export async function postPatchMainInformation(data: MainInformationI) {
     try {
+        await requireAdmin();
+
         const { language, name, role, place } = data;
 
         await prisma.mainInformation.upsert({

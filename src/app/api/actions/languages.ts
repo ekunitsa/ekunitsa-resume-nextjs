@@ -1,11 +1,14 @@
 'use server';
 
+import { requireAdmin } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 import type { LanguageDataI, LanguageDataListI } from '@/types/types';
 
 export async function postPatchLanguage(data: LanguageDataI) {
     try {
+        await requireAdmin();
+
         const { language, position, label, level, id } = data;
 
         if (!language) {
@@ -93,6 +96,8 @@ export async function getLanguage(id: number) {
 
 export async function deleteLanguage(id: number) {
     try {
+        await requireAdmin();
+
         await prisma.languages.delete({
             where: {
                 id,

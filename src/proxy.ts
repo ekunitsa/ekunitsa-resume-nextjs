@@ -21,10 +21,12 @@ const adminAuthMiddleware = async (request: NextRequest) => {
         : url;
 
     const isAdminLoginPath = pathWithoutLocale === '/admin/login';
+    const isPageRequest = request.method === 'GET' || request.method === 'HEAD';
 
     if (
-        pathWithoutLocale === '/admin' ||
-        pathWithoutLocale.startsWith('/admin/')
+        isPageRequest &&
+        (pathWithoutLocale === '/admin' ||
+            pathWithoutLocale.startsWith('/admin/'))
     ) {
         if (user && isAdminLoginPath) {
             return NextResponse.redirect(

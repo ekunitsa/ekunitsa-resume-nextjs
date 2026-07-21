@@ -1,11 +1,14 @@
 'use server';
 
+import { requireAdmin } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 import type { AboutDataI, AboutDataListI } from '@/types/types';
 
 export async function postPatchAbout(data: AboutDataI) {
     try {
+        await requireAdmin();
+
         const { language, position, description, bold, id } = data;
 
         if (!language) {
@@ -93,6 +96,8 @@ export async function getAboutItem(id: number) {
 
 export async function deleteAboutItem(id: number) {
     try {
+        await requireAdmin();
+
         await prisma.about.delete({
             where: {
                 id,

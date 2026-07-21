@@ -1,11 +1,14 @@
 'use server';
 
+import { requireAdmin } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 import type { SkillsInputI } from '@/types/types';
 
 export async function postPatchSkills(data: SkillsInputI) {
     try {
+        await requireAdmin();
+
         const { language, primary, secondary, ai } = data;
 
         if (
