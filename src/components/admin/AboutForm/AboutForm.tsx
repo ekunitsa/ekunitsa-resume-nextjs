@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
@@ -11,6 +10,7 @@ import { Title } from '@/components/common/Title/Title';
 import { Checkbox } from '@/components/form/Checkbox/Checkbox';
 import { Input } from '@/components/form/Input/Input';
 import { Textarea } from '@/components/form/Textarea/Textarea';
+import { useRouter } from '@/configs/i18n/routing';
 
 import type { AboutDataI } from '@/types/types';
 import { positiveNumberPattern } from '@/utils/patterns';

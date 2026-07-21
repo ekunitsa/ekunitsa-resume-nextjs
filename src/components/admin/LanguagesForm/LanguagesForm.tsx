@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
@@ -9,6 +8,7 @@ import { deleteLanguage, postPatchLanguage } from '@/app/api/actions/languages';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
+import { useRouter } from '@/configs/i18n/routing';
 
 import type { LanguageDataI } from '@/types/types';
 import { positiveNumberPattern } from '@/utils/patterns';

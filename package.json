@@ -8,7 +8,10 @@
         "start": "next start",
         "lint:scss": "stylelint \"./src/**/*.scss\"",
         "lint:biome": "biome check .",
-        "lint": "concurrently \"npm run lint:biome\" \"npm run lint:scss\"",
+        "lint:tsc": "npx tsc --noEmit",
+        "lint": "concurrently \"npm run lint:biome\" \"npm run lint:scss\" \"npm run lint:tsc\"",
+        "prisma:validate": "prisma validate",
+        "prisma:generate": "prisma generate",
         "pre-commit": "npm run lint",
         "prepare": "husky"
     },

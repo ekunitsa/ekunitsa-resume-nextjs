@@ -15,7 +15,7 @@ export const LocaleSwitcher = () => {
     const [isPending, startTransition] = useTransition();
     const pathname = usePathname();
 
-    function onSelectChange(e: React.MouseEvent<HTMLButtonElement>) {
+    function onChange(e: React.MouseEvent<HTMLButtonElement>) {
         const target = e.target as HTMLButtonElement;
         const value = target.value;
 
@@ -34,7 +34,7 @@ export const LocaleSwitcher = () => {
                 {routing.locales.map((item, index) => (
                     <Fragment key={item}>
                         <button
-                            onClick={onSelectChange}
+                            onClick={onChange}
                             value={item}
                             type="button"
                             disabled={isPending}

@@ -1,15 +1,14 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form';
-
 import { Box } from '@/components/common/Box/Box';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import { Input } from '@/components/form/Input/Input';
+import { useRouter } from '@/configs/i18n/routing';
 
 import styles from './Login.module.scss';
 

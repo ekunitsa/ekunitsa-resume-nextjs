@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from 'next/server';
+﻿import { type NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import createIntlMiddleware from 'next-intl/middleware';
-
 import { routing } from './configs/i18n/routing';
+import { getLocaleFromUrl } from './utils/utils';
 
 export async function proxy(request: NextRequest) {
     return adminAuthMiddleware(request);
@@ -14,15 +14,27 @@ const adminAuthMiddleware = async (request: NextRequest) => {
         req: request,
         secret: process.env.NEXTAUTH_SECRET,
     });
+    const locale = getLocaleFromUrl(url);
+    const localePrefix = locale ? `/${locale}` : '';
+    const pathWithoutLocale = locale
+        ? url.replace(localePrefix, '') || '/'
+        : url;
 
-    if (url.includes('/admin')) {
-        if (user && url.includes('/admin/login')) {
-            return NextResponse.redirect(new URL('/admin', request.nextUrl));
+    const isAdminLoginPath = pathWithoutLocale === '/admin/login';
+
+    if (
+        pathWithoutLocale === '/admin' ||
+        pathWithoutLocale.startsWith('/admin/')
+    ) {
+        if (user && isAdminLoginPath) {
+            return NextResponse.redirect(
+                new URL(`${localePrefix}/admin`, request.nextUrl),
+            );
         }
 
-        if (!user && !url.includes('/admin/login')) {
+        if (!user && !isAdminLoginPath) {
             return NextResponse.redirect(
-                new URL('/admin/login', request.nextUrl),
+                new URL(`${localePrefix}/admin/login`, request.nextUrl),
             );
         }
     }
