@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import type { Metadata, Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
-import { getServerSession } from 'next-auth';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import { AdminBar } from '@/components/admin/AdminBar/AdminBar';
 
 import { routing } from '@/configs/i18n/routing';
+import { getCurrentSession } from '@/lib/auth';
 
 import '@/assets/scss/common.scss';
 import styles from './layout.module.scss';
@@ -56,7 +56,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     const { locale } = await params;
 
     const { LocaleSwitcherT } = await getMessages();
-    const session = await getServerSession();
+    const session = await getCurrentSession();
 
     return (
         <html lang={locale} data-scroll-behavior="smooth">
