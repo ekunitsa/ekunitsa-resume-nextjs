@@ -13,6 +13,7 @@ import { Languages } from '@/components/pages/home/Languages/Languages';
 import { Photo } from '@/components/pages/home/Photo/Photo';
 import { Skills } from '@/components/pages/home/Skills/Skills';
 import { TopInfo } from '@/components/pages/home/TopInfo/TopInfo';
+import { routing } from '@/configs/i18n/routing';
 import type { Locale } from '@/types/types';
 import styles from './page.module.scss';
 
@@ -22,6 +23,12 @@ interface HomePageProps {
     }>;
 }
 
+const SITE_URL = new URL('https://ekunitsa.com');
+const OPEN_GRAPH_LOCALES: Record<Locale, string> = {
+    en: 'en_US',
+    uk: 'uk_UA',
+};
+
 export async function generateMetadata({
     params,
 }: HomePageProps): Promise<Metadata> {
@@ -30,10 +37,31 @@ export async function generateMetadata({
         locale,
         namespace: 'MetaDataT',
     });
+    const title = t('title');
+    const description = t('description');
 
     return {
-        title: t('title'),
-        description: t('description'),
+        title,
+        description,
+        openGraph: {
+            type: 'website',
+            url: new URL(`/${locale}`, SITE_URL),
+            title,
+            description,
+            siteName: 'Eugine Kunitsa CV',
+            locale: OPEN_GRAPH_LOCALES[locale],
+            alternateLocale: routing.locales
+                .filter((item) => item !== locale)
+                .map((item) => OPEN_GRAPH_LOCALES[item]),
+            images: [
+                {
+                    url: new URL('/static/img/og-image.jpg', SITE_URL),
+                    width: 1200,
+                    height: 630,
+                    alt: title,
+                },
+            ],
+        },
     };
 }
 
