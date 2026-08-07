@@ -1,18 +1,10 @@
 import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { CiBoxList, CiCalendar, CiClock2, CiDesktop } from 'react-icons/ci';
 import type { ExperienceDataI } from '@/types/types';
-import { capitalizeFirst } from '@/utils/utils';
-
-import 'dayjs/locale/en';
-import 'dayjs/locale/uk';
+import { formatExperiencePeriod } from '@/utils/utils';
 
 import styles from './ExperienceItem.module.scss';
-
-dayjs.extend(duration);
-dayjs.extend(localizedFormat);
 
 interface ExperienceItemProps {
     data: ExperienceDataI;
@@ -22,20 +14,21 @@ export const ExperienceItem = async ({ data }: ExperienceItemProps) => {
     const t = await getTranslations('ExperienceItemT');
     const locale = await getLocale();
 
-    const startDate = capitalizeFirst(
-        dayjs(data.workDateStart).locale(locale).format('MMMM YYYY'),
-    );
-
-    const endDate = capitalizeFirst(
-        data.workNow
-            ? t('now')
-            : dayjs(data.workDateEnd).locale(locale).format('MMMM YYYY'),
-    );
+    const experiencePeriod = formatExperiencePeriod({
+        startDate: data.workDateStart,
+        endDate: data.workDateEnd,
+        isCurrent: data.workNow,
+        currentLabel: t('now'),
+        locale,
+    });
 
     const getDiffString = () => {
-        const diffDate =
-            dayjs(data.workDateEnd).diff(dayjs(data.workDateStart), 'month') +
-            1; // +1 to get human WORKED months, as it happens in LinkedIn (including the last month).
+        const workedMonths = dayjs(data.workDateEnd).diff(
+            dayjs(data.workDateStart),
+            'month',
+        );
+
+        const diffDate = workedMonths + 1; // +1 to get human WORKED months, as it happens in LinkedIn (including the last month).
         const diffYears = Math.floor(diffDate / 12);
         const diffMonths = diffDate % 12;
 
@@ -76,7 +69,7 @@ export const ExperienceItem = async ({ data }: ExperienceItemProps) => {
                     <CiCalendar className={styles.icon} />
                 </div>
                 <div className={styles.dates}>
-                    {startDate} - {endDate}{' '}
+                    {experiencePeriod}{' '}
                     {!data.workNow && (
                         <span className={styles.diff}>({getDiffString()})</span>
                     )}

@@ -1,0 +1,49 @@
+@use "assets/scss/abstract/all" as *;
+
+.content {
+    display: grid;
+    gap: $spacer-5;
+    line-height: 24px;
+
+    ul,
+    ol {
+        display: grid;
+        gap: $spacer-3;
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            padding-left: $spacer-4;
+            position: relative;
+
+            &::before {
+                content: "-";
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-weight: $fw-regular;
+            }
+        }
+    }
+
+    ol {
+        padding-left: $spacer-5;
+        list-style: decimal;
+    }
+
+    a {
+        color: $color-blue;
+        text-decoration: underline;
+
+        &:hover {
+            color: $color-dark-blue;
+        }
+    }
+
+    strong,
+    b {
+        font-weight: $fw-semi-bold;
+    }
+}

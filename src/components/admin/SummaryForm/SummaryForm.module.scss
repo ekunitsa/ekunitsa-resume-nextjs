@@ -1,0 +1,12 @@
+@use "assets/scss/abstract/all" as *;
+
+.form {
+    display: flex;
+    gap: $spacer-4;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -7,6 +7,10 @@
 
     @include media-breakpoint-up(lg) {
         flex-direction: row;
+        gap: $spacer-3;
+    }
+
+    @include media-breakpoint-up(xl) {
         gap: $spacer-5;
     }
 }

@@ -1,7 +1,7 @@
 {
     "MetaDataT": {
-        "title": "Kunitsa Eugine | Front-End Archmage (Level Senior) | CV",
-        "description": "Front-End Archmage (Level Senior)"
+        "title": "Eugine Kunitsa | Front-End Archmage (Senior) | CV",
+        "description": "Front-End Archmage (Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -16,7 +16,20 @@
     "TopInfoLinksT": {
         "codewars": "Codewars",
         "stackoverflow": "Stackoverflow",
-        "github": "Github"
+        "github": "Github",
+        "downloadCv": "Download CV"
+    },
+    "CvPdfT": {
+        "profile": "About me",
+        "summary": "Summary",
+        "skills": "Skills",
+        "primary": "Main",
+        "secondary": "Secondary",
+        "ai": "AI",
+        "experience": "Work experience",
+        "technologies": "Technologies",
+        "languages": "Languages",
+        "now": "Now"
     },
     "ContactsT": {
         "title": "Contacts",
@@ -37,6 +50,9 @@
     "AboutT": {
         "title": "About me",
         "yearsOld": "{years} years old;"
+    },
+    "SummaryT": {
+        "title": "Summary"
     },
     "SkillsT": {
         "title": "Skills",
@@ -78,6 +94,7 @@
         "title": "Menu",
         "menuDashboard": "Dashboard",
         "menuGlobal": "General information",
+        "menuSummary": "Summary",
         "menuAbout": "About me",
         "menuExperience": "Work experience",
         "menuLanguages": "Languages",
@@ -121,6 +138,11 @@
         "name": "Name",
         "role": "Role",
         "place": "Country of residence"
+    },
+    "SummaryFormT": {
+        "title": "Summary",
+        "description": "HTML markup is supported. Allowed tags: p, br, strong, b, em, i, u, ul, ol, li, a.",
+        "content": "Content"
     },
     "AboutListT": {
         "title": "About me",

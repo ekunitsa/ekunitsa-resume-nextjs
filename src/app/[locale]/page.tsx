@@ -12,6 +12,7 @@ import { Experience } from '@/components/pages/home/Experience/Experience';
 import { Languages } from '@/components/pages/home/Languages/Languages';
 import { Photo } from '@/components/pages/home/Photo/Photo';
 import { Skills } from '@/components/pages/home/Skills/Skills';
+import { Summary } from '@/components/pages/home/Summary/Summary';
 import { TopInfo } from '@/components/pages/home/TopInfo/TopInfo';
 import { routing } from '@/configs/i18n/routing';
 import type { Locale } from '@/types/types';
@@ -23,7 +24,7 @@ interface HomePageProps {
     }>;
 }
 
-const SITE_URL = new URL('https://ekunitsa.com');
+const SITE_URL = new URL(process.env.SITE_URL ?? 'http://localhost:3000');
 const OPEN_GRAPH_LOCALES: Record<Locale, string> = {
     en: 'en_US',
     uk: 'uk_UA',
@@ -48,7 +49,7 @@ export async function generateMetadata({
             url: new URL(`/${locale}`, SITE_URL),
             title,
             description,
-            siteName: 'Eugine Kunitsa CV',
+            siteName: process.env.SITE_NAME ?? 'CV',
             locale: OPEN_GRAPH_LOCALES[locale],
             alternateLocale: routing.locales
                 .filter((item) => item !== locale)
@@ -89,6 +90,9 @@ const HomePage = async ({ params }: HomePageProps) => {
                 </NextIntlClientProvider>
                 <TopInfo />
             </header>
+            <section className={styles.summary}>
+                <Summary />
+            </section>
             <aside className={styles.contacts}>
                 <Contacts />
             </aside>

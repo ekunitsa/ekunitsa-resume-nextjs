@@ -1,7 +1,7 @@
 {
     "MetaDataT": {
-        "title": "Куниця Євгеній | Front-End Архімаг (Рівень Senior) | CV",
-        "description": "Front-End Архімаг (Рівень Senior)"
+        "title": "Куниця Євгеній | Front-End Архімаг (Senior) | CV",
+        "description": "Front-End Архімаг (Senior)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -16,7 +16,20 @@
     "TopInfoLinksT": {
         "codewars": "Codewars",
         "stackoverflow": "Stackoverflow",
-        "github": "Github"
+        "github": "Github",
+        "downloadCv": "Завантажити CV"
+    },
+    "CvPdfT": {
+        "profile": "Про мене",
+        "summary": "Резюме",
+        "skills": "Навички",
+        "primary": "Основні",
+        "secondary": "Додаткові",
+        "ai": "ШІ",
+        "experience": "Досвід роботи",
+        "technologies": "Технології",
+        "languages": "Мови",
+        "now": "Зараз"
     },
     "ContactsT": {
         "title": "Контакти",
@@ -37,6 +50,9 @@
     "AboutT": {
         "title": "Про мене",
         "yearsOld": "{years, plural, one {# рік} few {# роки} many {# років} other {# років}}"
+    },
+    "SummaryT": {
+        "title": "Резюме"
     },
     "SkillsT": {
         "title": "Навички",
@@ -78,6 +94,7 @@
         "title": "Меню",
         "menuDashboard": "Дашборд",
         "menuGlobal": "Загальна інформація",
+        "menuSummary": "Резюме",
         "menuAbout": "Про мене",
         "menuExperience": "Досвід роботи",
         "menuLanguages": "Мови",
@@ -121,6 +138,11 @@
         "name": "Ім'я",
         "role": "Роль",
         "place": "Країна проживання"
+    },
+    "SummaryFormT": {
+        "title": "Резюме",
+        "description": "Підтримується HTML-розмітка. Дозволені теги: p, br, strong, b, em, i, u, ul, ol, li, a.",
+        "content": "Вміст"
     },
     "AboutListT": {
         "title": "Про мене",

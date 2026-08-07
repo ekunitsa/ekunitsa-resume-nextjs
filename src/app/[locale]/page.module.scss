@@ -7,6 +7,7 @@
     grid-template-areas:
         "ti"
         "ph"
+        "sm"
         "cn"
         "ex"
         "sk"
@@ -16,6 +17,7 @@
     @include media-breakpoint-up(md) {
         grid-template:
             "ph ti" auto
+            "sm sm" auto
             "cn ex" auto
             "ab ex" 1fr
             "lg ex" auto
@@ -40,6 +42,10 @@
 
 .contacts {
     grid-area: cn;
+}
+
+.summary {
+    grid-area: sm;
 }
 
 .about {

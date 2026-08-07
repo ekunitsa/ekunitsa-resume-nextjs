@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { getDashboard } from '@/app/api/actions/dashboard';
 import type { TopInfoLinksItemI } from '@/types/types';
 import { TopInfoLinksItem } from '../TopInfoLinksItem/TopInfoLinksItem';
@@ -6,9 +6,17 @@ import styles from './TopInfoLinks.module.scss';
 
 export const TopInfoLinks = async () => {
     const t = await getTranslations('TopInfoLinksT');
+    const locale = await getLocale();
     const dashboardSettings = await getDashboard();
 
     const links: TopInfoLinksItemI[] = [];
+
+    links.push({
+        icon: '/static/img/svg/pdf.svg',
+        link: `/${locale}/cv.pdf`,
+        title: t('downloadCv'),
+        download: true,
+    });
 
     if (dashboardSettings?.codewars) {
         links.push({
@@ -42,6 +50,7 @@ export const TopInfoLinks = async () => {
                     title={item.title}
                     link={item.link}
                     icon={item.icon}
+                    download={item.download}
                 />
             ))}
         </div>

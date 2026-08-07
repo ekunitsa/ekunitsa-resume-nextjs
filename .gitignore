@@ -14,10 +14,3 @@ next-env.d.ts
 npm-debug.log*
 .env
 src/generated/prisma
-
-# Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/

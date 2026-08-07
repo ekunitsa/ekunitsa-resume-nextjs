@@ -4,14 +4,20 @@ import type { TopInfoLinksItemI } from '@/types/types';
 
 import styles from './TopInfoLinksItem.module.scss';
 
-export const TopInfoLinksItem = ({ title, icon, link }: TopInfoLinksItemI) => {
+export const TopInfoLinksItem = ({
+    title,
+    icon,
+    link,
+    download,
+}: TopInfoLinksItemI) => {
     return (
         <div className={styles.item}>
             <a
                 href={link}
                 className={styles.link}
-                rel="noreferrer"
-                target="_blank"
+                rel={download ? undefined : 'noreferrer'}
+                target={download ? undefined : '_blank'}
+                download={download}
             >
                 <Image src={icon} width={20} height={20} alt="" />
                 <span>{title}</span>

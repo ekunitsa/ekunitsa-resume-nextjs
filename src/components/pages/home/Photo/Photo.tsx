@@ -9,7 +9,7 @@ export const Photo = async () => {
 
     return (
         <Image
-            src="/static/img/eugine.png"
+            src="/static/img/photo.png"
             width={400}
             height={538}
             className={styles.image}

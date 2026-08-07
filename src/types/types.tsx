@@ -4,6 +4,7 @@ export interface TopInfoLinksItemI {
     icon: string;
     link: string;
     title: string;
+    download?: boolean;
 }
 
 export interface ContactsItemI {
@@ -53,6 +54,11 @@ export interface MainInformationI {
     place: string;
 }
 
+export interface SummaryI {
+    language: string;
+    content: string;
+}
+
 export interface TableHeaderI {
     columnName: string;
     tableHeader: string;
@@ -95,3 +101,42 @@ export interface ExperienceDataI {
 
 export interface ExperienceDataListI
     extends Omit<ExperienceDataI, 'language'> {}
+
+export interface PDFContactItem {
+    icon: PDFContactIconName;
+    label: string;
+    href?: string;
+}
+
+export type PDFContactIconName = 'location' | 'email' | 'telegram' | 'linkedin';
+
+export interface PDFContactPath {
+    d: string;
+    fill: string;
+}
+
+export interface PDFContactIcon {
+    viewBox: string;
+    paths: PDFContactPath[];
+}
+
+export type PDFSocialIconName = 'codewars' | 'stackoverflow' | 'github';
+
+export interface PDFSocialPath {
+    d: string;
+    fill?: string;
+    fillRule?: 'evenodd' | 'nonzero';
+    clipRule?: 'evenodd' | 'nonzero';
+    transform?: string;
+}
+
+export interface PDFSocialIcon {
+    viewBox: string;
+    paths: PDFSocialPath[];
+}
+
+export interface PDFSocialItem {
+    icon: PDFSocialIconName;
+    label: string;
+    href: string;
+}
