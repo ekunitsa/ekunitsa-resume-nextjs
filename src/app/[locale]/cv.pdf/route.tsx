@@ -1,4 +1,4 @@
-import { renderToBuffer } from '@react-pdf/renderer';
+import { Font, renderToBuffer } from '@react-pdf/renderer';
 import { getTranslations } from 'next-intl/server';
 
 import { getAboutList } from '@/app/api/actions/about';
@@ -9,6 +9,7 @@ import { getMainInformation } from '@/app/api/actions/mainInformation';
 import { getSkills } from '@/app/api/actions/skills';
 import { getSummary } from '@/app/api/actions/summary';
 import { CvPdf } from '@/components/pdf/CvPdf/CvPdf';
+import { registerCvPdfFonts } from '@/components/pdf/CvPdf/CvPdf.fonts';
 import type { Locale } from '@/types/types';
 
 interface CvRouteProps {
@@ -30,8 +31,12 @@ const renderPdfSequentially = async (render: () => Promise<Buffer>) => {
     await previousRender;
 
     try {
+        Font.clear();
+        registerCvPdfFonts();
+
         return await render();
     } finally {
+        Font.clear();
         finishRender();
     }
 };

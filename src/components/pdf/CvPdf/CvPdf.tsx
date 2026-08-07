@@ -1,4 +1,4 @@
-import { Document, Font, Page, Text, View } from '@react-pdf/renderer';
+import { Document, Page, Text, View } from '@react-pdf/renderer';
 
 import type {
     AboutDataListI,
@@ -10,7 +10,6 @@ import type {
     SkillsInputI,
     SummaryI,
 } from '@/types/types';
-import { getFontPath } from '@/utils/getFontPath';
 import { styles } from './CvPdf.styles';
 import { CvPdfAbout } from './CvPdfAbout/CvPdfAbout';
 import { CvPdfContacts } from './CvPdfContacts/CvPdfContacts';
@@ -20,33 +19,6 @@ import { CvPdfLanguages } from './CvPdfLanguages/CvPdfLanguages';
 import { CvPdfSkills } from './CvPdfSkills/CvPdfSkills';
 import { CvPdfSocial } from './CvPdfSocial/CvPdfSocial';
 import { CvPdfSummary } from './CvPdfSummary/CvPdfSummary';
-
-Font.register({
-    family: 'Montserrat',
-    fonts: [
-        {
-            src: getFontPath('montserrat', 'Montserrat-Regular.ttf'),
-            fontWeight: 400,
-        },
-        {
-            src: getFontPath('montserrat', 'Montserrat-Italic.ttf'),
-            fontStyle: 'italic',
-            fontWeight: 400,
-        },
-        {
-            src: getFontPath('montserrat', 'Montserrat-Medium.ttf'),
-            fontWeight: 500,
-        },
-        {
-            src: getFontPath('montserrat', 'Montserrat-SemiBold.ttf'),
-            fontWeight: 600,
-        },
-    ],
-});
-
-Font.registerHyphenationCallback((word) => [
-    word,
-]);
 
 interface CvPdfProps {
     locale: Locale;
