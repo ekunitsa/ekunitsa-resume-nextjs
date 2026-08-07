@@ -40,9 +40,10 @@ jobs:
 
             - name: Prepare standalone artifact
               run: |
-                  cp -r public .next/standalone/public
-                  mkdir -p .next/standalone/.next
-                  cp -r .next/static .next/standalone/.next/static
+                  mkdir -p .next/standalone/public
+                  cp -r public/. .next/standalone/public/
+                  mkdir -p .next/standalone/.next/static
+                  cp -r .next/static/. .next/standalone/.next/static/
 
             - name: Create deployment archive
               run: |
