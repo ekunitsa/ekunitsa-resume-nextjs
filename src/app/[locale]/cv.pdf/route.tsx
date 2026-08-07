@@ -17,6 +17,25 @@ interface CvRouteProps {
     }>;
 }
 
+let pdfRenderQueue = Promise.resolve();
+
+const renderPdfSequentially = async (render: () => Promise<Buffer>) => {
+    const previousRender = pdfRenderQueue;
+    let finishRender = () => {};
+
+    pdfRenderQueue = new Promise<void>((resolve) => {
+        finishRender = resolve;
+    });
+
+    await previousRender;
+
+    try {
+        return await render();
+    } finally {
+        finishRender();
+    }
+};
+
 export async function GET(_request: Request, { params }: CvRouteProps) {
     try {
         const { locale } = await params;
@@ -46,29 +65,31 @@ export async function GET(_request: Request, { params }: CvRouteProps) {
             });
         }
 
-        const pdf = await renderToBuffer(
-            <CvPdf
-                locale={locale}
-                mainInformation={mainInformation}
-                dashboard={dashboard}
-                about={about}
-                summary={summary}
-                experience={experience}
-                languages={languages}
-                skills={skills}
-                translations={{
-                    profile: t('profile'),
-                    summary: t('summary'),
-                    skills: t('skills'),
-                    primary: t('primary'),
-                    secondary: t('secondary'),
-                    ai: t('ai'),
-                    experience: t('experience'),
-                    technologies: t('technologies'),
-                    languages: t('languages'),
-                    now: t('now'),
-                }}
-            />,
+        const pdf = await renderPdfSequentially(() =>
+            renderToBuffer(
+                <CvPdf
+                    locale={locale}
+                    mainInformation={mainInformation}
+                    dashboard={dashboard}
+                    about={about}
+                    summary={summary}
+                    experience={experience}
+                    languages={languages}
+                    skills={skills}
+                    translations={{
+                        profile: t('profile'),
+                        summary: t('summary'),
+                        skills: t('skills'),
+                        primary: t('primary'),
+                        secondary: t('secondary'),
+                        ai: t('ai'),
+                        experience: t('experience'),
+                        technologies: t('technologies'),
+                        languages: t('languages'),
+                        now: t('now'),
+                    }}
+                />,
+            ),
         );
         const fileName = `eKunitsa-Senior-FE-Dev-CV-${locale}.pdf`;
 
