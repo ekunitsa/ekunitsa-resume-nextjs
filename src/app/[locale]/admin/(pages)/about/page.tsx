@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-    getMessages,
-    getTranslations,
-    setRequestLocale,
-} from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { AboutList } from '@/components/admin/AboutList/AboutList';
 import type { Locale } from '@/types/types';
 
@@ -30,11 +26,7 @@ export async function generateMetadata({
     };
 }
 
-const AboutPage = async ({ params }: AboutPageProps) => {
-    const { locale } = await params;
-
-    setRequestLocale(locale);
-
+const AboutPage = async () => {
     const { FormT, AboutListT } = await getMessages();
 
     return (

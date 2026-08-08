@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-    getMessages,
-    getTranslations,
-    setRequestLocale,
-} from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { getAboutItem } from '@/app/api/actions/about';
 import { AboutForm } from '@/components/admin/AboutForm/AboutForm';
 import type { Locale } from '@/types/types';
@@ -33,9 +29,7 @@ export async function generateMetadata({
 }
 
 const AboutEditPage = async ({ params }: AboutEditPageProps) => {
-    const { locale, id } = await params;
-
-    setRequestLocale(locale);
+    const { id } = await params;
 
     const { FormT, AboutFormT, ResponseStatusT } = await getMessages();
     const data = await getAboutItem(Number(id));

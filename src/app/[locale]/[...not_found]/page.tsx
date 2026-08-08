@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/common/Button/Button';
 import { Title } from '@/components/common/Title/Title';
 import type { Locale } from '@/types/types';
@@ -28,11 +28,7 @@ export async function generateMetadata({
     };
 }
 
-const NotFoundPage = async ({ params }: NotFoundPageProps) => {
-    const { locale } = await params;
-
-    setRequestLocale(locale);
-
+const NotFoundPage = async () => {
     const t = await getTranslations('NotFoundT');
 
     return (

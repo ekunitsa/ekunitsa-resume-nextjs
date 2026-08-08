@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-    getMessages,
-    getTranslations,
-    setRequestLocale,
-} from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { getMainInformation } from '@/app/api/actions/mainInformation';
 import { GlobalForm } from '@/components/admin/GlobalForm/GlobalForm';
 import type { Locale } from '@/types/types';
@@ -33,8 +29,6 @@ export async function generateMetadata({
 
 const GlobalPage = async ({ params }: GlobalPageProps) => {
     const { locale } = await params;
-
-    setRequestLocale(locale);
 
     const { GlobalFormT, FormT, ResponseStatusT } = await getMessages();
 

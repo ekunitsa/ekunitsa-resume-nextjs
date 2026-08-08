@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-    getMessages,
-    getTranslations,
-    setRequestLocale,
-} from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { Login } from '@/components/admin/Login/Login';
 import type { Locale } from '@/types/types';
 import styles from './page.module.scss';
@@ -31,11 +27,7 @@ export async function generateMetadata({
     };
 }
 
-const LoginPage = async ({ params }: LoginPageProps) => {
-    const { locale } = await params;
-
-    setRequestLocale(locale);
-
+const LoginPage = async () => {
     const { LoginT, FormT } = await getMessages();
 
     return (

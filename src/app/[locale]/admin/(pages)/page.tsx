@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-    getMessages,
-    getTranslations,
-    setRequestLocale,
-} from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { getDashboard } from '@/app/api/actions/dashboard';
 import { DashboardForm } from '@/components/admin/DashboardForm/DashboardForm';
 import type { Locale } from '@/types/types';
@@ -30,11 +26,7 @@ export async function generateMetadata({
     };
 }
 
-const DashboardPage = async ({ params }: DashboardPageProps) => {
-    const { locale } = await params;
-
-    setRequestLocale(locale);
-
+const DashboardPage = async () => {
     const { DashboardFormT, FormT, ResponseStatusT } = await getMessages();
 
     const data = await getDashboard();

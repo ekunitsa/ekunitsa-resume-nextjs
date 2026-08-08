@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-    getMessages,
-    getTranslations,
-    setRequestLocale,
-} from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { LocaleSwitcher } from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 import { About } from '@/components/pages/home/About/About';
 import { Contacts } from '@/components/pages/home/Contacts/Contacts';
@@ -68,11 +64,7 @@ export async function generateMetadata({
 
 export const revalidate = 0;
 
-const HomePage = async ({ params }: HomePageProps) => {
-    const { locale } = await params;
-
-    setRequestLocale(locale);
-
+const HomePage = async () => {
     const { LocaleSwitcherT } = await getMessages();
 
     return (

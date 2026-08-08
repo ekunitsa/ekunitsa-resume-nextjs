@@ -28,14 +28,10 @@ Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/ekunitsa/ekunitsa-resume-nextjs.git
 cd ekunitsa-resume-nextjs
-npm c
+npm i
 ```
 
-Create an empty PostgreSQL database, then copy the environment file:
-
-```bash
-cp .env.example .env
-```
+Create an empty PostgreSQL database, then rename the environment file from .env.example to .env
 
 Configure `.env`
 
