@@ -1,6 +1,6 @@
-# Eugine Kunitsa Resume
+# Eugine Kunitsa | Resume Website
 
-Bilingual resume website with a protected admin panel and server-generated PDF.
+Multilingual resume website with the admin panel and server-generated PDF.
 
 [Live website](https://ekunitsa.com/) | [Repository](https://github.com/ekunitsa/ekunitsa-resume-nextjs)
 
