@@ -13,6 +13,7 @@ Multilingual resume website with the admin panel and server-generated PDF.
 - NextAuth.js, next-intl
 - React PDF
 - SCSS
+- Playwright
 - Biome, Stylelint, Husky
 
 ## Requirements
@@ -80,6 +81,168 @@ PDF routes:
 - `/en/cv.pdf`
 
 All sections of the admin panel must be filled before the PDF is available to download.
+
+## End-to-end testing
+
+Playwright runs the application locally on port `3100` and connects directly to a dedicated test database on the VPS. Tests must never use the production database or its database user.
+
+The database name and database user in `DATABASE_URL` must both end with `_test`. Before the tests start, PostgreSQL is also queried for its actual database and user; they must match `DATABASE_URL` exactly.
+
+### Create the test database on the VPS
+
+The commands below use these example names:
+
+- production database: `resume`;
+- test database: `resume_test`;
+- test database user: `app_test`.
+
+Replace the production database name with the real value from the production `DATABASE_URL`.
+
+Connect to the VPS and create a temporary production dump:
+
+```bash
+sudo -u postgres pg_dump \
+  --format=custom \
+  --no-owner \
+  --no-acl \
+  --file=/tmp/resume-production.dump \
+  resume
+```
+
+Open PostgreSQL:
+
+```bash
+sudo -u postgres psql
+```
+
+Create a dedicated test user and set a separate password:
+
+```text
+CREATE ROLE app_test LOGIN;
+\password app_test
+```
+
+Create the test database and leave PostgreSQL:
+
+```text
+CREATE DATABASE resume_test OWNER app_test;
+\q
+```
+
+Restore the production dump into the test database:
+
+```bash
+sudo -u postgres pg_restore \
+  --dbname=resume_test \
+  --role=app_test \
+  --no-owner \
+  --no-acl \
+  /tmp/resume-production.dump
+```
+
+Verify the connection using the new test user:
+
+```bash
+psql \
+  -h 127.0.0.1 \
+  -U app_test \
+  -d resume_test \
+  -c 'SELECT current_database(), current_user;'
+```
+
+The result must contain `resume_test` and `app_test`.
+
+The copied database contains the production administrator password hash. After verifying the database name, remove all copied users from the test database:
+
+```bash
+psql \
+  -h 127.0.0.1 \
+  -U app_test \
+  -d resume_test \
+  -c 'TRUNCATE TABLE "User";'
+```
+
+Remove the temporary dump after a successful restore because it contains production data:
+
+```bash
+sudo rm -- /tmp/resume-production.dump
+```
+
+If the test database or user already exists, inspect it before continuing. Do not drop or overwrite an existing database without confirming its identity and contents.
+
+### Configure the local test environment
+
+Create the ignored `.env.test` file from the committed template:
+
+```bash
+cp .env.test.example .env.test
+```
+
+Copy the host, port, and SSL options from the production `DATABASE_URL`, but use only the dedicated test user, password, and database:
+
+Both `.env` and `.env.test` are ignored by Git. Never put production database credentials in `.env.test`.
+
+### Verify and seed the test database
+
+Check that the configured URL and the actual PostgreSQL database/user are safe:
+
+```bash
+npm run test:e2e:db:check
+```
+
+The command is read-only. It verifies that the database and user both end with `_test`, connects to PostgreSQL, and compares `current_database()` and `current_user` with `DATABASE_URL`.
+
+Create or update the dedicated E2E administrator:
+
+```bash
+npm run test:e2e:prepare-admin
+```
+
+The administrator email must end with `.test`, and the password must contain at least 12 characters. The password is stored as a bcrypt hash. The seed command only writes after the test database identity has been verified.
+
+Run the seed command after the test database is created, restored, or reset.
+
+### Run Playwright
+
+Run all tests in headless Chromium using the desktop Chrome and mobile profiles:
+
+```bash
+npm run test:e2e
+```
+
+Playwright performs the following sequence:
+
+1. Loads `.env.test` and validates `DATABASE_URL`.
+2. Starts the Next.js development server at `http://127.0.0.1:3100`.
+3. Runs `tests/setup/global-setup.ts` once to verify the actual database, user, and E2E administrator.
+4. Runs the tests with one worker against desktop Chrome and mobile.
+5. Stops the Next.js server.
+
+Run with a visible browser:
+
+```bash
+npm run test:e2e -- --headed
+```
+
+Open Playwright UI mode:
+
+```bash
+npm run test:e2e -- --ui
+```
+
+Run one test file:
+
+```bash
+npm run test:e2e -- tests/e2e/home.spec.ts
+```
+
+Run tests matching a title:
+
+```bash
+npm run test:e2e -- --grep "locale switcher"
+```
+
+The HTML report is written to `playwright-report`, and failure artifacts are written to `test-results`. Both directories are ignored by Git.
 
 ## Production
 
@@ -172,6 +335,9 @@ Resume content is managed through the admin panel.
 | `npm run dev` | Development server |
 | `npm run build` | Production build |
 | `npm run start` | Production server |
+| `npm run test:e2e` | Run Playwright E2E tests |
+| `npm run test:e2e:db:check` | Verify the configured test database and user |
+| `npm run test:e2e:prepare-admin` | Create or update the E2E administrator |
 | `npm run lint` | Biome, Stylelint, and TypeScript |
 | `npm run prisma:validate` | Validate Prisma schema |
 | `npm run prisma:generate` | Generate Prisma client |

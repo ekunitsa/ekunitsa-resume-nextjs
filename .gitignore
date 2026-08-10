@@ -1,5 +1,6 @@
 .DS_Store
-.env*.local
+.env
+.env.test
 .pnp.js
 .vercel
 *.pem
@@ -8,9 +9,10 @@
 /.pnp
 /build
 /coverage
+/playwright-report/
+/test-results/
 /node_modules
 /out/
 next-env.d.ts
 npm-debug.log*
-.env
 src/generated/prisma
