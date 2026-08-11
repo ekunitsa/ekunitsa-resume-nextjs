@@ -1,12 +1,15 @@
 'use client';
 
 import { signOut } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 import { AiOutlineHome, AiOutlineLogout, AiOutlineTool } from 'react-icons/ai';
 import { LocaleSwitcher } from '@/components/common/LocaleSwitcher/LocaleSwitcher';
 import { Link } from '@/configs/i18n/routing';
 import styles from './AdminBar.module.scss';
 
 export const AdminBar = () => {
+    const t = useTranslations('AdminBarT');
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.inner}>
@@ -23,6 +26,7 @@ export const AdminBar = () => {
                     <button
                         type="button"
                         className={styles.buttonLink}
+                        aria-label={t('signOut')}
                         onClick={() => signOut()}
                     >
                         <AiOutlineLogout size={24} />

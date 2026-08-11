@@ -108,7 +108,12 @@ export const ExperienceForm = ({ data }: ExperienceFormProps) => {
 
                 {data && (
                     <div className={styles.btnWrapper}>
-                        <Button buttonType="button" onClick={onDelete} square>
+                        <Button
+                            ariaLabel={formT('deleteBtn')}
+                            buttonType="button"
+                            onClick={onDelete}
+                            square
+                        >
                             <AiOutlineDelete />
                         </Button>
                     </div>

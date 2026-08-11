@@ -6,6 +6,9 @@
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
     },
+    "AdminBarT": {
+        "signOut": "Sign out"
+    },
     "NotFoundPageT": {
         "notFoundTitle": "Page not found"
     },
@@ -81,6 +84,7 @@
         "errorTelegramPattern": "The telegram is incorrect",
         "errorPositiveNumberPattern": "Only positive numbers",
         "saveBtn": "Save",
+        "deleteBtn": "Delete",
         "deleteMsg": "Are you sure you want to delete this entry?"
     },
     "SkillsFormT": {

@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin('./src/configs/i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
+    allowedDevOrigins: [
+        '127.0.0.1',
+    ],
     serverExternalPackages: [
         '@prisma/client',
         '@react-pdf/renderer',
