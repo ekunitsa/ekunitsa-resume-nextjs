@@ -13,7 +13,7 @@ export default defineConfig({
     reporter: 'html',
     use: {
         baseURL: 'http://127.0.0.1:3100',
-        trace: 'on-first-retry',
+        trace: process.env.CI ? 'on-first-retry' : 'retain-on-failure',
         screenshot: 'only-on-failure',
     },
     projects: [

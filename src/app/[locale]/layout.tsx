@@ -55,7 +55,7 @@ export function generateStaticParams() {
 export default async function LocaleLayout({ children, params }: LayoutProps) {
     const { locale } = await params;
 
-    const { LocaleSwitcherT } = await getMessages();
+    const { AdminBarT, LocaleSwitcherT } = await getMessages();
     const session = await getCurrentSession();
 
     return (
@@ -64,6 +64,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
                 {session?.user && (
                     <NextIntlClientProvider
                         messages={{
+                            AdminBarT,
                             LocaleSwitcherT,
                         }}
                     >

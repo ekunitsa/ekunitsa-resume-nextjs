@@ -7,6 +7,7 @@ import { Link } from '@/configs/i18n/routing';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
+    ariaLabel?: string;
     buttonType?: 'button' | 'submit' | 'reset';
     children: React.ReactNode;
     className?: string;
@@ -17,6 +18,7 @@ interface ButtonProps {
 }
 
 export const Button = ({
+    ariaLabel,
     buttonType,
     children,
     className,
@@ -38,6 +40,7 @@ export const Button = ({
                 </Link>
             ) : (
                 <button
+                    aria-label={ariaLabel}
                     type={buttonType}
                     onClick={onClick}
                     disabled={disabled}

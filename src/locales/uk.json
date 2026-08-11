@@ -6,6 +6,9 @@
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
     },
+    "AdminBarT": {
+        "signOut": "Вийти"
+    },
     "NotFoundPageT": {
         "notFoundTitle": "Сторінка не знайдена"
     },
@@ -81,6 +84,7 @@
         "errorTelegramPattern": "Telegram вказан невірно",
         "errorPositiveNumberPattern": "Тільки позитивні числа",
         "saveBtn": "Зберегти",
+        "deleteBtn": "Видалити",
         "deleteMsg": "Ви впевнені, що хочете видалити цей запис?"
     },
     "SkillsFormT": {
