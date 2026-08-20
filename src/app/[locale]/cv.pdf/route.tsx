@@ -102,7 +102,7 @@ export async function GET(_request: Request, { params }: CvRouteProps) {
                 />,
             ),
         );
-        const fileName = `eKunitsa-Senior-FE-Dev-CV-${locale}.pdf`;
+        const fileName = `eKunitsa-Senior-Full-stack-Developer-CV-${locale}.pdf`;
 
         return new Response(new Uint8Array(pdf), {
             headers: {
