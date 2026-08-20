@@ -1,7 +1,7 @@
 {
     "MetaDataT": {
-        "title": "Eugine Kunitsa | Front-End Archmage (Senior) | CV",
-        "description": "Front-End Archmage (Senior)"
+        "title": "Eugine Kunitsa | Full-stack Developer (FE-heavy) | CV",
+        "description": "Full-stack Developer (FE-heavy)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -32,7 +32,11 @@
         "experience": "Work experience",
         "technologies": "Technologies",
         "languages": "Languages",
-        "now": "Now"
+        "now": "Now",
+        "email": "Email",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "website": "Website"
     },
     "ContactsT": {
         "title": "Contacts",

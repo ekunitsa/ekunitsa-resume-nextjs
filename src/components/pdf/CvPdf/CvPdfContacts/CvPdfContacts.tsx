@@ -7,9 +7,21 @@ import { styles } from './CvPdfContacts.styles';
 interface CvPdfContactsProps {
     place: string;
     dashboard: DashboardI;
+    websiteUrl: string;
+    labels: {
+        email: string;
+        telegram: string;
+        linkedin: string;
+        website: string;
+    };
 }
 
-export const CvPdfContacts = ({ place, dashboard }: CvPdfContactsProps) => {
+export const CvPdfContacts = ({
+    place,
+    dashboard,
+    websiteUrl,
+    labels,
+}: CvPdfContactsProps) => {
     const contacts: PDFContactItem[] = [
         {
             icon: 'location',
@@ -20,7 +32,7 @@ export const CvPdfContacts = ({ place, dashboard }: CvPdfContactsProps) => {
     if (dashboard.email) {
         contacts.push({
             icon: 'email',
-            label: dashboard.email,
+            label: `${labels.email}: ${dashboard.email}`,
             href: `mailto:${dashboard.email}`,
         });
     }
@@ -28,7 +40,7 @@ export const CvPdfContacts = ({ place, dashboard }: CvPdfContactsProps) => {
     if (dashboard.telegram) {
         contacts.push({
             icon: 'telegram',
-            label: `@${dashboard.telegram.split('/').pop()}`,
+            label: `${labels.telegram}: @${dashboard.telegram.split('/').pop()}`,
             href: dashboard.telegram,
         });
     }
@@ -36,27 +48,31 @@ export const CvPdfContacts = ({ place, dashboard }: CvPdfContactsProps) => {
     if (dashboard.linkedin) {
         contacts.push({
             icon: 'linkedin',
-            label: 'LinkedIn',
+            label: `${labels.linkedin}: ${dashboard.linkedin}`,
             href: dashboard.linkedin,
         });
     }
 
+    contacts.push({
+        icon: 'website',
+        label: `${labels.website}: ${websiteUrl}`,
+        href: websiteUrl,
+    });
+
     return (
         <View style={styles.wrapper}>
-            <View style={styles.row}>
-                {contacts.map((item) => (
-                    <View key={item.icon} style={styles.item}>
-                        <CvPdfContactIcon name={item.icon} />
-                        {item.href ? (
-                            <Link src={item.href} style={styles.link}>
-                                <Text style={styles.text}>{item.label}</Text>
-                            </Link>
-                        ) : (
+            {contacts.map((item) => (
+                <View key={item.icon} style={styles.item}>
+                    <CvPdfContactIcon name={item.icon} />
+                    {item.href ? (
+                        <Link src={item.href} style={styles.link}>
                             <Text style={styles.text}>{item.label}</Text>
-                        )}
-                    </View>
-                ))}
-            </View>
+                        </Link>
+                    ) : (
+                        <Text style={styles.text}>{item.label}</Text>
+                    )}
+                </View>
+            ))}
         </View>
     );
 };

@@ -1,7 +1,7 @@
 {
     "MetaDataT": {
-        "title": "Куниця Євгеній | Front-End Архімаг (Senior) | CV",
-        "description": "Front-End Архімаг (Senior)"
+        "title": "Куниця Євгеній | Full-stack Developer (FE-heavy) | CV",
+        "description": "Full-stack Developer (FE-heavy)"
     },
     "LocaleSwitcherT": {
         "locale": "{locale, select, uk {UA} en {EN} other {Unknown}}"
@@ -32,7 +32,11 @@
         "experience": "Досвід роботи",
         "technologies": "Технології",
         "languages": "Мови",
-        "now": "Зараз"
+        "now": "Зараз",
+        "email": "Email",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "website": "Сайт"
     },
     "ContactsT": {
         "title": "Контакти",

@@ -47,6 +47,17 @@ const contactIcons: Record<PDFContactIconName, PDFContactIcon> = {
             },
         ],
     },
+    website: {
+        viewBox: '0 0 24 24',
+        paths: [
+            {
+                d: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM3.6 9h16.8M3.6 15h16.8M12 3c2.2 2.5 3.3 5.5 3.3 9s-1.1 6.5-3.3 9c-2.2-2.5-3.3-5.5-3.3-9S9.8 5.5 12 3Z',
+                fill: 'none',
+                stroke: '#000',
+                strokeWidth: 1,
+            },
+        ],
+    },
 };
 
 export const CvPdfContactIcon = ({ name }: { name: PDFContactIconName }) => {

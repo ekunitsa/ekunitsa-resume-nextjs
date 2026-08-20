@@ -44,6 +44,7 @@ const renderPdfSequentially = async (render: () => Promise<Buffer>) => {
 export async function GET(_request: Request, { params }: CvRouteProps) {
     try {
         const { locale } = await params;
+        const websiteUrl = new URL(process.env.SITE_URL ?? _request.url).origin;
         const mainInformation = await getMainInformation(locale);
         const dashboard = await getDashboard();
         const about = await getAboutList(locale);
@@ -74,6 +75,7 @@ export async function GET(_request: Request, { params }: CvRouteProps) {
             renderToBuffer(
                 <CvPdf
                     locale={locale}
+                    websiteUrl={websiteUrl}
                     mainInformation={mainInformation}
                     dashboard={dashboard}
                     about={about}
@@ -92,6 +94,10 @@ export async function GET(_request: Request, { params }: CvRouteProps) {
                         technologies: t('technologies'),
                         languages: t('languages'),
                         now: t('now'),
+                        email: t('email'),
+                        telegram: t('telegram'),
+                        linkedin: t('linkedin'),
+                        website: t('website'),
                     }}
                 />,
             ),

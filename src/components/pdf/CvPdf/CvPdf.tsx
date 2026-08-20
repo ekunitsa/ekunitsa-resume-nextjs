@@ -22,6 +22,7 @@ import { CvPdfSummary } from './CvPdfSummary/CvPdfSummary';
 
 interface CvPdfProps {
     locale: Locale;
+    websiteUrl: string;
     mainInformation: MainInformationI;
     dashboard: DashboardI;
     about: AboutDataListI[];
@@ -40,11 +41,16 @@ interface CvPdfProps {
         technologies: string;
         languages: string;
         now: string;
+        email: string;
+        telegram: string;
+        linkedin: string;
+        website: string;
     };
 }
 
 export const CvPdf = ({
     locale,
+    websiteUrl,
     mainInformation,
     dashboard,
     about,
@@ -71,6 +77,13 @@ export const CvPdf = ({
                     <CvPdfContacts
                         place={mainInformation.place}
                         dashboard={dashboard}
+                        websiteUrl={websiteUrl}
+                        labels={{
+                            email: t.email,
+                            telegram: t.telegram,
+                            linkedin: t.linkedin,
+                            website: t.website,
+                        }}
                     />
                     <CvPdfSocial dashboard={dashboard} />
                 </View>

@@ -108,11 +108,18 @@ export interface PDFContactItem {
     href?: string;
 }
 
-export type PDFContactIconName = 'location' | 'email' | 'telegram' | 'linkedin';
+export type PDFContactIconName =
+    | 'location'
+    | 'email'
+    | 'telegram'
+    | 'linkedin'
+    | 'website';
 
 export interface PDFContactPath {
     d: string;
     fill: string;
+    stroke?: string;
+    strokeWidth?: number;
 }
 
 export interface PDFContactIcon {

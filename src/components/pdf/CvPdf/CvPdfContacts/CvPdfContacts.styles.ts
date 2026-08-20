@@ -3,14 +3,11 @@ import { StyleSheet } from '@react-pdf/renderer';
 export const styles = StyleSheet.create({
     wrapper: {
         marginTop: 10,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap: 7,
     },
-    row: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        columnGap: 14,
-        rowGap: 5,
-    },
+
     item: {
         flexDirection: 'row',
         alignItems: 'center',
